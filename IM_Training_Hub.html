@@ -1,0 +1,1737 @@
+<!DOCTYPE html><html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Influencer Marketing Training Hub</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif;background:#f1f2f6;color:#18181b;display:flex;min-height:100vh;font-size:14px;}
+/* LANG */
+.t-zh{display:none;}
+body.lang-zh .t-en{display:none;}
+body.lang-zh .t-zh{display:block;}
+body.lang-zh span.t-zh{display:inline;}
+body.lang-zh span.t-en{display:none;}
+/* SIDEBAR */
+.sidebar{width:230px;min-height:100vh;background:linear-gradient(180deg,#1e1b4b 0%,#13122a 100%);position:fixed;top:0;left:0;padding:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto;}
+.sidebar-logo{padding:20px 20px 15px;border-bottom:1px solid rgba(255,255,255,0.1);}
+.sidebar-logo h2{color:#fff;font-size:15.5px;font-weight:800;letter-spacing:-0.4px;}
+.sidebar-logo p{color:rgba(255,255,255,0.45);font-size:11px;margin-top:3px;}
+.search-bar{padding:10px 14px 0;}
+.search-wrap{position:relative;}
+.search-wrap input{width:100%;padding:7px 28px 7px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.09);color:#fff;font-size:12px;outline:none;}
+.search-wrap input::placeholder{color:rgba(255,255,255,0.35);}
+.search-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.5);cursor:pointer;font-size:12px;display:none;}
+#searchCount{color:rgba(255,255,255,0.45);font-size:11px;padding:4px 14px 0;display:none;}
+#searchNav{display:none;padding:5px 14px 4px;align-items:center;gap:7px;}
+.snav-btn{background:rgba(255,255,255,0.13);border:none;color:rgba(255,255,255,0.85);border-radius:5px;width:22px;height:22px;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0;transition:background 0.15s;flex-shrink:0;}
+.snav-btn:hover{background:rgba(255,255,255,0.28);}
+#searchNavLabel{color:rgba(255,255,255,0.7);font-size:11px;min-width:38px;text-align:center;}
+mark.hl.current{background:#f97316;color:#fff;border-radius:2px;outline:2px solid rgba(249,115,22,0.4);}
+.nav{flex:1;padding:8px 0;}
+.nav a{display:flex;align-items:center;gap:9px;padding:10px 20px;color:rgba(255,255,255,0.58);text-decoration:none;font-size:12.5px;cursor:pointer;transition:all 0.18s;border-left:3px solid transparent;}
+.nav a:hover{background:rgba(255,255,255,0.07);color:#fff;}
+.nav a.active{background:rgba(79,70,229,0.22);color:#fff;border-left-color:#818cf8;}
+.nav .ic{width:18px;text-align:center;font-size:14px;}
+.lang-bar{display:flex;gap:6px;padding:12px 14px;border-top:1px solid rgba(255,255,255,0.08);}
+.lang-btn{flex:1;padding:6px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6);border-radius:7px;cursor:pointer;font-size:12px;font-weight:500;transition:all 0.18s;}
+.lang-btn.active{background:#4f46e5;border-color:#4f46e5;color:#fff;font-weight:700;}
+/* MAIN */
+.main{margin-left:230px;flex:1;padding:28px 32px;max-width:calc(100vw - 230px);}
+.page{display:none;animation:fadeIn 0.2s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.page-title{font-size:26px;font-weight:800;color:#18181b;margin-bottom:8px;letter-spacing:-0.5px;padding-bottom:12px;border-bottom:1px solid #e4e4e7;}
+.page-sub{color:#71717a;font-size:13.5px;margin-bottom:28px;line-height:1.7;margin-top:10px;}
+/* SEARCH HIGHLIGHT */
+mark.hl{background:#ffe066;color:#1a1a2e;border-radius:2px;padding:0 1px;}
+.search-banner{background:#1e1b4b;color:#fff;border-radius:10px;padding:10px 16px;margin-bottom:18px;font-size:13px;display:none;box-shadow:0 2px 8px rgba(30,27,75,0.2);}
+/* CARDS */
+.card{background:#fff;border-radius:10px;padding:22px;box-shadow:0 1px 3px rgba(0,0,0,0.06);border:1px solid #e4e4e7;margin-bottom:16px;}
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+@media(max-width:960px){.g4{grid-template-columns:repeat(2,1fr);}.g3{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+/* WELCOME CARDS */
+.w-card{background:#fff;border-radius:10px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,0.06);cursor:pointer;transition:all 0.18s;border:1px solid #e4e4e7;}
+.w-card:hover{border-color:#4f46e5;transform:translateY(-2px);box-shadow:0 4px 16px rgba(79,70,229,0.1);}
+.w-card .wi{margin-bottom:12px;color:#4f46e5;display:flex;align-items:center;}
+.w-card h3{font-size:13.5px;font-weight:700;margin-bottom:5px;color:#18181b;}
+.w-card p{font-size:12px;color:#71717a;line-height:1.55;}
+/* PLATFORM TABS */
+.ptab-bar{display:flex;gap:6px;margin-bottom:20px;border-bottom:2px solid #eee;padding-bottom:0;}
+.ptab{padding:9px 20px;border-radius:8px 8px 0 0;cursor:pointer;font-weight:600;font-size:13px;color:#666;background:#f4f5f7;border:2px solid transparent;border-bottom:none;margin-bottom:-2px;transition:all 0.18s;}
+.ptab.active{color:#4f46e5;background:#fff;border-color:#e4e4e7;border-bottom-color:#fff;font-weight:700;}
+.ptab-content{display:none;}
+.ptab-content.active{display:block;}
+/* FORMAT CARDS */
+.fmt-card{background:#fff;border-radius:10px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,0.06);border:1px solid #e4e4e7;border-left:3px solid #4f46e5;}
+.fmt-card h4{font-size:14px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;color:#18181b;}
+.fmt-tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0 10px;}
+.tag{padding:3px 9px;border-radius:4px;font-size:11px;font-weight:500;}
+.tag-blue{background:#f1f2f6;color:#52525b;}
+.tag-green{background:#f1f2f6;color:#52525b;}
+.tag-orange{background:#fef3c7;color:#92400e;}
+.tag-purple{background:#f1f2f6;color:#52525b;}
+.tag-red{background:#f1f2f6;color:#52525b;}
+.fmt-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.fmt-row label{font-size:10px;color:#888;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:3px;}
+.fmt-row p{font-size:12.5px;color:#333;line-height:1.5;}
+/* INFO BOXES — border-only, no fill */
+.tip-box{background:#fff;border-radius:8px;padding:13px 16px;border-left:3px solid #4f46e5;border:1px solid #e4e4e7;border-left:3px solid #4f46e5;font-size:13px;margin:12px 0;line-height:1.7;color:#374151;}
+.warn-box{background:#fff;border-radius:8px;padding:13px 16px;border:1px solid #e4e4e7;border-left:3px solid #d97706;font-size:13px;margin:12px 0;line-height:1.7;color:#374151;}
+.danger-box{background:#fff;border-radius:8px;padding:13px 16px;border:1px solid #e4e4e7;border-left:3px solid #dc2626;font-size:13px;margin:12px 0;line-height:1.7;color:#374151;}
+.success-box{background:#fff;border-radius:8px;padding:13px 16px;border:1px solid #e4e4e7;border-left:3px solid #16a34a;font-size:13px;margin:12px 0;line-height:1.7;color:#374151;}
+/* ACCORDION */
+details{background:#fff;border-radius:12px;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 3px 10px rgba(0,0,0,0.05);overflow:hidden;}
+details summary{padding:13px 16px;cursor:pointer;font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:10px;list-style:none;user-select:none;}
+details summary::-webkit-details-marker{display:none;}
+details summary::after{content:'▸';margin-left:auto;color:#999;transition:transform 0.2s;}
+details[open] summary::after{transform:rotate(90deg);}
+details summary:hover{background:#f8f8ff;}
+details .det-body{padding:4px 16px 16px;}
+/* SOP */
+.sop-item{background:#fff;border-radius:11px;padding:14px 16px;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 3px 10px rgba(0,0,0,0.04);display:flex;align-items:flex-start;gap:11px;transition:all 0.2s;}
+.sop-item.done{background:#f0fdf4;opacity:0.72;}
+.sop-item.done .sop-title{text-decoration:line-through;color:#888;}
+.chk-btn{width:26px;height:26px;border-radius:50%;border:2px solid #ddd;background:transparent;cursor:pointer;font-size:13px;flex-shrink:0;transition:all 0.2s;display:flex;align-items:center;justify-content:center;}
+.chk-btn.done{background:#16a34a;border-color:#16a34a;color:#fff;}
+.sop-body{flex:1;}
+.sop-num{font-size:10px;color:#aaa;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;}
+.sop-title{font-weight:600;font-size:13.5px;margin:2px 0 3px;}
+.sop-desc{font-size:12px;color:#666;line-height:1.5;}
+.sop-extra{font-size:12px;color:#555;margin-top:6px;background:#f8f9fa;border-radius:6px;padding:8px 10px;display:none;}
+.sop-extra.open{display:block;}
+.sop-toggle{font-size:11px;color:#4f46e5;cursor:pointer;margin-top:4px;display:inline-block;}
+.prog-wrap{background:#e4e4e7;border-radius:20px;height:6px;margin-bottom:5px;}
+.prog-bar{background:linear-gradient(90deg,#4f46e5,#06b6d4);height:100%;border-radius:20px;transition:width 0.5s ease;width:0%;box-shadow:0 0 8px rgba(79,70,229,0.4);}
+.prog-label{font-size:12px;color:#71717a;margin-bottom:7px;font-weight:500;}
+/* MESSAGES */
+.msg-bubble{background:#eef2ff;border-radius:12px;padding:15px 17px;margin:8px 0;border-left:3px solid #4f46e5;font-size:13px;line-height:1.8;white-space:pre-wrap;position:relative;box-shadow:0 1px 2px rgba(0,0,0,0.04);}
+.copy-btn{background:#4f46e5;color:#fff;border:none;padding:4px 12px;border-radius:20px;font-size:11px;cursor:pointer;float:right;margin-top:-3px;font-weight:600;letter-spacing:0.2px;}
+.copy-btn:hover{background:#4338ca;}
+/* SCENARIOS */
+.scenario-box{background:#fff;border-radius:13px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.06);margin-bottom:14px;}
+.scenario-q{background:#f8f9fa;border-radius:8px;padding:13px;margin-bottom:12px;font-size:13.5px;line-height:1.6;}
+.sc-opts{display:flex;flex-direction:column;gap:7px;}
+.sc-opt{padding:10px 13px;border-radius:8px;border:1.5px solid #e0e0e0;background:#fafafa;cursor:pointer;font-size:13px;text-align:left;transition:all 0.18s;}
+.sc-opt:hover{border-color:#4f46e5;background:#f3f0ff;}
+.sc-opt:disabled{cursor:default;opacity:0.7;}
+.sc-fb{margin-top:10px;padding:12px 14px;border-radius:8px;font-size:13px;display:none;line-height:1.5;}
+.sc-fb.correct{background:#dcfce7;border-left:3px solid #16a34a;}
+.sc-fb.wrong{background:#fef2f2;border-left:3px solid #dc2626;}
+/* NEGOTIATION */
+.nego-step{background:#fff;border-radius:13px;padding:18px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.06);margin-bottom:12px;border-top:3px solid #4f46e5;}
+.nego-step h4{font-size:14px;font-weight:700;margin-bottom:8px;color:#1a1a2e;}
+.nego-script{background:#1a1a2e;border-radius:8px;padding:13px 15px;margin:8px 0;font-size:13px;line-height:1.7;color:#e2e8f0;border-left:3px solid #a78bfa;font-style:italic;}
+.nego-do{background:#f0fdf4;border-radius:8px;padding:10px 13px;font-size:12.5px;margin:5px 0;color:#166534;}
+.nego-dont{background:#fef2f2;border-radius:8px;padding:10px 13px;font-size:12.5px;margin:5px 0;color:#991b1b;}
+/* MARKET CARDS */
+.mkt-card{background:#fff;border-radius:13px;padding:17px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.06);}
+.mkt-flag{font-size:28px;margin-bottom:6px;}
+.mkt-name{font-weight:700;font-size:14px;margin-bottom:10px;border-bottom:1px solid #f0f0f0;padding-bottom:8px;}
+.mkt-row{display:flex;align-items:flex-start;gap:10px;font-size:12px;padding:6px 0;border-bottom:1px solid #f7f7f7;}
+.mkt-row:last-child{border-bottom:none;}
+.mkt-label{color:#888;min-width:110px;flex-shrink:0;}
+.mkt-val{color:#333;font-weight:500;flex:1;line-height:1.55;}
+/* FAKE DATA */
+.signal-card{background:#fff;border-radius:13px;padding:17px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.06);border-top:3px solid #dc2626;}
+.signal-card h4{font-size:14px;font-weight:700;margin-bottom:8px;}
+.signal-item{font-size:12.5px;color:#555;padding:4px 0;border-bottom:1px solid #f5f5f5;line-height:1.5;}
+.signal-item:last-child{border-bottom:none;}
+/* QUIZ */
+.quiz-q{background:#fff;border-radius:13px;padding:18px;margin-bottom:12px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.06);}
+.q-text{font-weight:600;font-size:14px;margin-bottom:10px;line-height:1.5;}
+.q-opts label{display:flex;align-items:flex-start;gap:9px;padding:9px 12px;border-radius:8px;margin-bottom:5px;cursor:pointer;font-size:13px;border:1.5px solid #e5e7eb;transition:all 0.15s;}
+.q-opts label:hover{border-color:#4f46e5;background:#f3f0ff;}
+.q-opts input[type=radio]{margin-top:2px;flex-shrink:0;}
+.quiz-result{background:#fff;border-radius:16px;padding:30px;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,0.04),0 8px 28px rgba(0,0,0,0.08);display:none;}
+.score-circle{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#06b6d4);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:26px;font-weight:800;color:#fff;box-shadow:0 4px 20px rgba(79,70,229,0.35);}
+.q-review{margin-top:6px;padding:8px 12px;border-radius:6px;font-size:12px;display:none;}
+.q-review.ok{background:#dcfce7;color:#166534;}
+.q-review.err{background:#fef2f2;color:#991b1b;}
+/* KOLPlanet */
+.kol-step{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;background:#fff;border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 3px 10px rgba(0,0,0,0.05);margin-bottom:9px;}
+.kol-num{width:30px;height:30px;border-radius:50%;background:#4f46e5;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;}
+.kol-body h5{font-weight:600;font-size:13.5px;margin-bottom:3px;}
+.kol-body p{font-size:12px;color:#555;line-height:1.5;}
+/* TABLE */
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.05);font-size:12.5px;}
+th{background:#1e1b4b;color:#fff;padding:10px 13px;text-align:left;font-size:11.5px;font-weight:600;letter-spacing:0.2px;}
+td{padding:9px 13px;border-bottom:1px solid #f0f0f0;}
+tr:last-child td{border-bottom:none;}
+tr:nth-child(even) td{background:#fafafa;}
+/* MISC */
+.section-title{font-size:13.5px;font-weight:700;color:#18181b;margin:28px 0 12px;letter-spacing:-0.1px;padding-left:11px;border-left:3px solid #4f46e5;}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;}
+.badge-green{background:#f1f2f6;color:#374151;}
+.badge-orange{background:#fef3c7;color:#92400e;}
+.badge-red{background:#f1f2f6;color:#374151;}
+.badge-blue{background:#f1f2f6;color:#374151;}
+.btn{padding:10px 22px;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:14px;transition:all 0.2s;}
+.btn-primary{background:#4f46e5;color:#fff;box-shadow:0 1px 2px rgba(79,70,229,0.2),0 4px 12px rgba(79,70,229,0.2);}
+.btn-primary:hover{background:#4338ca;box-shadow:0 2px 4px rgba(79,70,229,0.25),0 6px 16px rgba(79,70,229,0.25);}
+.btn-outline{background:transparent;border:2px solid #4f46e5;color:#4f46e5;transition:all 0.18s;}
+.case-card{background:#fff;border-radius:13px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.06);margin-bottom:14px;border-top:3px solid #4f46e5;}
+.case-card.fail{border-top-color:#dc2626;}
+/* CAMPAIGN WORKFLOW ENHANCEMENTS */
+.sop-item.cm-lead{background:#f8fafc;border-left:4px solid #94a3b8;}
+.sop-item.cm-lead .sop-title{color:#475569;}
+.sop-item.cm-lead .sop-num{color:#94a3b8;}
+.sop-item.cm-lead.done .sop-title{text-decoration:line-through;color:#94a3b8;}
+.pic-badge{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:4px;margin-left:6px;vertical-align:middle;letter-spacing:0.3px;}
+.pic-bd{background:#4f46e5;color:#fff;}
+.pic-cm{background:#334155;color:#fff;}
+.kp-note{font-size:11.5px;color:#52525b;background:#f8f9fa;border-radius:6px;padding:5px 10px;margin-top:7px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;border-left:2px solid #4f46e5;}
+.kp-note strong{white-space:nowrap;color:#4f46e5;}
+/* PHASE-BASED CHECKLIST */
+.phase-section{margin-bottom:22px;}
+.phase-hdr{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding:11px 16px;background:linear-gradient(135deg,#1e1b4b 0%,#3730a3 100%);border-radius:11px;color:#fff;box-shadow:0 2px 8px rgba(55,48,163,0.25);}
+.phase-hdr .ph-num{font-size:10px;font-weight:700;background:rgba(255,255,255,0.18);border-radius:20px;padding:2px 9px;letter-spacing:0.5px;white-space:nowrap;}
+.phase-hdr .ph-title{font-weight:700;font-size:13.5px;flex:1;}
+.phase-hdr .ph-count{font-size:11px;color:rgba(255,255,255,0.55);white-space:nowrap;}
+.chk-card{background:#fff;border-radius:8px;padding:14px 16px;margin-bottom:7px;box-shadow:none;border:1px solid #e4e4e7;border-left:3px solid #4f46e5;display:flex;align-items:flex-start;gap:11px;transition:all 0.18s;}
+.chk-card:hover{border-color:#4f46e5;box-shadow:0 2px 10px rgba(79,70,229,0.08);}
+.chk-card.cm-card{background:#fafafa;border-left:3px solid #334155;border-color:#d1d5db;}
+.chk-card.cm-card:hover{border-color:#334155;box-shadow:0 2px 10px rgba(51,65,85,0.08);}
+.chk-card.done{background:#f8f9fa;opacity:0.7;}
+.chk-card.done .sop-title{text-decoration:line-through;color:#9ca3af;}
+.chk-card.cm-card.done{background:#f8f9fa;}
+.chk-role{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 12px;border-radius:4px;margin-bottom:6px;letter-spacing:0.3px;}
+.chk-role.bd{background:#4f46e5;color:#fff;}
+.chk-role.cm{background:#334155;color:#fff;}
+.chk-legend{display:flex;gap:12px;margin-bottom:20px;align-items:center;flex-wrap:wrap;padding:10px 14px;background:#f8f9fa;border-radius:8px;border:1px solid #e4e4e7;}
+.chk-legend-item{display:flex;align-items:center;gap:7px;font-size:12px;color:#374151;font-weight:500;}
+.chk-legend-dot{width:10px;height:10px;border-radius:2px;}
+.chk-legend-dot.bd{background:#4f46e5;border:none;}
+.chk-legend-dot.cm{background:#334155;border:none;}
+/* OUTREACH */
+.tpl-label{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:4px;margin-bottom:8px;letter-spacing:0.3px;}
+.tpl-dm{background:#f1f2f6;color:#374151;}
+.tpl-email{background:#f1f2f6;color:#374151;}
+.rate-box{background:#fff;border-radius:8px;padding:13px 16px;border:1px solid #e4e4e7;border-left:3px solid #d97706;font-size:13px;margin:14px 0;line-height:1.7;color:#374151;}
+</style>
+</head>
+<body>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <h2>IM Training Hub</h2>
+    <p><span class="t-en">Influencer Marketing · SEA &amp; India</span><span class="t-zh">网红营销培训 · SEA &amp; 印度</span></p>
+  </div>
+  <div class="search-bar">
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Search anything..." autocomplete="off" onkeydown="event.stopPropagation()" oninput="doSearch(this.value)">
+      <span class="search-clear" id="searchClear" onclick="clearSearch()">✕</span>
+    </div>
+  </div>
+  <div id="searchCount"></div>
+  <div id="searchNav">
+    <button class="snav-btn" onclick="prevMatch()" title="Previous match">▲</button>
+    <span id="searchNavLabel">1 / 1</span>
+    <button class="snav-btn" onclick="nextMatch()" title="Next match">▼</button>
+  </div>
+  <div class="nav" id="mainNav">
+    <a class="active" onclick="showPage('welcome')" data-page="welcome"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span><span class="t-en">Welcome</span><span class="t-zh">欢迎</span></a>
+    <a onclick="showPage('platform')" data-page="platform"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span><span class="t-en">Platform Guide</span><span class="t-zh">平台指南</span></a>
+    <a onclick="showPage('workflow')" data-page="workflow"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span><span class="t-en">Campaign Workflow SOP</span><span class="t-zh">项目工作流程</span></a>
+    <a onclick="showPage('outreach')" data-page="outreach"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span class="t-en">Outreach Playbook</span><span class="t-zh">触达手册</span></a>
+    <a onclick="showPage('nego')" data-page="nego"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></span><span class="t-en">Price Negotiation</span><span class="t-zh">报价谈判</span></a>
+    <a onclick="showPage('markets')" data-page="markets"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span><span class="t-en">SEA &amp; India Markets</span><span class="t-zh">市场概览</span></a>
+    <a onclick="showPage('fakedata')" data-page="fakedata"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span><span class="t-en">Fake Data Detection</span><span class="t-zh">假数据识别</span></a>
+    <a onclick="showPage('cases')" data-page="cases"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></span><span class="t-en">Case Studies</span><span class="t-zh">实战案例</span></a>
+    <a onclick="showPage('kolplanet')" data-page="kolplanet"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>KOLPlanet App</a>
+    <a onclick="showPage('quiz')" data-page="quiz"><span class="ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span class="t-en">Final Quiz</span><span class="t-zh">知识测验</span></a>
+  </div>
+  <div class="lang-bar">
+    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btn-zh" onclick="setLang('zh')">中文</button>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main" id="mainContent">
+<div id="searchBanner" class="search-banner"></div>
+
+<!-- ===== WELCOME ===== -->
+<div id="page-welcome" class="page active">
+  <div class="page-title"><span class="t-en">Welcome to the BD Training Hub</span><span class="t-zh">欢迎来到BD培训中心</span></div>
+  <div class="page-sub"><span class="t-en">Everything you need to run influencer campaigns — use the search bar or jump to a module below.</span><span class="t-zh">网红营销业务全攻略 — 用搜索栏快速查找，或直接点击模块进入。</span></div>
+  <div class="g4">
+    <div class="w-card" onclick="showPage('platform')"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h3><span class="t-en">Platform Guide</span><span class="t-zh">平台指南</span></h3><p><span class="t-en">IG / TikTok / YouTube — formats, features &amp; when to use each</span><span class="t-zh">各平台内容形式与适用场景</span></p></div>
+    <div class="w-card" onclick="showPage('workflow')"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h3><span class="t-en">Campaign Workflow SOP</span><span class="t-zh">项目工作流程</span></h3><p><span class="t-en">17-step interactive checklist from brief to payment</span><span class="t-zh">17步互动清单，从简报到付款</span></p></div>
+    <div class="w-card" onclick="showPage('outreach')"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3><span class="t-en">Outreach Playbook</span><span class="t-zh">触达手册</span></h3><p><span class="t-en">Message templates + scenario practice</span><span class="t-zh">沟通模板与情境练习</span></p></div>
+    <div class="w-card" onclick="showPage('nego')"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3><span class="t-en">Price Negotiation</span><span class="t-zh">报价谈判</span></h3><p><span class="t-en">How to negotiate rates — scripts &amp; walk-away rules</span><span class="t-zh">砍价策略、话术与底线原则</span></p></div>
+    <div class="w-card" onclick="showPage('markets')"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h3><span class="t-en">SEA &amp; India Markets</span><span class="t-zh">市场概览</span></h3><p><span class="t-en">Country channels, culture &amp; rate ranges</span><span class="t-zh">逐国渠道、文化与报价区间</span></p></div>
+    <div class="w-card" onclick="showPage('fakedata')"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><h3><span class="t-en">Fake Data Detection</span><span class="t-zh">假数据识别</span></h3><p><span class="t-en">Spot bought followers &amp; fake engagement fast</span><span class="t-zh">快速识别刷粉与虚假互动</span></p></div>
+    <div class="w-card" onclick="showPage('cases')"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div><h3><span class="t-en">Case Studies</span><span class="t-zh">实战案例</span></h3><p><span class="t-en">Real wins &amp; failures with key lessons</span><span class="t-zh">真实成功与失败案例</span></p></div>
+    <div class="w-card" onclick="showPage('kolplanet')"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><h3>KOLPlanet App</h3><p><span class="t-en">How and when to onboard KOLs to the platform</span><span class="t-zh">何时如何引导KOL上平台</span></p></div>
+  </div>
+  <div class="card" style="margin-top:20px;background:linear-gradient(135deg,#1a1a2e,#2d2d4e);color:#fff;">
+    <h3 style="font-size:15px;margin-bottom:8px;"><span class="t-en">How to use this hub</span><span class="t-zh">使用说明</span></h3>
+    <p style="font-size:13px;opacity:0.88;line-height:1.65;"><span class="t-en"><strong>Search bar</strong> (top left) — type any keyword to find it across all modules instantly.<br><strong>Accordion sections</strong> — click to expand details, click again to collapse.<br><strong>Campaign Workflow</strong> — tick off steps as you work through a real campaign.<br><strong>Final Quiz</strong> — take it when you've read through everything.</span><span class="t-zh"><strong>搜索栏</strong>（左上角）— 输入关键词，即时跨模块查找。<br><strong>折叠区块</strong> — 点击展开详情，再点收起。<br><strong>项目工作流程</strong> — 执行真实项目时逐步打勾。<br><strong>知识测验</strong> — 通读完后来挑战一下。</span></p>
+  </div>
+</div>
+
+<!-- ===== PLATFORM GUIDE ===== -->
+<div id="page-platform" class="page">
+  <div class="page-title"><span class="t-en">Platform Guide</span><span class="t-zh">平台指南</span></div>
+  <div class="page-sub"><span class="t-en">Know each platform's formats and strengths — this shapes which KOL you pitch and what deliverables you scope in the brief.</span><span class="t-zh">了解各平台的内容形式与优势 — 这直接决定你选哪位KOL以及如何拟定交付物。</span></div>
+  <div class="ptab-bar">
+    <div class="ptab active" onclick="showPTab('ig')">Instagram</div>
+    <div class="ptab" onclick="showPTab('tt')">TikTok</div>
+    <div class="ptab" onclick="showPTab('yt')">YouTube</div>
+  </div>
+
+  <!-- IG -->
+  <div class="ptab-content active" id="ptab-ig">
+    <div class="tip-box"><span class="t-en">Instagram is strongest for <strong>lifestyle, beauty, fashion, food & travel</strong> in SEA & India. Audience skews 18–35. Best for aspirational brand positioning and visual storytelling.</span><span class="t-zh">Instagram 在东南亚和印度的<strong>生活方式、美妆、时尚、餐饮和旅游</strong>类别中最为强势。受众集中在 18–35 岁，最适合塑造品牌形象和视觉内容营销。</span></div>
+    <div class="g2">
+      <div class="fmt-card">
+        <h4>Story</h4>
+        <div class="fmt-tags"><span class="tag tag-blue">Vertical</span><span class="tag tag-orange">Disappears in 24h</span><span class="tag tag-green">Low Effort</span></div>
+        <p style="font-size:13px;color:#444;margin-bottom:10px;"><span class="t-en">Short vertical clips or images. Feels personal and candid. Great for quick brand mentions without heavy production.</span><span class="t-zh">短站版视频或图片，风格亲近自然，适合轻量级品牌提及，无需大制作。</span></p>
+        <div class="fmt-row">
+          <div><label><span class="t-en">Best For</span><span class="t-zh">适用场景</span></label><p>Flash sales, discount codes, product teasers, event promos, link traffic (link sticker)</p></div>
+          <div><label><span class="t-en">Key Feature</span><span class="t-zh">核心特点</span></label><p>Link sticker = direct traffic driver. Poll & quiz stickers boost engagement. Highlights can save it permanently.</p></div>
+          <div><label><span class="t-en">Rate Range</span><span class="t-zh">报价参考</span></label><p>Cheapest per unit. Almost always bundled with Reels — rarely sold standalone.</p></div>
+          <div><label><span class="t-en">Watch Out</span><span class="t-zh">注意事项</span></label><p>No permanent visibility unless saved to Highlights. Don't use as the only deliverable.</p></div>
+        </div>
+      </div>
+      <div class="fmt-card">
+        <h4>Reels</h4>
+        <div class="fmt-tags"><span class="tag tag-blue">Vertical</span><span class="tag tag-purple">Algorithm-Driven</span><span class="tag tag-orange">15s–90s</span></div>
+        <p style="font-size:13px;color:#444;margin-bottom:10px;"><span class="t-en">Short-form video pushed heavily by IG's algorithm. Can reach way beyond the KOL's existing followers via Explore & Reels feed.</span><span class="t-zh">短视频被 IG 算法大力推送，可通过探索页和 Reels 信息流触达远超 KOL 现有粉丝的受众。</span></p>
+        <div class="fmt-row">
+          <div><label><span class="t-en">Best For</span><span class="t-zh">适用场景</span></label><p>Brand awareness, product demos, entertainment-led campaigns, trend participation</p></div>
+          <div><label><span class="t-en">Key Feature</span><span class="t-zh">核心特点</span></label><p>Explore page distribution. Reaches non-followers. Most brands' #1 IG deliverable request.</p></div>
+          <div><label><span class="t-en">Rate Range</span><span class="t-zh">报价参考</span></label><p>Mid to high. Most common deliverable — use as the baseline when scoping IG campaigns.</p></div>
+          <div><label><span class="t-en">Watch Out</span><span class="t-zh">注意事项</span></label><p>Hook must land in first 2 seconds. Audio/trending sounds matter for algorithm boost.</p></div>
+        </div>
+      </div>
+      <div class="fmt-card">
+        <h4>Carousel</h4>
+        <div class="fmt-tags"><span class="tag tag-blue">2–10 Slides</span><span class="tag tag-green">High Save Rate</span><span class="tag tag-purple">Educational</span></div>
+        <p style="font-size:13px;color:#444;margin-bottom:10px;"><span class="t-en">Multi-image/video swipe post. Stays on feed permanently. Excellent save and share rates — strong for "considered purchase" categories.</span><span class="t-zh">多图/视频滑动帖子，永久留存于主页。收藏和分享率极高，特别适合需要深度了解才会购买的品类。</span></p>
+        <div class="fmt-row">
+          <div><label><span class="t-en">Best For</span><span class="t-zh">适用场景</span></label><p>Product education, tutorials, ingredient deep-dives, before/after, step-by-step guides</p></div>
+          <div><label><span class="t-en">Key Feature</span><span class="t-zh">核心特点</span></label><p>Highest saves per format. Algorithm re-shows carousels to non-engaged users. Great for skincare, finance, F&B.</p></div>
+          <div><label><span class="t-en">Rate Range</span><span class="t-zh">报价参考</span></label><p>Slightly lower than or equal to Reels. Often paired with long captions.</p></div>
+          <div><label><span class="t-en">Watch Out</span><span class="t-zh">注意事项</span></label><p>Slide 1 is everything — boring cover = no one swipes. Invest in the first frame.</p></div>
+        </div>
+      </div>
+      <div class="fmt-card">
+        <h4>Live</h4>
+        <div class="fmt-tags"><span class="tag tag-red">Real-Time</span><span class="tag tag-orange">High Barrier</span><span class="tag tag-green">Authentic</span></div>
+        <p style="font-size:13px;color:#444;margin-bottom:10px;"><span class="t-en">Real-time broadcast. Less used for brand collaborations vs TikTok Live, but good for launches and Q&As with engaged communities.</span><span class="t-zh">实时直播。品牌合作使用频率低于 TikTok Live，但适合有高黏性社群的产品发布和 Q&A 互动。</span></p>
+        <div class="fmt-row">
+          <div><label><span class="t-en">Best For</span><span class="t-zh">适用场景</span></label><p>Product launches, brand events, Q&A, unboxing with live interaction</p></div>
+          <div><label><span class="t-en">Key Feature</span><span class="t-zh">核心特点</span></label><p>Real-time comments. Saves to Reels/IGTV after. High authenticity feel.</p></div>
+          <div><label><span class="t-en">Rate Range</span><span class="t-zh">报价参考</span></label><p>Higher than static posts — time-intensive. Usually 1–2 hours.</p></div>
+          <div><label><span class="t-en">Watch Out</span><span class="t-zh">注意事项</span></label><p>Only works if KOL has a truly engaged community. Always check their avg. Live viewer count first.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="warn-box"><span class="t-en"><strong>IG Format Priority:</strong> When budget is limited → prioritize <strong>Reels</strong> for reach. Add <strong>Story</strong> as a low-cost bonus. Use <strong>Carousel</strong> for education-heavy briefs. <strong>Live</strong> only for big launches with the right KOL.</span><span class="t-zh"><strong>📌 IG 格式优先级：</strong>预算有限时 → 优先选 Reels 扩大覆盖，Story 作为低成本附加，Carousel 用于需要深度教育的项目，Live 仅在大发布+合适 KOL 时使用。</span></div>
+  </div>
+
+  <!-- TIKTOK -->
+  <div class="ptab-content" id="ptab-tt">
+    <div class="tip-box"><span class="t-en">TikTok is the <strong>fastest-growing platform in SEA</strong>, especially Thailand, Vietnam, Indonesia. Younger audience (16–28). Authenticity beats production quality every time. Algorithm rewards watch time and completion rate.</span><span class="t-zh">TikTok 是东南亚增速最快的平台，在泰国、越南、印尼尤为突出。受众更年轻（16–28岁）。真实感永远胜过精致制作。算法奖励的是观看时长和完播率。</span></div>
+    <div class="g2">
+      <div class="fmt-card" style="border-left-color:#ff4d6d;">
+        <h4>In-Feed Video</h4>
+        <div class="fmt-tags"><span class="tag tag-blue">Vertical</span><span class="tag tag-purple">Algorithm-Driven</span><span class="tag tag-orange">15s–10min</span></div>
+        <p style="font-size:13px;color:#444;margin-bottom:10px;"><span class="t-en">Standard TikTok post. The core deliverable for most campaigns. Organic-looking content dramatically outperforms polished ads here.</span><span class="t-zh">标准 TikTok 视频，是绝大多数项目的核心交付物。原生感内容的表现远优于精心制作的广告。</span></p>
+        <div class="fmt-row">
+          <div><label><span class="t-en">Best For</span><span class="t-zh">适用场景</span></label><p>Brand awareness, product demos, challenges, entertainment, FMCG, F&B, apps</p></div>
+          <div><label><span class="t-en">Key Feature</span><span class="t-zh">核心特点</span></label><p>For You Page (FYP) — can go viral far beyond followers. Hook in first 2–3s is critical.</p></div>
+          <div><label><span class="t-en">Rate Range</span><span class="t-zh">报价参考</span></label><p>Core deliverable. Rate varies significantly by market and follower tier.</p></div>
+          <div><label><span class="t-en">Watch Out</span><span class="t-zh">注意事项</span></label><p>Don't over-script or over-produce. TikTok audience has a sharp "ad detector." Keep it native.</p></div>
+        </div>
+      </div>
+      <div class="fmt-card" style="border-left-color:#ff4d6d;">
+        <h4>TikTok Live</h4>
+        <div class="fmt-tags"><span class="tag tag-red">Real-Time</span><span class="tag tag-green">E-Commerce Ready</span><span class="tag tag-orange">1–4 hrs</span></div>
+        <p style="font-size:13px;color:#444;margin-bottom:10px;"><span class="t-en">Real-time broadcast with in-app shopping. In TikTok Shop-active markets (TH, ID, VN), Live is a massive sales channel — KOLs sell while chatting live with viewers.</span><span class="t-zh">实时直播结合应用内购物。在 TikTok Shop 成熟市场（泰国、印尼、越南），直播是重要销售渠道——KOL 边聊边卖货。</span></p>
+        <div class="fmt-row">
+          <div><label><span class="t-en">Best For</span><span class="t-zh">适用场景</span></label><p>Product launches, flash sales, limited-time deals, brand takeovers</p></div>
+          <div><label><span class="t-en">Key Feature</span><span class="t-zh">核心特点</span></label><p>Product pinning in-stream. Real-time conversion. Viewer gifts/coins as engagement signal.</p></div>
+          <div><label><span class="t-en">Rate Range</span><span class="t-zh">报价参考</span></label><p>Flat fee + % of sales in TikTok Shop markets. Clarify the model before negotiations.</p></div>
+          <div><label><span class="t-en">Watch Out</span><span class="t-zh">注意事项</span></label><p>Always check average Live viewers first. Avoid KOLs with under 500 avg. Live viewers.</p></div>
+        </div>
+      </div>
+      <div class="fmt-card" style="border-left-color:#ff4d6d;grid-column:1/-1;">
+        <h4><span class="t-en">TikTok Shop</span><span class="t-zh">TikTok Shop / 小黄车</span></h4>
+        <div class="fmt-tags"><span class="tag tag-green">E-Commerce</span><span class="tag tag-blue">Affiliate OR Paid</span><span class="tag tag-orange">TH · ID · VN · MY</span></div>
+        <p style="font-size:13px;color:#444;margin-bottom:12px;"><span class="t-en">The yellow cart icon lets viewers buy a product without leaving TikTok. KOLs pin products to their videos or Live streams. Most developed in Thailand, Indonesia, Vietnam, Malaysia.</span><span class="t-zh">小黄车图标让观众无需离开 TikTok 即可直接下单。KOL 可将商品挂载到视频或直播中。目前在泰国、印尼、越南、马来西亚发展最成熟。</span></p>
+        <div class="g2">
+          <div style="background:#f0fdf4;padding:14px;border-radius:10px;border-left:3px solid #16a34a;">
+            <strong style="font-size:13px;color:#166534;"><span class="t-en">Affiliate Model (Commission)</span><span class="t-zh">佣金分成模式</span></strong>
+            <p style="font-size:12.5px;margin-top:6px;color:#555;line-height:1.5;"><span class="t-en">KOL earns % of each sale generated through their link. No upfront cost for brand. Risky: KOL may under-promote if product doesn't convert well.</span><span class="t-zh">KOL 赚取通过其链接产生每笔销售额的佣金比例。品牌无需预付费用。风险：若产品转化率低，KOL 可能推广力度不足。</span></p>
+            <p style="font-size:12px;color:#888;margin-top:6px;"><span class="t-en">Typical commission: 5–20% depending on product margin</span><span class="t-zh">典型佣金比例：5–20%，视产品利润率而定</span></p>
+          </div>
+          <div style="background:#eff6ff;padding:14px;border-radius:10px;border-left:3px solid #1d4ed8;">
+            <strong style="font-size:13px;color:#1e40af;"><span class="t-en">Paid Flat Fee Model</span><span class="t-zh">固定费用模式</span></strong>
+            <p style="font-size:12.5px;margin-top:6px;color:#555;line-height:1.5;"><span class="t-en">KOL receives a fixed fee regardless of sales. More predictable for both parties. Most common model in agency-led campaigns.</span><span class="t-zh">KOL 获得固定酬劳，与销售额无关。对双方来说更可预期。代理公司主导的项目中最常见的合作模式。</span></p>
+            <p style="font-size:12px;color:#888;margin-top:6px;"><span class="t-en">KOL has guaranteed income — usually more willing to put in effort</span><span class="t-zh">KOL 收入有保障，通常更愿意认真推广</span></p>
+          </div>
+        </div>
+        <div class="warn-box" style="margin-top:12px;margin-bottom:0;"><span class="t-en"><strong>Note: Both models can coexist</strong> — KOL gets a flat fee PLUS sales commission. When writing the brief, always explicitly state which model applies. Never assume the KOL knows.</span><span class="t-zh"><strong>⚠️ 两种模式可以并存</strong> — KOL 同时获得固定酬劳 + 销售佣金。撰写 brief 时务必明确说明适用哪种模式，不要假设 KOL 自行了解。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- YOUTUBE -->
+  <div class="ptab-content" id="ptab-yt">
+    <div class="tip-box"><span class="t-en">YouTube is the platform for <strong>long-form, considered-purchase categories</strong> — tech, finance, gaming, health & wellness. Audience is more intent-driven and research-oriented. Strong in India, Philippines, and broadly across SEA.</span><span class="t-zh">YouTube 是<strong>长视频、深度购买决策类别</strong>的首选平台——科技、金融、游戏、健康养生。受众更具购买意向和研究导向。在印度、菲律宾及整个东南亚表现强劲。</span></div>
+    <div class="g2">
+      <div class="fmt-card" style="border-left-color:#ff0000;">
+        <h4>Dedicated Video</h4>
+        <div class="fmt-tags"><span class="tag tag-red">100% Brand Focus</span><span class="tag tag-blue">5–20 min</span><span class="tag tag-orange">Highest Cost</span></div>
+        <p style="font-size:13px;color:#444;margin-bottom:10px;"><span class="t-en">The entire video is solely about the brand or product. Maximum brand exposure. The creator's full production effort is dedicated to your campaign.</span><span class="t-zh">整支视频百分之百聚焦于品牌或产品，品牌曝光最大化，创作者将全部制作精力投入你的项目。</span></p>
+        <div class="fmt-row">
+          <div><label><span class="t-en">Best For</span><span class="t-zh">适用场景</span></label><p>Product launches, in-depth reviews, tutorials, brand storytelling campaigns</p></div>
+          <div><label><span class="t-en">Key Feature</span><span class="t-zh">核心特点</span></label><p>Full creative control negotiable. Videos rank on Google search — long shelf life (months to years).</p></div>
+          <div><label><span class="t-en">Rate Range</span><span class="t-zh">报价参考</span></label><p>Most expensive YT format. Premium for channel exclusivity.</p></div>
+          <div><label><span class="t-en">Watch Out</span><span class="t-zh">注意事项</span></label><p>Add content approval clause in contract. Confirm video won't be age-restricted or set to private post-publish.</p></div>
+        </div>
+      </div>
+      <div class="fmt-card" style="border-left-color:#ff0000;">
+        <h4>Integration (Tap-in)</h4>
+        <div class="fmt-tags"><span class="tag tag-green">Native Feel</span><span class="tag tag-blue">60–120s Segment</span><span class="tag tag-purple">Best ROI</span></div>
+        <p style="font-size:13px;color:#444;margin-bottom:10px;"><span class="t-en">Brand is woven into the creator's regular video as a sponsored segment. Feels like part of the content, not an ad. Also called "mid-roll sponsor" or "tap-in."</span><span class="t-zh">品牌以赞助段落的形式融入创作者的常规视频，感觉像内容的一部分而非广告。也称 mid-roll 赞助或嵌入式植入。</span></p>
+        <div class="fmt-row">
+          <div><label><span class="t-en">Best For</span><span class="t-zh">适用场景</span></label><p>App downloads, subscriptions, SaaS tools, brand awareness in tech/gaming/finance channels</p></div>
+          <div><label><span class="t-en">Key Feature</span><span class="t-zh">核心特点</span></label><p>More authentic than Dedicated. Creator's own content drives the traffic. Best placement: first 3 minutes for highest view-through.</p></div>
+          <div><label><span class="t-en">Rate Range</span><span class="t-zh">报价参考</span></label><p>30–50% lower than Dedicated. Best ROI on YouTube — the go-to choice for most campaigns.</p></div>
+          <div><label><span class="t-en">Watch Out</span><span class="t-zh">注意事项</span></label><p>You don't control surrounding content. Always screen the creator's recent videos for brand-safety before signing.</p></div>
+        </div>
+      </div>
+      <div class="fmt-card" style="border-left-color:#ff0000;">
+        <h4>YouTube Shorts</h4>
+        <div class="fmt-tags"><span class="tag tag-blue">Vertical</span><span class="tag tag-orange">&lt;60s</span><span class="tag tag-green">Growing</span></div>
+        <p style="font-size:13px;color:#444;margin-bottom:10px;"><span class="t-en">YouTube's short-form vertical video. Growing in reach but creators earn significantly less from Shorts vs. long-form. The algorithm is still maturing.</span><span class="t-zh">YouTube 短视频，覆盖面持续增长，但创作者收益远低于长视频。算法仍在完善阶段。</span></p>
+        <div class="fmt-row">
+          <div><label><span class="t-en">Best For</span><span class="t-zh">适用场景</span></label><p>Top-of-funnel brand awareness, repurposing TikTok/Reels content, reaching younger demographics</p></div>
+          <div><label><span class="t-en">Key Feature</span><span class="t-zh">核心特点</span></label><p>Separate Shorts feed algorithm. Can reach non-subscribers. Good as a bonus alongside a Dedicated or Integration deal.</p></div>
+          <div><label><span class="t-en">Rate Range</span><span class="t-zh">报价参考</span></label><p>Lowest on YouTube. Often included free or at a nominal fee as a bundle add-on.</p></div>
+          <div><label><span class="t-en">Watch Out</span><span class="t-zh">注意事项</span></label><p>Don't buy Shorts-only deals. The audience intent is low. Use it as a top-funnel bonus only.</p></div>
+        </div>
+      </div>
+      <div class="fmt-card" style="border-left-color:#ff0000;">
+        <h4>YouTube Live</h4>
+        <div class="fmt-tags"><span class="tag tag-red">Real-Time</span><span class="tag tag-orange">Niche Use</span><span class="tag tag-blue">Gaming · Events</span></div>
+        <p style="font-size:13px;color:#444;margin-bottom:10px;"><span class="t-en">Live broadcast. Less common for brand integrations vs TikTok Live. Mainly used in gaming, esports, or premium brand event livestreams where the audience is highly engaged.</span><span class="t-zh">实时直播。品牌合作使用频率低于 TikTok Live，主要用于游戏、电竞或高黏性社群的品牌活动直播。</span></p>
+        <div class="fmt-row">
+          <div><label><span class="t-en">Best For</span><span class="t-zh">适用场景</span></label><p>Gaming product launches, tech unboxings, brand-sponsored events with highly engaged communities</p></div>
+          <div><label><span class="t-en">Key Feature</span><span class="t-zh">核心特点</span></label><p>Stream is archived as a regular video — searchable long-term. Super Chat = extra engagement signal.</p></div>
+          <div><label><span class="t-en">Rate Range</span><span class="t-zh">报价参考</span></label><p>Varies by creator's live audience. Always verify average concurrent viewers before budgeting.</p></div>
+          <div><label><span class="t-en">Watch Out</span><span class="t-zh">注意事项</span></label><p>Most YT creators only go Live occasionally. Confirm availability and willingness upfront — don't assume.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="tip-box"><span class="t-en"><strong>YouTube Format Decision:</strong> Default to <strong>Integration</strong> for most campaigns (best ROI). Upgrade to <strong>Dedicated</strong> only for flagship launches needing full exposure. Add <strong>Shorts</strong> as a free/low-cost bonus. Reserve <strong>Live</strong> for gaming/tech/events specifically.</span><span class="t-zh"><strong>📌 YouTube 格式决策：</strong>大多数项目默认选 Integration（性价比最高）。仅在旗舰发布需要最大曝光时升级为 Dedicated。Shorts 作为免费或低价附赠。Live 专用于游戏/科技/活动类型。</span></div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="section-title"><span class="t-en">Quick Comparison</span><span class="t-zh">快速对比</span></div>
+  <table>
+    <thead><tr><th><span class="t-en">Platform</span><span class="t-zh">平台</span></th><th><span class="t-en">Format</span><span class="t-zh">内容形式</span></th><th><span class="t-en">Main Strength</span><span class="t-zh">核心优势</span></th><th><span class="t-en">Best Category</span><span class="t-zh">适合品类</span></th></tr></thead>
+    <tbody>
+      <tr><td>Instagram</td><td>Reels</td><td>Algorithm reach + aesthetic</td><td>Beauty, Fashion, Lifestyle</td></tr>
+      <tr><td>Instagram</td><td>Carousel</td><td>Education + saves</td><td>Skincare, Finance, F&B</td></tr>
+      <tr><td>Instagram</td><td>Story</td><td>Link traffic (add-on)</td><td>Any — as supplementary only</td></tr>
+      <tr><td>TikTok</td><td>In-Feed Video</td><td>Viral reach, authenticity</td><td>FMCG, F&B, Entertainment</td></tr>
+      <tr><td>TikTok</td><td>Live + Shop</td><td>Real-time conversion</td><td>Beauty, Fashion, F&B</td></tr>
+      <tr><td>YouTube</td><td>Integration</td><td>Intent-driven + long shelf life</td><td>Tech, Finance, Gaming</td></tr>
+      <tr><td>YouTube</td><td>Dedicated</td><td>Deep brand storytelling</td><td>Premium products, launches</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== BD WORKFLOW SOP ===== -->
+<div id="page-workflow" class="page">
+  <div class="page-title"><span class="t-en">Campaign Workflow SOP</span><span class="t-zh">项目工作流程</span></div>
+  <div class="page-sub"><span class="t-en">17 tasks across 5 phases. Tick each item as you complete it — use this as your live checklist.</span><span class="t-zh">5个阶段共17项任务。完成即打勾，作为项目实时跟进清单。</span></div>
+  <div class="prog-label" id="sopLabel"><span class="t-en">Progress: 0 / 17</span><span class="t-zh">进度：0 / 17</span></div>
+  <div class="prog-wrap"><div class="prog-bar" id="sopBar"></div></div>
+
+  <!-- LEGEND -->
+  <div class="chk-legend">
+    <div class="chk-legend-item"><div class="chk-legend-dot bd"></div><span><span class="t-en">BD owns this task</span><span class="t-zh">BD 负责</span></span></div>
+    <div class="chk-legend-item"><div class="chk-legend-dot cm"></div><span><span class="t-en">CM leads this task</span><span class="t-zh">CM 主导</span></span></div>
+  </div>
+
+  <!-- ── PHASE 1: SETUP ── -->
+  <div class="phase-section">
+    <div class="phase-hdr">
+      <span class="ph-num"><span class="t-en">PHASE 1</span><span class="t-zh">阶段一</span></span>
+      <span class="ph-title"><span class="t-en">Setup</span><span class="t-zh">项目准备</span></span>
+      <span class="ph-count">2 <span class="t-en">tasks</span><span class="t-zh">项任务</span></span>
+    </div>
+
+    <div class="chk-card cm-card" id="sop1">
+      <button class="chk-btn" onclick="togSop(1)">○</button>
+      <div class="sop-body">
+        <div class="chk-role cm">CM Lead</div>
+        <div class="sop-title"><span class="t-en">Read &amp; Decode the Brief</span><span class="t-zh">阅读并解码简报</span></div>
+        <div class="sop-desc"><span class="t-en">CM reviews the brief, assesses feasibility, and assigns BD to the campaign.</span><span class="t-zh">CM审阅简报，评估可行性并将项目分配给BD。</span></div>
+        <div class="kp-note"><strong><span class="t-en">KOLPlanet Web:</span><span class="t-zh">Web端操作：</span></strong><span class="t-en">Create the campaign plan</span><span class="t-zh">创建项目计划</span></div>
+        <span class="sop-toggle" onclick="togExtra(1)"><span class="t-en">▸ See the 8-point brief checklist</span><span class="t-zh">▸ 查看8项简报核查清单</span></span>
+        <div class="sop-extra" id="extra1">
+          <strong><span class="t-en">What to check in every brief:</span><span class="t-zh">每份简报必须核查：</span></strong><br>
+          <span class="t-en">1. 🎯 <strong>Campaign Objective</strong> — Awareness, traffic, sales, or app downloads? This defines everything.<br>
+          2. 👥 <strong>Target Audience</strong> — Age, gender, location, interests. Match this to KOL's follower demographics.<br>
+          3. 📱 <strong>Platforms &amp; Formats</strong> — Which platforms? Reels, TikTok video, YouTube integration? How many posts?<br>
+          4. 📅 <strong>Timeline</strong> — Script approval deadline, posting date, campaign window. Map these out immediately.<br>
+          5. 💰 <strong>Budget</strong> — Total budget or per-KOL budget? Includes production or content fee only?<br>
+          6. ✏️ <strong>Content Guidelines</strong> — Required mentions, forbidden words, visual dos &amp; don'ts, hashtags, disclosure rules.<br>
+          7. 📊 <strong>KPIs &amp; Reporting</strong> — What metrics does the client care about? Views, reach, engagement, clicks, conversions?<br>
+          8. 📝 <strong>Approval Process</strong> — Does content need client sign-off before posting? How many revision rounds?</span><span class="t-zh">1. 🎯 <strong>项目目标</strong> — 品牌曝光、流量导入、销售转化还是 App 下载？这决定一切。<br>
+          2. 👥 <strong>目标受众</strong> — 年龄、性别、地域、兴趣偏好，需与KOL粉丝画像对应。<br>
+          3. 📱 <strong>平台与内容形式</strong> — 哪些平台？Reels、TikTok视频、YouTube整合广告？几条帖子？<br>
+          4. 📅 <strong>时间线</strong> — 脚本审批截止日、发布日期、项目周期，立即列明。<br>
+          5. 💰 <strong>预算</strong> — 总预算还是单KOL预算？含制作费还是仅内容费？<br>
+          6. ✏️ <strong>内容规范</strong> — 必须提及的内容、禁用词、视觉规范、话题标签、广告披露要求。<br>
+          7. 📊 <strong>KPI与数据报告</strong> — 客户关心哪些指标？观看量、覆盖、互动、点击还是转化？<br>
+          8. 📝 <strong>审批流程</strong> — 内容需要客户确认才能发布吗？允许几轮修改？</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chk-card" id="sop2">
+      <button class="chk-btn" onclick="togSop(2)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Define KOL Criteria</span><span class="t-zh">确定KOL筛选标准</span></div>
+        <div class="sop-desc"><span class="t-en">Based on the brief, set your KOL search filters: category, follower tier, market, ER minimum, platform.</span><span class="t-zh">根据简报，设定KOL搜索筛选条件：品类、粉丝层级、市场、最低互动率、平台。</span></div>
+        <span class="sop-toggle" onclick="togExtra(2)"><span class="t-en">▸ KOL tier reference</span><span class="t-zh">▸ KOL层级参考</span></span>
+        <div class="sop-extra" id="extra2">
+          <strong><span class="t-en">KOL Tiers (SEA general guide):</span><span class="t-zh">KOL层级（东南亚通用指南）：</span></strong><br>
+          <span class="t-en">• <strong>Nano</strong> (1K–10K) — High engagement, niche audience, very affordable. Good for hyper-local or community campaigns.<br>
+          • <strong>Micro</strong> (10K–100K) — Best ER-to-cost ratio. Authentic, trusted. The sweet spot for most brand campaigns.<br>
+          • <strong>Macro</strong> (100K–1M) — Broader reach, slightly lower ER. Good for awareness campaigns at scale.<br>
+          • <strong>Mega / Celebrity</strong> (1M+) — Maximum reach, premium pricing, ER can be lower. Use only for big brand launches.</span><span class="t-zh">• <strong>Nano</strong>（1K–10K）— 互动率高，垂直小众受众，价格亲民，适合超本地化或社区型活动。<br>
+          • <strong>Micro</strong>（10K–100K）— 性价比最佳，真实可信，大多数品牌活动的首选层级。<br>
+          • <strong>Macro</strong>（100K–1M）— 覆盖更广，互动率略低，适合规模化曝光类活动。<br>
+          • <strong>Mega / 明星</strong>（1M+）— 最大覆盖，溢价定价，互动率可能偏低，仅用于大品牌发布。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PHASE 2: KOL SOURCING ── -->
+  <div class="phase-section">
+    <div class="phase-hdr">
+      <span class="ph-num"><span class="t-en">PHASE 2</span><span class="t-zh">阶段二</span></span>
+      <span class="ph-title"><span class="t-en">KOL Sourcing</span><span class="t-zh">KOL搜索与触达</span></span>
+      <span class="ph-count">3 <span class="t-en">tasks</span><span class="t-zh">项任务</span></span>
+    </div>
+
+    <div class="chk-card" id="sop3">
+      <button class="chk-btn" onclick="togSop(3)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Quick Research &amp; Shortlist</span><span class="t-zh">快速初筛 · 建立候选名单</span></div>
+        <div class="sop-desc"><span class="t-en">Do a quick scan to build an initial candidate pool — check basic fit (niche, tier, platform) and obvious red flags only. Deep vetting comes later after they respond.</span><span class="t-zh">快速浏览，建立初步候选名单——只核查基本匹配（品类、层级、平台）和明显异常。深度审核等收到 media kit 后再进行。</span></div>
+        <div class="kp-note"><strong><span class="t-en">KOLPlanet Web:</span><span class="t-zh">Web端操作：</span></strong><span class="t-en">Select Vetting Status on each KOL profile</span><span class="t-zh">在每位KOL档案中更新审核状态</span></div>
+        <span class="sop-toggle" onclick="togExtra(3)"><span class="t-en">▸ What to check at this stage</span><span class="t-zh">▸ 此阶段核查要点</span></span>
+        <div class="sop-extra" id="extra3">
+          <strong><span class="t-en">Quick scan checklist (30 sec per KOL):</span><span class="t-zh">快速核查（每位KOL约30秒）：</span></strong><br>
+          <span class="t-en">✅ Platform &amp; niche matches the brief?<br>
+          ✅ Follower count in the right tier?<br>
+          ✅ Last post within 2 weeks (still active)?<br>
+          ✅ No obvious brand safety issues on first scroll?<br>
+          ✅ ER not clearly abnormal (not 0.1% or suspiciously 50%+)?<br><br>
+          <em>⏭ Full vetting (fake followers, comment quality, audience breakdown) happens in Step 5 — after they reply and send media kit.</em></span><span class="t-zh">✅ 平台和品类与简报匹配？<br>
+          ✅ 粉丝量级符合要求？<br>
+          ✅ 最近2周内有发帖（仍活跃）？<br>
+          ✅ 第一眼看没有明显的品牌安全问题？<br>
+          ✅ 互动率无明显异常（不低于0.1%，也非可疑的50%+）？<br><br>
+          <em>⏭ 完整审核（假粉、评论质量、受众分布）在第5步进行——等对方回复并发来 media kit 后。</em></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chk-card" id="sop4">
+      <button class="chk-btn" onclick="togSop(4)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Send Outreach + Request Media Kit</span><span class="t-zh">发送触达消息 + 索取 Media Kit</span></div>
+        <div class="sop-desc"><span class="t-en">First contact with the KOL — introduce the campaign, gauge interest, and ask for their media kit &amp; rate card in the same message.</span><span class="t-zh">首次联系KOL——介绍项目、了解兴趣，同时在消息中索取 media kit 与报价表。</span></div>
+        <span class="sop-toggle" onclick="togExtra(4)"><span class="t-en">▸ Outreach tips &amp; templates</span><span class="t-zh">▸ 触达技巧与模板</span></span>
+        <div class="sop-extra" id="extra4">
+          <strong><span class="t-en">DM (short) vs Email (detailed) — use the right format:</span><span class="t-zh">私信（短）vs 邮件（详细）——选对格式：</span></strong><br>
+          <span class="t-en">• <strong>DM / IG / WhatsApp:</strong> Keep it under 5 lines. Goal = get a reply. Don't dump everything at once.<br>
+          • <strong>Email:</strong> Can be longer and more formal. Use after they express interest, or if they're a professional creator.<br><br>
+          → See full templates in the <strong>Outreach Playbook</strong> module</span><span class="t-zh">• <strong>私信 / IG / WhatsApp：</strong>控制在5行以内。目的 = 获得回复，不要一次把所有信息都堆上去。<br>
+          • <strong>邮件：</strong>可以更长更正式。对方表示有兴趣后再发，或适用于专业型创作者。<br><br>
+          → 完整模板请见 <strong>触达手册</strong> 模块</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chk-card" id="sop5">
+      <button class="chk-btn" onclick="togSop(5)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Deep Vetting (after media kit received)</span><span class="t-zh">深度审核（收到 Media Kit 后）</span></div>
+        <div class="sop-desc"><span class="t-en">Once the KOL responds with their media kit, do the full vetting: check audience demographics, fake follower signals, comment quality, past brand safety, and whether their rate is market-aligned.</span><span class="t-zh">收到KOL的 media kit 后，进行全面审核：受众画像、假粉迹象、评论质量、历史品牌安全，以及报价是否符合市场水平。</span></div>
+        <span class="sop-toggle" onclick="togExtra(5)"><span class="t-en">▸ Full vetting checklist</span><span class="t-zh">▸ 完整审核清单</span></span>
+        <div class="sop-extra" id="extra5">
+          <strong><span class="t-en">Deep vetting checklist:</span><span class="t-zh">深度审核清单：</span></strong><br>
+          <span class="t-en">• ER in normal range for tier? (1–5% typical; under 0.5% = red flag)<br>
+          • Audience demographics match campaign target? (age, gender, location)<br>
+          • Comments — real conversations or generic emoji spam?<br>
+          • Follower growth graph — sudden spikes = likely bought followers<br>
+          • Brand safety — any controversial posts in last 6 months?<br>
+          • Rate card — within market range for their tier? (See Price Negotiation module)<br>
+          → See <strong>Fake Data Detection</strong> module for full verification guide</span><span class="t-zh">• 互动率是否在该层级正常区间？（典型1–5%；低于0.5% = 预警）<br>
+          • 受众画像与项目目标匹配吗？（年龄、性别、地域）<br>
+          • 评论是真实对话还是泛泛的 emoji 刷屏？<br>
+          • 粉丝增长曲线——突然飙升 = 可能刷粉<br>
+          • 品牌安全——过去6个月有争议性内容吗？<br>
+          • 报价表——与其层级的市场行情相符吗？（见报价谈判模块）<br>
+          → 完整核查指南请见<strong>假数据识别</strong>模块</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PHASE 3: NEGOTIATION & ONBOARDING ── -->
+  <div class="phase-section">
+    <div class="phase-hdr">
+      <span class="ph-num"><span class="t-en">PHASE 3</span><span class="t-zh">阶段三</span></span>
+      <span class="ph-title"><span class="t-en">Negotiation &amp; Onboarding</span><span class="t-zh">谈判与签约入驻</span></span>
+      <span class="ph-count">5 <span class="t-en">tasks</span><span class="t-zh">项任务</span></span>
+    </div>
+
+    <div class="chk-card" id="sop6">
+      <button class="chk-btn" onclick="togSop(6)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Negotiate Rate</span><span class="t-zh">进行价格谈判</span></div>
+        <div class="sop-desc"><span class="t-en">Compare their rate against your budget and market benchmarks. Negotiate using the strategies in the Price Negotiation module.</span><span class="t-zh">将对方报价与预算和市场基准比较，使用价格谈判模块中的策略进行谈判。</span></div>
+        <span class="sop-toggle" onclick="togExtra(6)"><span class="t-en">▸ Quick negotiation tips</span><span class="t-zh">▸ 快速谈判技巧</span></span>
+        <div class="sop-extra" id="extra6">
+          <span class="t-en">• Never accept the first quoted rate — always counter at least once<br>
+          • Reference similar KOLs: "We've worked with similar creators at X–Y range"<br>
+          • Use bundle leverage: "If we can confirm 3 posts, can you adjust the per-post rate?"<br>
+          • Ask about content usage rights — can be a negotiation lever<br>
+          → See full strategy in <strong>Price Negotiation</strong> module</span><span class="t-zh">• 永远不要接受第一次报价——至少反报一次<br>
+          • 引用同类KOL："我们最近与类似KOL合作的价格在X–Y区间"<br>
+          • 利用数量杠杆："如果我们确认3条帖子，单条价格能调整吗？"<br>
+          • 询问内容使用权——可作为谈判筹码<br>
+          → 完整策略请见<strong>报价谈判</strong>模块</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chk-card" id="sop7">
+      <button class="chk-btn" onclick="togSop(7)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Send Campaign Brief to KOL</span><span class="t-zh">向KOL发送项目简报</span></div>
+        <div class="sop-desc"><span class="t-en">Once rate is agreed, send the formal brief. Include: brand background, campaign goals, content guidelines, deliverables, timeline, hashtags.</span><span class="t-zh">确认报价后，发送正式简报，内容包括：品牌背景、项目目标、内容规范、交付物、时间线、话题标签。</span></div>
+        <div class="kp-note"><strong><span class="t-en">KOLPlanet Web:</span><span class="t-zh">Web端操作：</span></strong><span class="t-en">CM: Create Campaign on web platform and approve shortlisted KOLs</span><span class="t-zh">CM在Web端创建活动并审批KOL名单</span></div>
+      </div>
+    </div>
+
+    <div class="chk-card" id="sop8">
+      <button class="chk-btn" onclick="togSop(8)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Confirm Deliverables &amp; Timeline</span><span class="t-zh">确认交付物与时间线</span></div>
+        <div class="sop-desc"><span class="t-en">KOL confirms they've read and understood the brief. Both parties agree on deliverables, posting dates, and content submission deadline.</span><span class="t-zh">KOL确认已阅读并理解简报。双方就交付物、发布日期和内容提交截止日期达成共识。</span></div>
+      </div>
+    </div>
+
+    <div class="chk-card" id="sop9">
+      <button class="chk-btn" onclick="togSop(9)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Issue &amp; Sign Contract + Collect Invoice</span><span class="t-zh">发送合同 + 收取发票</span></div>
+        <div class="sop-desc"><span class="t-en">Send contract to KOL. Ensure it covers: fee, deliverables, posting date, content usage rights, exclusivity (if any), revision rounds, late penalties. After signing, collect KOL's invoice and verify the entity name matches the contract signatory.</span><span class="t-zh">向KOL发送合同，确保涵盖：酬劳、交付物、发布日期、内容使用权、独家条款（如有）、修改轮次、逾期罚款。签约后收取KOL发票并核验发票抬头与合同签约方一致。</span></div>
+        <div class="kp-note"><strong><span class="t-en">KOLPlanet Web:</span><span class="t-zh">Web端操作：</span></strong><span class="t-en">Upload KOL invoice → Set Invoice Status</span><span class="t-zh">上传KOL发票 → 设置发票状态</span></div>
+        <span class="sop-toggle" onclick="togExtra(9)"><span class="t-en">▸ Clarify tax upfront</span><span class="t-zh">▸ 提前明确税务问题</span></span>
+        <div class="sop-extra" id="extra9">
+          <strong><span class="t-en">Tax discussion at contract stage:</span><span class="t-zh">合同阶段的税务讨论：</span></strong><br>
+          <span class="t-en">Ask: <em>"Is the fee you quoted inclusive of all taxes? We prefer to work on an all-in basis."</em><br><br>
+          Most SEA KOLs: no tax issue (no formal business entity).<br>
+          Indonesia: occasionally 2.5–13% withholding tax applies.<br>
+          India: some KOLs may raise GST.<br>
+          → If they insist on adding tax: Try to negotiate all-inclusive rate first. If unresolved, escalate to Finance.</span><span class="t-zh">询问：<em>"你报的费用含所有税费吗？我们倾向于按含税全价结算。"</em><br><br>
+          大多数东南亚KOL：无税务问题（无正式商业实体）。<br>
+          印尼：偶尔适用2.5–13%的预提税。<br>
+          印度：部分KOL可能额外征收GST。<br>
+          → 若对方坚持加税：先尝试协商含税全价。无法解决时，上报财务。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chk-card" id="sop10">
+      <button class="chk-btn" onclick="togSop(10)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Invite KOL to KOLPlanet App</span><span class="t-zh">邀请KOL加入KOLPlanet App</span></div>
+        <div class="sop-desc"><span class="t-en">After contract is signed, invite directly-contacted KOLs to the KOLPlanet app. Skip if KOL is agency-managed.</span><span class="t-zh">合同签署后，邀请直接联系的KOL加入KOLPlanet App。若KOL由经纪公司管理则跳过此步。</span></div>
+        <span class="sop-toggle" onclick="togExtra(10)"><span class="t-en">▸ When &amp; who to invite</span><span class="t-zh">▸ 何时邀请谁</span></span>
+        <div class="sop-extra" id="extra10">
+          <span class="t-en">✅ Invite: Contract signed + you contacted the KOL directly (not via agency/management)<br>
+          ❌ Skip: KOL is represented by an agency or management company<br>
+          ❌ Skip: Contract not yet confirmed<br><br>
+          → See <strong>KOLPlanet App</strong> module for step-by-step onboarding guide</span><span class="t-zh">✅ 邀请：合同已签署 + 你直接联系了KOL（非经纪公司/管理方）<br>
+          ❌ 跳过：KOL 由经纪公司或管理公司代理<br>
+          ❌ 跳过：合同尚未确认<br><br>
+          → 分步注册指南请见 <strong>KOLPlanet App</strong> 模块</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PHASE 4: CONTENT REVIEW ── -->
+  <div class="phase-section">
+    <div class="phase-hdr">
+      <span class="ph-num"><span class="t-en">PHASE 4</span><span class="t-zh">阶段四</span></span>
+      <span class="ph-title"><span class="t-en">Content Review</span><span class="t-zh">内容审核</span></span>
+      <span class="ph-count">2 <span class="t-en">tasks</span><span class="t-zh">项任务</span></span>
+    </div>
+
+    <div class="chk-card" id="sop11">
+      <button class="chk-btn" onclick="togSop(11)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Content Draft Review</span><span class="t-zh">内容草稿审核</span></div>
+        <div class="sop-desc"><span class="t-en">Review in order: (1) Script/Storyline → (2) Draft Video → (3) Caption, cover, hashtags, mentions, links. Each stage must match the brief before advancing.</span><span class="t-zh">按顺序审核：(1) 脚本/故事线 → (2) 视频草稿 → (3) 文案、封面、话题标签、提及账号、链接。每个环节须符合简报要求后再推进。</span></div>
+        <div class="kp-note"><strong><span class="t-en">KOLPlanet Web:</span><span class="t-zh">Web端操作：</span></strong><span class="t-en">Add internal notes with draft status and feedback</span><span class="t-zh">在内部备注中记录草稿状态与反馈</span></div>
+      </div>
+    </div>
+
+    <div class="chk-card cm-card" id="sop12">
+      <button class="chk-btn" onclick="togSop(12)">○</button>
+      <div class="sop-body">
+        <div class="chk-role cm">CM Lead</div>
+        <div class="sop-title"><span class="t-en">Client Approval (if required)</span><span class="t-zh">客户审批（如需）</span></div>
+        <div class="sop-desc"><span class="t-en">CM sends all final assets to the client for sign-off. BD tracks revision rounds against what was agreed in the contract.</span><span class="t-zh">CM将全部最终素材提交客户审批。BD跟踪修改轮次，确保与合同约定一致。</span></div>
+        <div class="kp-note"><strong><span class="t-en">KOLPlanet Web:</span><span class="t-zh">Web端操作：</span></strong><span class="t-en">CM: Approve draft on web platform once client confirms</span><span class="t-zh">CM在Web端将草稿状态更新为"已审批"</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PHASE 5: LIVE & WRAP-UP ── -->
+  <div class="phase-section">
+    <div class="phase-hdr">
+      <span class="ph-num"><span class="t-en">PHASE 5</span><span class="t-zh">阶段五</span></span>
+      <span class="ph-title"><span class="t-en">Live &amp; Wrap-Up</span><span class="t-zh">上线与项目收尾</span></span>
+      <span class="ph-count">5 <span class="t-en">tasks</span><span class="t-zh">项任务</span></span>
+    </div>
+
+    <div class="chk-card" id="sop13">
+      <button class="chk-btn" onclick="togSop(13)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Confirm Go-Live / Posting</span><span class="t-zh">确认正式发布</span></div>
+        <div class="sop-desc"><span class="t-en">KOL posts on the agreed date. Verify live: check caption, hashtags, disclosure label, link/swipe-up is correct. Screenshot immediately.</span><span class="t-zh">KOL在约定日期发布内容。实时核查：检查文案、话题标签、广告披露标签、链接/滑动跳转是否正确。立即截图留档。</span></div>
+        <div class="kp-note"><strong><span class="t-en">KOLPlanet Web:</span><span class="t-zh">Web端操作：</span></strong><span class="t-en">Place post live link on KOLPlanet web platform</span><span class="t-zh">在Web端记录帖子链接</span></div>
+      </div>
+    </div>
+
+    <div class="chk-card" id="sop14">
+      <button class="chk-btn" onclick="togSop(14)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Collect Performance Data</span><span class="t-zh">收集效果数据</span></div>
+        <div class="sop-desc"><span class="t-en">At the agreed reporting window (usually 24–72h post for IG, 7 days for YT), request KOL screenshots of Insights. Check against KPIs.</span><span class="t-zh">在约定的数据报告时间节点（IG一般发布后24–72小时，YT为7天），要求KOL提供后台洞察截图，并与KPI比对。</span></div>
+        <div class="kp-note"><strong><span class="t-en">KOLPlanet Web:</span><span class="t-zh">Web端操作：</span></strong><span class="t-en">Upload KOL insight screenshots to the campaign</span><span class="t-zh">将KOL后台截图上传至项目</span></div>
+        <span class="sop-toggle" onclick="togExtra(14)"><span class="t-en">▸ What to collect</span><span class="t-zh">▸ 需要收集什么数据</span></span>
+        <div class="sop-extra" id="extra14">
+          <strong><span class="t-en">Must-collect metrics by platform:</span><span class="t-zh">各平台必须收集的数据指标：</span></strong><br>
+          <span class="t-en">IG: Reach, Impressions, Saves, Shares, Profile visits, Link clicks (Story)<br>
+          TikTok: Views, Watch time, Likes, Comments, Shares, Profile visits<br>
+          YouTube: Views, Watch time (%), Impressions CTR, Likes, Comments, Link clicks<br>
+          → Always ask for screenshot from KOL's Insights panel, not just front-facing stats</span><span class="t-zh">IG：覆盖人数、曝光次数、收藏数、转发数、主页访问量、链接点击数（Story）<br>
+          TikTok：播放量、观看时长、点赞数、评论数、分享数、主页访问量<br>
+          YouTube：观看量、完播率（%）、曝光点击率、点赞数、评论数、链接点击数<br>
+          → 务必要求KOL提供后台洞察截图，而非前台可见数据</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chk-card cm-card" id="sop15">
+      <button class="chk-btn" onclick="togSop(15)">○</button>
+      <div class="sop-body">
+        <div class="chk-role cm">CM Lead</div>
+        <div class="sop-title"><span class="t-en">Compile Campaign Report</span><span class="t-zh">整理项目报告</span></div>
+        <div class="sop-desc"><span class="t-en">CM compiles the final report for the client using data collected by BD. BD provides all insight screenshots and metrics.</span><span class="t-zh">CM根据BD收集的数据整理最终客户报告。BD提供所有洞察截图和指标数据。</span></div>
+      </div>
+    </div>
+
+    <div class="chk-card" id="sop16">
+      <button class="chk-btn" onclick="togSop(16)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Process KOL Payment</span><span class="t-zh">处理KOL付款</span></div>
+        <div class="sop-desc"><span class="t-en">Submit payment request internally per agreed timeline. Remind KOL to check payment status in the KOLPlanet app. If KOL is not on the app, provide payment confirmation slip directly.</span><span class="t-zh">按约定时间表向内部提交付款申请。提醒KOL在App中查看付款状态。若KOL未使用App，直接提供付款凭证。</span></div>
+        <div class="kp-note"><strong><span class="t-en">KOLPlanet Web:</span><span class="t-zh">Web端操作：</span></strong><span class="t-en">Submit payment application on web platform</span><span class="t-zh">在Web端提交付款申请</span></div>
+      </div>
+    </div>
+
+    <div class="chk-card" id="sop17">
+      <button class="chk-btn" onclick="togSop(17)">○</button>
+      <div class="sop-body">
+        <div class="chk-role bd">BD</div>
+        <div class="sop-title"><span class="t-en">Experience Feedback</span><span class="t-zh">合作体验反馈</span></div>
+        <div class="sop-desc"><span class="t-en">Ask the KOL to rate the communication, support, and app experience. Record feedback internally to inform future collaboration decisions.</span><span class="t-zh">请KOL为沟通质量、支持服务和App体验评分。将反馈记录在内部，作为未来合作决策的参考。</span></div>
+        <div class="kp-note"><strong><span class="t-en">KOLPlanet Web:</span><span class="t-zh">Web端操作：</span></strong><span class="t-en">Update influencer Remark on their KOLPlanet profile</span><span class="t-zh">在KOLPlanet KOL档案中更新合作备注</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<!-- ===== OUTREACH PLAYBOOK ===== -->
+<div id="page-outreach" class="page">
+  <div class="page-title"><span class="t-en">Outreach Playbook</span><span class="t-zh">触达手册</span></div>
+  <div class="page-sub"><span class="t-en">Ready-to-use message templates + scenario practice for professional KOL communication.</span><span class="t-zh">即用型沟通模板 + 情境练习，快速掌握专业KOL沟通技巧。</span></div>
+
+  <div class="section-title"><span class="t-en">Message Templates</span><span class="t-zh">沟通模板</span></div>
+
+  <div class="tip-box">
+    <span class="t-en">💡 <strong>Always personalize before sending</strong> — mention the KOL's name and reference a specific post. Generic copy-paste messages get ignored.<br><br>
+    📱 <strong>DM / Short message first</strong> — keep it under 5 lines, goal is just to get a reply.<br>
+    📧 <strong>Email / Long version</strong> — send after they express interest, or to professional creators who prefer formal comms.</span>
+    <span class="t-zh">💡 <strong>发送前务必个性化处理</strong> — 提及KOL姓名，引用具体内容。模板化信息容易被忽视。<br><br>
+    📱 <strong>优先发DM（短消息）</strong> — 控制在5行以内，目的只是获得回复。<br>
+    📧 <strong>邮件（长版）</strong> — 对方表示有兴趣后再发，或专业型创作者更适合正式邮件。</span>
+  </div>
+
+  <div class="rate-box">
+    <span class="t-en">📊 <strong>Reality Check — Response Rates in SEA:</strong><br>
+    Cold outreach reply rate is typically <strong>10–30%</strong>. Not hearing back from most KOLs is completely normal — it's not a reflection of your message quality.<br><br>
+    <strong>How to improve over time:</strong> Track which messages get the best replies, personalize more (reference a specific post or moment), reach out to more KOLs in parallel, and try different channels (DM vs email vs WhatsApp). Volume + learning = results.</span>
+    <span class="t-zh">📊 <strong>现实参考 — SEA冷触达回复率：</strong><br>
+    冷触达的回复率通常在 <strong>10–30%</strong>。大多数KOL不回复完全正常——这不代表你的消息写得不好。<br><br>
+    <strong>如何随时间提升：</strong> 记录哪种消息回复率最高，更多个性化处理（引用具体内容），同时触达更多KOL，尝试不同渠道（DM / 邮件 / WhatsApp）。量 + 学习 = 结果。</span>
+  </div>
+
+  <details open>
+    <summary><span class="t-en">📱 Template 1 — DM / Short Message (Cold First Contact)</span><span class="t-zh">📱 模板1 — 私信/短消息（首次冷触达）</span></summary>
+    <div class="det-body">
+      <span class="tpl-label tpl-dm"><span class="t-en">📱 Best for: DM · IG · WhatsApp · Line</span><span class="t-zh">📱 适用：私信 · IG · WhatsApp · Line</span></span>
+      <div class="msg-bubble"><button class="copy-btn" onclick="copyMsg(this)">Copy</button>Hi [Name] 👋
+
+I'm [Your Name] from [Agency Name] — we work with [Brand/Category] brands across SEA.
+
+Loved your recent [post/video about X] — your audience matches exactly what we're looking for!
+
+We have an upcoming paid campaign with [Brand]. Would you be open to hearing more? If yes, could you also share your media kit &amp; rate card? 😊</div>
+      <p style="font-size:12px;color:#888;margin-top:6px;line-height:1.6;">
+        <span class="t-en">✅ Keep it short — the goal is just to get a <strong>reply</strong>. Don't include all details here.<br>
+        ✅ Always reference something specific they made (not just "I love your content").<br>
+        ✅ Ask for media kit in the same message — saves a round trip.</span>
+        <span class="t-zh">✅ 保持简短 — 目的只是获得<strong>回复</strong>，不要在此放所有信息。<br>
+        ✅ 引用具体内容（不要只说"喜欢你的内容"）。<br>
+        ✅ 直接在同一条消息中索取 media kit，省去来回。</span>
+      </p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="t-en">📧 Template 2 — Email / Full Introduction</span><span class="t-zh">📧 模板2 — 邮件完整版</span></summary>
+    <div class="det-body">
+      <span class="tpl-label tpl-email"><span class="t-en">📧 Best for: Email · First contact or follow-up · Professional creators · Agency-managed KOLs</span><span class="t-zh">📧 适用：邮件 · 首次联系或跟进 · 专业创作者 · 经纪公司管理的KOL</span></span>
+      <div style="background:#f8f9fa;border-radius:8px;padding:10px 13px;margin-bottom:10px;font-size:12px;line-height:1.7;">
+        <span class="t-en">📌 <strong>Subject line suggestions</strong> (pick one &amp; fill in brand name):<br>
+        • <code>Paid Collaboration Opportunity | [Brand Name]</code><br>
+        • <code>Paid Partnership: [Brand Name] × @[KOL Handle]</code></span>
+        <span class="t-zh">📌 <strong>邮件标题建议</strong>（选一个，填入品牌名）：<br>
+        • <code>Paid Collaboration Opportunity | [品牌名]</code><br>
+        • <code>Paid Partnership: [品牌名] × @[KOL账号]</code></span>
+      </div>
+      <div class="msg-bubble"><button class="copy-btn" onclick="copyMsg(this)">Copy</button>Hi [Name]!
+
+I'm [Your Name] from [Agency Name] — we work with [Brand/Category] brands across SEA &amp; India.
+
+I came across your content on [Platform] and love how you cover [specific topic/recent post]. Your audience profile is a great fit for an upcoming campaign we're running.
+
+Here are the details:
+
+🏷️ Brand: [Brand Name]
+📦 Deliverable: [e.g. 1x IG Reel + 3x Stories]
+📅 Posting Window: [Date range]
+💰 Fee: [Amount] (all-inclusive)
+📋 Content Guidelines: [Key points]
+📎 Full brief attached / will be shared after confirmation.
+
+Would you be available for this? If yes, please confirm your interest and we'll proceed to the next steps. Happy to hop on a call if helpful!
+
+Looking forward to collaborating 😊</div>
+      <p style="font-size:12px;color:#888;margin-top:6px;line-height:1.6;">
+        <span class="t-en">✅ Use as first contact (email) or as follow-up after a DM reply — both work.<br>
+        ✅ Include all key details — the KOL should be able to say yes/no without follow-up questions.<br>
+        ✅ Keep it friendly but professional.</span>
+        <span class="t-zh">✅ 可作为首次邮件联系，也可在DM回复后再发——两种情况都适用。<br>
+        ✅ 包含所有关键信息——KOL应该能直接作出决定，无需再追问。<br>
+        ✅ 保持友好但专业的语气。</span>
+      </p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="t-en">🔁 Template 3 — Follow-Up (No Reply After 3 Days)</span><span class="t-zh">🔁 模板3 — 跟进（3天无回复）</span></summary>
+    <div class="det-body">
+      <div class="msg-bubble"><button class="copy-btn" onclick="copyMsg(this)">Copy</button>Hi [Name], just following up on my previous message! 😊
+
+We're still finalizing our KOL list for this campaign and would love to include you — your content is a great fit.
+
+The campaign window is [timeframe] and we're hoping to confirm the lineup by [date]. Happy to share more details if you'd like!
+
+No pressure at all — just wanted to make sure you didn't miss the message. Hope to work together soon! 🌟</div>
+      <p style="font-size:12px;color:#888;margin-top:4px;line-height:1.6;">
+        <span class="t-en">💡 How often to follow up depends on the situation — campaign urgency, your relationship with the KOL, and how many alternatives you have. Use your judgment. When in doubt, give it 3–5 days between each follow-up.</span>
+        <span class="t-zh">💡 跟进频率视情况而定——项目紧迫程度、与KOL的关系、备选名单数量都有影响。灵活判断，通常每次跟进间隔3–5天比较合适。</span>
+      </p>
+    </div>
+  </details>
+
+  <details>
+    <summary><span class="t-en">🚨 Template 4 — Handling a Difficult Situation</span><span class="t-zh">🚨 模板4 — 处理棘手情况</span></summary>
+    <div class="det-body">
+      <p style="font-size:13px;margin-bottom:10px;color:#555;"><span class="t-en">KOL posted wrong content / missed deadline / asking to cancel:</span><span class="t-zh">KOL发布内容有误 / 错过截止日期 / 要求取消：</span></p>
+      <div class="msg-bubble"><button class="copy-btn" onclick="copyMsg(this)">Copy</button>Hi [Name], hope you're doing well!
+
+I noticed [specific issue — e.g., the hashtag #Ad wasn't included / the post seems to be missing the product mention].
+
+Our client requires [specific requirement] for compliance. Could you update the post when you get a chance? This is important for us to proceed with the payment process.
+
+Please let me know once it's done, or if there's anything I can help clarify. Thank you so much! 🙏</div>
+      <div class="danger-box" style="margin-top:10px;"><span class="t-en">⚠️ Never send aggressive messages even if you're frustrated. Always stay professional — you may work with this KOL again, or they may know other KOLs.</span><span class="t-zh">⚠️ 即使再沮丧，也不要发送具有攻击性的消息。始终保持专业——你可能与这位KOL再次合作，或他们认识其他KOL。</span></div>
+    </div>
+  </details>
+
+  <div class="section-title" style="margin-top:24px;"><span class="t-en">Scenario Practice</span><span class="t-zh">情境练习</span></div>
+  <p style="font-size:13px;color:#666;margin-bottom:14px;"><span class="t-en">Pick the best response in each situation.</span><span class="t-zh">在每个情境中选出最佳回应。</span></p>
+
+  <div class="scenario-box">
+    <div style="font-size:12px;font-weight:700;color:#4f46e5;margin-bottom:8px;">SCENARIO 1</div>
+    <div class="scenario-q"><span class="t-en">A KOL you just cold-outreached replies: "Sure, I'm interested! What's the budget?" — but you haven't shared the brief yet. What do you do?</span><span class="t-zh">你刚刚冷触达的一位 KOL 回复："当然，我感兴趣！预算是多少？"——但你还没有分享简报。你会怎么做？</span></div>
+    <div class="sc-opts" id="sc1-opts">
+      <button class="sc-opt" onclick="doSc('sc1','a',this)">A — Tell them the exact budget figure right away so they can decide</button>
+      <button class="sc-opt" onclick="doSc('sc1','b',this)">B — Share the campaign overview first (brand, format, timeline), then give the budget range</button>
+      <button class="sc-opt" onclick="doSc('sc1','c',this)">C — Ask for their rate card first before revealing any budget</button>
+    </div>
+    <div class="sc-fb" id="sc1-fb"></div>
+  </div>
+
+  <div class="scenario-box">
+    <div style="font-size:12px;font-weight:700;color:#4f46e5;margin-bottom:8px;">SCENARIO 2</div>
+    <div class="scenario-q"><span class="t-en">A KOL agrees to the campaign but says: "I'll post it when I have time — probably this week." The client needs it live on a specific date. What do you do?</span><span class="t-zh">一位 KOL 同意参与项目，但说："我有空的时候会发——大概这周吧。"客户需要在特定日期上线。你会怎么做？</span></div>
+    <div class="sc-opts" id="sc2-opts">
+      <button class="sc-opt" onclick="doSc('sc2','a',this)">A — Say "OK, that works!" to keep things smooth</button>
+      <button class="sc-opt" onclick="doSc('sc2','b',this)">B — Clarify the exact required date, explain why it matters, and confirm their commitment before proceeding</button>
+      <button class="sc-opt" onclick="doSc('sc2','c',this)">C — Skip this KOL and find someone more reliable</button>
+    </div>
+    <div class="sc-fb" id="sc2-fb"></div>
+  </div>
+
+  <div class="scenario-box">
+    <div style="font-size:12px;font-weight:700;color:#4f46e5;margin-bottom:8px;">SCENARIO 3</div>
+    <div class="scenario-q"><span class="t-en">After posting, a KOL's Reel gets negative comments from followers saying the brand is "scammy." The comments are getting attention. What's your first move?</span><span class="t-zh">发布后，一位 KOL 的 Reel 收到粉丝的负面评论，称该品牌是"骗局"。评论正在引发关注。你的第一步是什么？</span></div>
+    <div class="sc-opts" id="sc3-opts">
+      <button class="sc-opt" onclick="doSc('sc3','a',this)">A — Screenshot the situation, notify your manager and client immediately, do not ask the KOL to act without guidance</button>
+      <button class="sc-opt" onclick="doSc('sc3','b',this)">B — Ask the KOL to delete the negative comments immediately</button>
+      <button class="sc-opt" onclick="doSc('sc3','c',this)">C — Reply to the comments yourself defending the brand</button>
+    </div>
+    <div class="sc-fb" id="sc3-fb"></div>
+  </div>
+
+  <div class="section-title" style="margin-top:24px;"><span class="t-en">Crisis Handling Quick Reference</span><span class="t-zh">危机处理快速参考</span></div>
+  <details>
+    <summary><span class="t-en">🚨 KOL posts wrong content or misses a key requirement</span><span class="t-zh">🚨 KOL 发布错误内容或漏掉关键要求</span></summary>
+    <div class="det-body">
+      <p style="font-size:13px;color:#555;margin-bottom:8px;"><span class="t-en">Act within 2 hours of spotting it.</span><span class="t-zh">发现后2小时内必须行动。</span></p>
+      <strong style="font-size:13px;"><span class="t-en">What to do:</span><span class="t-zh">处理步骤：</span></strong>
+      <p style="font-size:13px;margin:6px 0 10px;color:#555;"><span class="t-en">1. Screenshot the post immediately.<br>2. Message the KOL directly — be clear about what needs fixing, stay professional.<br>3. Notify your manager so client expectations are managed.<br>4. Set a clear deadline for correction (e.g., "Can you update within 2 hours?").</span><span class="t-zh">1. 立即截图保存帖子。<br>2. 直接联系KOL——明确说明需要修改的内容，保持专业态度。<br>3. 通知主管，协助管理客户预期。<br>4. 设定明确的修改截止时间（例如："能在2小时内更新吗？"）。</span></p>
+      <div class="nego-script"><span class="t-en">"Hi [Name], just noticed the post is missing [specific issue]. Our client requires [requirement] — could you update it by [time]? Let me know if you need anything from me to help fix this quickly. Thank you!"</span><span class="t-zh">"嗨 [Name]，刚注意到帖子缺少了[具体问题]。我们的客户要求[要求内容]——能在[时间]前更新吗？如需我协助，请告知。感谢！"</span></div>
+    </div>
+  </details>
+  <details>
+    <summary><span class="t-en">⏰ KOL misses posting deadline</span><span class="t-zh">⏰ KOL 错过发布截止日期</span></summary>
+    <div class="det-body">
+      <strong style="font-size:13px;"><span class="t-en">What to do:</span><span class="t-zh">处理步骤：</span></strong>
+      <p style="font-size:13px;margin:6px 0 10px;color:#555;"><span class="t-en">1. Message KOL immediately to understand the reason.<br>2. Assess impact: is this a time-sensitive campaign (flash sale, product launch date)?<br>3. If critical: escalate to manager + inform client with a new confirmed timeline.<br>4. Document the delay in writing (message chain) for contract enforcement if needed.</span><span class="t-zh">1. 立即联系KOL，了解原因。<br>2. 评估影响：这是否为时效敏感型活动（限时促销、产品发布日）？<br>3. 若情况紧急：上报主管，同时告知客户新的确认时间线。<br>4. 将延误情况留存书面记录（消息记录），必要时作为合同执行依据。</span></p>
+      <div class="nego-script"><span class="t-en">"Hi [Name], the scheduled posting date was [date] — just checking in as we haven't seen it go live yet. Is everything OK? Our client is expecting it today. Please let us know the updated timeline ASAP!"</span><span class="t-zh">"嗨 [Name]，约定的发布日期是[日期]——还没看到帖子上线，特来确认一下。一切还好吗？我们的客户今天在等这条内容。请尽快告知最新时间安排！"</span></div>
+    </div>
+  </details>
+  <details>
+    <summary><span class="t-en">😡 Negative comments / PR issue on KOL's post</span><span class="t-zh">😡 KOL 帖子出现负面评论 / 公关危机</span></summary>
+    <div class="det-body">
+      <strong style="font-size:13px;"><span class="t-en">What to do:</span><span class="t-zh">处理步骤：</span></strong>
+      <p style="font-size:13px;margin:6px 0 10px;color:#555;"><span class="t-en">1. Screenshot everything immediately.<br>2. Do NOT respond to comments yourself, do NOT ask KOL to delete comments without checking first.<br>3. Inform manager and client within 30 minutes — give them the facts, not your opinion.<br>4. Let client/manager decide: hide comments, take down post, or ignore? That's their call.</span><span class="t-zh">1. 立即截图保存所有内容。<br>2. 不要自己回复评论，也不要在未确认前要求KOL删除评论。<br>3. 30分钟内通知主管和客户——只呈报事实，不要加入个人判断。<br>4. 由客户/主管决定：隐藏评论、下架帖子还是不做处理？这是他们的决定。</span></p>
+    </div>
+  </details>
+  <details>
+    <summary><span class="t-en">🔙 KOL wants to cancel last-minute</span><span class="t-zh">🔙 KOL 临时要求取消合作</span></summary>
+    <div class="det-body">
+      <strong style="font-size:13px;"><span class="t-en">What to do:</span><span class="t-zh">处理步骤：</span></strong>
+      <p style="font-size:13px;margin:6px 0 10px;color:#555;"><span class="t-en">1. Understand the reason first — personal emergency vs. "I found a better deal."<br>2. Remind them of contract terms (late cancellation penalties).<br>3. If unavoidable: immediately start sourcing a replacement. Don't wait.<br>4. Inform client of the situation and your backup plan at the same time.</span><span class="t-zh">1. 先了解原因——是个人紧急情况，还是"我找到了更好的合作"？<br>2. 提醒对方合同条款（临时取消的违约责任）。<br>3. 若确实不可避免：立即开始寻找替代KOL，不要等待。<br>4. 同步告知客户现状及你的备案方案。</span></p>
+      <div class="nego-script"><span class="t-en">"Hi [Name], I understand things come up. However, we have a signed contract and the posting date is [date]. Could you help us understand the situation? We'd really like to find a way to make this work."</span><span class="t-zh">"嗨 [Name]，理解会有突发情况。不过我们已有签署合同，发布日期是[日期]。能麻烦你解释一下具体情况吗？我们非常希望能找到解决办法。"</span></div>
+    </div>
+  </details>
+</div><!-- /page-outreach -->
+<!-- ===== PRICE NEGOTIATION ===== -->
+<div id="page-nego" class="page">
+  <div class="page-title"><span class="t-en">Price Negotiation</span><span class="t-zh">报价谈判</span></div>
+  <div class="page-sub"><span class="t-en">Most KOLs will quote high. That's normal — it's expected that you negotiate. Here's how to do it confidently.</span><span class="t-zh">大多数KOL会报高价。这很正常，他们也预期你会砍价。以下是具体做法。</span></div>
+
+  <div class="warn-box"><span class="t-en">⚠️ <strong>Golden rule:</strong> Never accept the first quoted rate. Always counter at least once — even if the first number seems reasonable. KOLs expect it.</span><span class="t-zh">⚠️ <strong>黄金法则：</strong>永远不要接受第一次报价。至少反报一次——即使第一个数字看起来合理。KOL 也是这样预期的。</span></div>
+
+  <div class="nego-step">
+    <h4><span class="t-en">Step 1 — Always Ask for Their Media Kit First</span><span class="t-zh">第一步 — 先要对方的 Media Kit</span></h4>
+    <p style="font-size:13px;color:#555;margin-bottom:10px;"><span class="t-en">Before quoting anything, request their media kit and rate card. This tells you their self-declared rates and gives you a starting anchor.</span><span class="t-zh">报价前先要对方的 media kit 和 rate card。这能告诉你他们的自报价，也给你谈判的起点锁。</span></p>
+    <div class="g2">
+      <div class="nego-do"><span class="t-en">✅ <strong>Do:</strong> "Could you share your media kit and rate card? We'd love to understand your standard packages before we proceed."</span><span class="t-zh">✅ <strong>应该做：</strong>"方便分享一下你的 media kit 和报价表吗？我们希望在推进前先了解你的标准套餐。"</span></div>
+      <div class="nego-dont"><span class="t-en">❌ <strong>Don't:</strong> Reveal your budget first. Once they know your ceiling, the negotiation starts from there.</span><span class="t-zh">❌ <strong>不要做：</strong>先透露你的预算。一旦对方知道你的上限，谈判就从那里开始了。</span></div>
+    </div>
+    <p style="font-size:12px;color:#888;margin-top:8px;"><span class="t-en">💡 If the KOL is on KOLPlanet, they may have their Rate Card set in-app. That's their declared rate — still negotiate from it.</span><span class="t-zh">💡 若KOL已在KOLPlanet上，他们可能在App中设置了报价表。那是他们的申报价——仍需在此基础上谈判。</span></p>
+  </div>
+
+  <div class="nego-step">
+    <h4><span class="t-en">Step 2 — Use the Anchoring Strategy</span><span class="t-zh">第二步 — 使用价格锚定策略</span></h4>
+    <p style="font-size:13px;color:#555;margin-bottom:10px;"><span class="t-en">Once you see their rate, counter with a reference anchor that pulls the conversation toward your budget range.</span><span class="t-zh">看到对方报价后，用一个参考锁点反报，将谈判引向你的预算区间。</span></p>
+    <div class="nego-script"><span class="t-en">"Thanks for sharing! Your content is great. However, for this campaign our budget for [format] at your tier is around [X–Y]. Is there any flexibility on your end?"</span><span class="t-zh">"感谢分享！你的内容很棒。不过，这次活动我们对你这个量级的[形式]内容预算大约在[X–Y]。你这边有弹性吗？"</span></div>
+    <div class="nego-script"><span class="t-en">"We've recently worked with creators with similar reach at [X] — would that range work for you?"</span><span class="t-zh">"我们最近与覆盖量级相近的创作者合作价格在[X]——这个区间你能接受吗？"</span></div>
+    <div class="g2" style="margin-top:10px;">
+      <div class="nego-do"><span class="t-en">✅ Reference similar KOL rates you've actually paid to anchor the conversation</span><span class="t-zh">✅ 引用你实际支付过的类似KOL费率作为锚点</span></div>
+      <div class="nego-do"><span class="t-en">✅ Give a range (not a single number) — the KOL will naturally aim for the higher end, leaving you room</span><span class="t-zh">✅ 给出区间（不要单一数字）——KOL会自然倾向于报高端，为你留出谈判空间</span></div>
+      <div class="nego-dont"><span class="t-en">❌ Don't say "our budget is X" — say "our budget for this type of content is typically X–Y"</span><span class="t-zh">❌ 不要说"我们的预算是X"——要说"我们对这类内容的预算通常在X–Y"</span></div>
+      <div class="nego-dont"><span class="t-en">❌ Don't make up rates you haven't paid — you'll lose credibility if they ask for specifics</span><span class="t-zh">❌ 不要捏造你没有支付过的费率——若对方追问细节，你会失去信誉</span></div>
+    </div>
+  </div>
+
+  <div class="nego-step">
+    <h4><span class="t-en">Step 3 — Use Volume & Bundle Leverage</span><span class="t-zh">第三步 — 利用数量和打包杠杆</span></h4>
+    <p style="font-size:13px;color:#555;margin-bottom:10px;"><span class="t-en">If you need multiple deliverables, use the bundle as a bargaining chip. KOLs prefer confirmed volume over single-post uncertainty.</span><span class="t-zh">如果需要多个交付物，用打包作为筹码。KOL 更喜欢确定的数量，而非单次合作的不确定性。</span></p>
+    <div class="nego-script"><span class="t-en">"We're looking at 1 Reel + 2 Stories. If we confirm all three together, can you do a package rate of [X] total?"</span><span class="t-zh">"我们计划做1条Reel + 2条Story。如果我们一起确认这三条，打包总价能做到[X]吗？"</span></div>
+    <div class="nego-script"><span class="t-en">"If this campaign goes well, we'd love to continue working with you — potentially 2–3 more campaigns this year. With that in mind, is the rate negotiable for this first one?"</span><span class="t-zh">"如果这次合作顺利，我们很希望继续——今年可能还有2–3个活动。基于这个合作前景，这次的价格有协商空间吗？"</span></div>
+    <div class="g2" style="margin-top:10px;">
+      <div class="nego-do"><span class="t-en">✅ Bundle Reel + Story together — usually cheaper per unit than buying separately</span><span class="t-zh">✅ Reel + Story打包——通常比单独购买每单位更便宜</span></div>
+      <div class="nego-do"><span class="t-en">✅ Long-term relationship promise = real leverage (if genuine)</span><span class="t-zh">✅ 长期合作承诺 = 真实杠杆（前提是真诚的）</span></div>
+      <div class="nego-dont"><span class="t-en">❌ Don't promise future campaigns if you're not actually likely to deliver them</span><span class="t-zh">❌ 如果后续活动不太可能兑现，不要轻诺</span></div>
+    </div>
+  </div>
+
+  <div class="nego-step">
+    <h4><span class="t-en">Step 4 — Trade Content Usage Rights</span><span class="t-zh">第四步 — 用版权使用权换价格</span></h4>
+    <p style="font-size:13px;color:#555;margin-bottom:10px;"><span class="t-en">Content usage rights (the right to repurpose KOL content for ads, brand channels, etc.) are a real value trade-off. Use them in negotiation.</span><span class="t-zh">内容使用权具有真实的价值，可以用来谈判。</span></p>
+    <div class="g2">
+      <div style="background:#f8f9fa;padding:13px;border-radius:8px;">
+        <strong style="font-size:13px;"><span class="t-en">KOL wants to add usage fee?</span><span class="t-zh">KOL 要额外收取使用权费用？</span></strong>
+        <p style="font-size:12.5px;color:#555;margin-top:5px;line-height:1.5;"><span class="t-en">Counter: "We understand usage rights carry additional value. Could we meet in the middle — [X] all-inclusive including 3-month usage rights?"</span><span class="t-zh">反报："我们理解使用权有附加价值。能否折中——[X]含3个月使用权的全包价？"</span></p>
+      </div>
+      <div style="background:#f8f9fa;padding:13px;border-radius:8px;">
+        <strong style="font-size:13px;"><span class="t-en">Brand doesn't need usage rights?</span><span class="t-zh">品牌不需要使用权？</span></strong>
+        <p style="font-size:12.5px;color:#555;margin-top:5px;line-height:1.5;"><span class="t-en">Use it as a concession: "We won't be boosting or repurposing this content — it's organic post only. Given that, could you adjust the rate slightly?"</span><span class="t-zh">作为让步条件："我们不会推广或二次使用这条内容——纯自然发帖。基于这点，价格能稍作调整吗？"</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="nego-step">
+    <h4>⏰ <span class="t-en">Step 5 — Apply Soft Deadline Pressure</span><span class="t-zh">第五步 — 适度施加截止日期压力</span></h4>
+    <p style="font-size:13px;color:#555;margin-bottom:10px;"><span class="t-en">Urgency is a legitimate and effective negotiation tool when used honestly.</span><span class="t-zh">在真实情况下，紧迫感是一种合理且有效的谈判工具。</span></p>
+    <div class="nego-script"><span class="t-en">"Our client's budget closes this Friday — if we can confirm by then, we can lock you in. Otherwise we may need to go with another creator we're also considering."</span><span class="t-zh">"我们客户的预算这周五截止——如果能在那之前确认，我们就锁定你。否则可能需要选择我们同时考虑的另一位创作者。"</span></div>
+    <div class="nego-script"><span class="t-en">"We're finalizing the KOL lineup today — is there any flexibility on the rate so we can confirm you now?"</span><span class="t-zh">"我们今天就要确定KOL名单——价格上有弹性吗？这样我们现在就能确认你了。"</span></div>
+    <div class="warn-box" style="margin-top:10px;margin-bottom:0;"><span class="t-en">⚠️ Don't fabricate urgency that isn't real. If a KOL follows up and the deadline has passed but you're still running the campaign, your credibility takes a hit.</span><span class="t-zh">⚠️ 不要捏造不存在的紧迫感。如果KOL后续跟进时发现截止日期已过但活动仍在进行，你的信誉会受损。</span></div>
+  </div>
+
+  <div class="nego-step" style="border-top-color:#dc2626;">
+    <h4><span class="t-en">Step 6 — Know When to Walk Away</span><span class="t-zh">第六步 — 知道何时放弃</span></h4>
+    <p style="font-size:13px;color:#555;margin-bottom:10px;"><span class="t-en">Not every KOL is worth negotiating hard for. Some are just too expensive for the value they deliver.</span><span class="t-zh">不是每个 KOL 都候死磕。有些人的报价相对于其价值来说就是太贵了。</span></p>
+    <table style="margin-top:8px;">
+      <thead><tr><th><span class="t-en">Signal</span><span class="t-zh">信号</span></th><th><span class="t-en">What to Do</span><span class="t-zh">建议操作</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="t-en">Quoted rate is >50% above your budget</span><span class="t-zh">报价超出预算50%以上</span></td><td><span class="t-en">Politely decline, move on. Not worth the rounds.</span><span class="t-zh">礼貌拒绝，推进下一个。不值得耗费轮次。</span></td></tr>
+        <tr><td><span class="t-en">KOL refuses to budge at all after 2 counters</span><span class="t-zh">反报2次后KOL仍不松动</span></td><td><span class="t-en">Accept or walk — don't over-negotiate. You'll sour the relationship.</span><span class="t-zh">接受或放弃——不要过度谈判，否则会损害关系。</span></td></tr>
+        <tr><td><span class="t-en">Rate is within 15–20% of your budget</span><span class="t-zh">报价在预算15–20%以内</span></td><td><span class="t-en">One more bundle offer or usage-rights trade, then confirm.</span><span class="t-zh">再做一次打包报价或使用权交换，然后确认。</span></td></tr>
+        <tr><td><span class="t-en">KOL lowballs themselves dramatically</span><span class="t-zh">KOL报价远低于市场</span></td><td><span class="t-en">Don't take advantage — fair pay builds long-term relationships.</span><span class="t-zh">不要趁机压价——合理报酬才能建立长期关系。</span></td></tr>
+      </tbody>
+    </table>
+    <div class="nego-script" style="margin-top:12px;"><span class="t-en">"Thank you so much for your time — we love your content but the rate is slightly over our current campaign budget. We'll definitely keep you in mind for future campaigns with a higher budget. Hope to work together soon!"</span><span class="t-zh">"非常感谢你的时间——我们很喜欢你的内容，但报价略超出此次活动的预算。我们会在预算更充足的项目中优先考虑你。期待未来合作！"</span></div>
+  </div>
+
+  <div class="section-title"><span class="t-en">Quick Negotiation Cheat Sheet</span><span class="t-zh">谈判速查表</span></div>
+  <table>
+    <thead><tr><th><span class="t-en">Situation</span><span class="t-zh">情况</span></th><th><span class="t-en">Strategy</span><span class="t-zh">策略</span></th><th><span class="t-en">Script Starter</span><span class="t-zh">话术开场</span></th></tr></thead>
+    <tbody>
+      <tr><td><span class="t-en">Rate too high</span><span class="t-zh">报价过高</span></td><td><span class="t-en">Anchor to market rate</span><span class="t-zh">以市场价格锚定</span></td><td><span class="t-en">"For this format/tier, we typically work at X–Y..."</span><span class="t-zh">"这种形式/层级，我们通常的合作价格在X–Y..."</span></td></tr>
+      <tr><td><span class="t-en">Multiple posts</span><span class="t-zh">多条帖子</span></td><td><span class="t-en">Bundle deal</span><span class="t-zh">打包报价</span></td><td><span class="t-en">"If we confirm all deliverables together, can you do X total?"</span><span class="t-zh">"如果我们一起确认所有交付物，总价能做到X吗？"</span></td></tr>
+      <tr><td><span class="t-en">Usage rights dispute</span><span class="t-zh">使用权争议</span></td><td><span class="t-en">Trade rights for rate</span><span class="t-zh">以使用权换价格</span></td><td><span class="t-en">"Organic post only, no boosting — would that adjust the rate?"</span><span class="t-zh">"纯自然发帖，不做推广——这样价格能调整吗？"</span></td></tr>
+      <tr><td><span class="t-en">Tight timeline to confirm</span><span class="t-zh">确认时间紧迫</span></td><td><span class="t-en">Soft deadline</span><span class="t-zh">截止日期压力</span></td><td><span class="t-en">"Budget closes Friday — can we confirm at X today?"</span><span class="t-zh">"预算周五截止——今天能以X价格确认吗？"</span></td></tr>
+      <tr><td><span class="t-en">Way over budget</span><span class="t-zh">严重超出预算</span></td><td><span class="t-en">Walk away gracefully</span><span class="t-zh">优雅放弃</span></td><td><span class="t-en">"Love your work, over budget this time — keeping you for next!"</span><span class="t-zh">"很喜欢你的内容，这次预算不够——下次活动一定找你！"</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== SEA & INDIA MARKETS ===== -->
+<div id="page-markets" class="page">
+  <div class="page-title"><span class="t-en">SEA &amp; India Markets</span><span class="t-zh">市场概览</span></div>
+  <div class="page-sub"><span class="t-en"><span class="t-en">Every market is different — platforms, culture, and KOL rates vary significantly. Know the basics before approaching KOLs in each country.</span><span class="t-zh">每个市场各不相同——平台偏好、文化背景和 KOL 报价差异显著。接触各国 KOL 前先了解基本情况。</span></span><span class="t-zh">每个市场都不同 — 平台偏好、文化和报价差异显著。接触各国KOL前先了解基础信息。</span></div>
+
+  <div class="g3" style="margin-bottom:24px;">
+    <div class="mkt-card">
+      <div class="mkt-flag">🇸🇬</div>
+      <div class="mkt-name">Singapore</div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Top Platforms</span><span class="t-zh">主要平台</span></span><span class="mkt-val">Instagram, YouTube, TikTok</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Language</span><span class="t-zh">语言</span></span><span class="mkt-val">English (primary), Mandarin</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Strong Categories</span><span class="t-zh">强势品类</span></span><span class="mkt-val">Finance, Tech, Lifestyle, F&B, Travel</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Audience Trait</span><span class="t-zh">受众特点</span></span><span class="mkt-val"><span class="t-en">Educated, high income, skeptical of overt ads</span><span class="t-zh">高学历、高收入，对明显广告较为抗拒</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Rate Level</span><span class="t-zh">报价水位</span></span><span class="mkt-val"><span class="t-en">Highest in SEA</span><span class="t-zh">东南亚最高</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tax</span><span class="t-zh">税务</span></span><span class="mkt-val"><span class="t-en">GST 9% (if KOL is GST-registered business)</span><span class="t-zh">GST 9%（若KOL为已登记GST的企业）</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tips</span><span class="t-zh">BD建议</span></span><span class="mkt-val"><span class="t-en">Authenticity matters. Audience responds to honest reviews, not hard sells.</span><span class="t-zh">真实性至关重要，受众更认可真实评测，而非强推式广告。</span></span></div>
+    </div>
+    <div class="mkt-card">
+      <div class="mkt-flag">🇮🇩</div>
+      <div class="mkt-name">Indonesia</div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Top Platforms</span><span class="t-zh">主要平台</span></span><span class="mkt-val">TikTok, Instagram, YouTube</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Language</span><span class="t-zh">语言</span></span><span class="mkt-val">Bahasa Indonesia</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Strong Categories</span><span class="t-zh">强势品类</span></span><span class="mkt-val">Beauty, Fashion, F&B, Halal products, Gaming</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Audience Trait</span><span class="t-zh">受众特点</span></span><span class="mkt-val"><span class="t-en">Very large market, TikTok-first, highly engaged</span><span class="t-zh">市场体量庞大，TikTok 为主，互动积极</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Rate Level</span><span class="t-zh">报价水位</span></span><span class="mkt-val"><span class="t-en">Mid-low (huge supply of KOLs)</span><span class="t-zh">中低（KOL 供给充足）</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tax</span><span class="t-zh">税务</span></span><span class="mkt-val"><span class="t-en">Occasionally 2.5–13% withholding tax — ask upfront</span><span class="t-zh">偶尔适用2.5–13%预提税——需提前询问</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tips</span><span class="t-zh">BD建议</span></span><span class="mkt-val"><span class="t-en">Huge KOL pool. TikTok Live + Shop very strong. Content in Bahasa performs much better than English.</span><span class="t-zh">KOL数量庞大。TikTok直播带货强势。印尼语内容效果远优于英语内容。</span></span></div>
+    </div>
+    <div class="mkt-card">
+      <div class="mkt-flag">🇹🇭</div>
+      <div class="mkt-name">Thailand</div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Top Platforms</span><span class="t-zh">主要平台</span></span><span class="mkt-val">TikTok, Instagram, YouTube</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Language</span><span class="t-zh">语言</span></span><span class="mkt-val">Thai</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Strong Categories</span><span class="t-zh">强势品类</span></span><span class="mkt-val">Beauty, Skincare, Fashion, Food, Entertainment</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Audience Trait</span><span class="t-zh">受众特点</span></span><span class="mkt-val"><span class="t-en">Very visual, trend-driven, high brand loyalty</span><span class="t-zh">视觉导向、潮流敏感，品牌忠诚度高</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Rate Level</span><span class="t-zh">报价水位</span></span><span class="mkt-val"><span class="t-en">Mid</span><span class="t-zh">中等</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tax</span><span class="t-zh">税务</span></span><span class="mkt-val"><span class="t-en">Usually none for individual KOLs</span><span class="t-zh">个人KOL通常无税务问题</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tips</span><span class="t-zh">BD建议</span></span><span class="mkt-val"><span class="t-en">TikTok Shop most developed in SEA. Beauty KOLs very influential. Many managed by agencies — clarify contact type early.</span><span class="t-zh">东南亚中TikTok Shop最成熟。美妆类KOL极具影响力。许多KOL由经纪公司管理，接触前需提前确认联系方式。</span></span></div>
+    </div>
+    <div class="mkt-card">
+      <div class="mkt-flag">🇲🇾</div>
+      <div class="mkt-name">Malaysia</div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Top Platforms</span><span class="t-zh">主要平台</span></span><span class="mkt-val">Instagram, TikTok, YouTube</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Language</span><span class="t-zh">语言</span></span><span class="mkt-val">Malay, English, Mandarin</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Strong Categories</span><span class="t-zh">强势品类</span></span><span class="mkt-val">Beauty, F&B, Fashion, Islamic products</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Audience Trait</span><span class="t-zh">受众特点</span></span><span class="mkt-val"><span class="t-en">Multilingual, value-conscious, strong community trust</span><span class="t-zh">多语言受众，注重性价比，社区信任度高</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Rate Level</span><span class="t-zh">报价水位</span></span><span class="mkt-val"><span class="t-en">Mid-low</span><span class="t-zh">中低</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tax</span><span class="t-zh">税务</span></span><span class="mkt-val"><span class="t-en">Usually none for individual KOLs</span><span class="t-zh">个人KOL通常无税务问题</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tips</span><span class="t-zh">BD建议</span></span><span class="mkt-val"><span class="t-en">Halal-certified products a significant differentiator. Bilingual content (Malay + English) performs well.</span><span class="t-zh">清真认证产品是重要差异化卖点。马来语+英语双语内容表现良好。</span></span></div>
+    </div>
+    <div class="mkt-card">
+      <div class="mkt-flag">🇵🇭</div>
+      <div class="mkt-name">Philippines</div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Top Platforms</span><span class="t-zh">主要平台</span></span><span class="mkt-val">TikTok, Facebook, YouTube, Instagram</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Language</span><span class="t-zh">语言</span></span><span class="mkt-val">Filipino (Tagalog), English</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Strong Categories</span><span class="t-zh">强势品类</span></span><span class="mkt-val">Beauty, Entertainment, Gaming, OFW (remittance)</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Audience Trait</span><span class="t-zh">受众特点</span></span><span class="mkt-val"><span class="t-en">Highly social, Facebook-strong, high YouTube watch time</span><span class="t-zh">社交活跃，Facebook 强势，YouTube 观看时长高</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Rate Level</span><span class="t-zh">报价水位</span></span><span class="mkt-val"><span class="t-en">Low-mid</span><span class="t-zh">低中</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tax</span><span class="t-zh">税务</span></span><span class="mkt-val"><span class="t-en">Usually none for individual KOLs</span><span class="t-zh">个人KOL通常无税务问题</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tips</span><span class="t-zh">BD建议</span></span><span class="mkt-val"><span class="t-en">Facebook still dominant for older demos. YouTube has very high consumption. KOLs very responsive to collabs.</span><span class="t-zh">Facebook在较年长受众中仍占主导。YouTube消费量极高。KOL对合作邀约反应积极。</span></span></div>
+    </div>
+    <div class="mkt-card">
+      <div class="mkt-flag">🇮🇳</div>
+      <div class="mkt-name">India</div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Top Platforms</span><span class="t-zh">主要平台</span></span><span class="mkt-val">Instagram, YouTube, (No TikTok since 2020)</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Language</span><span class="t-zh">语言</span></span><span class="mkt-val">Hindi, English, regional languages</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Strong Categories</span><span class="t-zh">强势品类</span></span><span class="mkt-val">Beauty, Fashion, Tech, Finance, Fitness, Food</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Audience Trait</span><span class="t-zh">受众特点</span></span><span class="mkt-val"><span class="t-en">Enormous market, tier-2/3 cities growing fast, high YouTube watch time</span><span class="t-zh">市场体量巨大，二三线城市快速增长，YouTube 观看时长高</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Rate Level</span><span class="t-zh">报价水位</span></span><span class="mkt-val"><span class="t-en">Highly variable — metro KOLs pricey, regional affordable</span><span class="t-zh">差异极大——一线城市KOL报价高，地方KOL价格亲民</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tax</span><span class="t-zh">税务</span></span><span class="mkt-val"><span class="t-en">Some KOLs raise GST — negotiate all-in rate, escalate to Finance if needed</span><span class="t-zh">部分KOL额外征收GST——谈判含税全价，无法解决时上报财务</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tips</span><span class="t-zh">BD建议</span></span><span class="mkt-val"><span class="t-en">TikTok banned. Instagram Reels + YouTube dominate. Regional language KOLs often better ROI than English/Hindi for mass reach.</span><span class="t-zh">TikTok已被封禁。Instagram Reels + YouTube主导市场。地方语言KOL在大众覆盖方面性价比往往优于英语/印地语。</span></span></div>
+    </div>
+    <div class="mkt-card">
+      <div class="mkt-flag">🇻🇳</div>
+      <div class="mkt-name">Vietnam</div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Top Platforms</span><span class="t-zh">主要平台</span></span><span class="mkt-val">TikTok, Facebook, YouTube</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Language</span><span class="t-zh">语言</span></span><span class="mkt-val">Vietnamese</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Strong Categories</span><span class="t-zh">强势品类</span></span><span class="mkt-val">Beauty, Fashion, F&B, Gaming</span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Audience Trait</span><span class="t-zh">受众特点</span></span><span class="mkt-val"><span class="t-en">Young, fast-growing middle class, TikTok-native</span><span class="t-zh">年轻、快速成长的中产阶级，TikTok 原生用户</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Rate Level</span><span class="t-zh">报价水位</span></span><span class="mkt-val"><span class="t-en">Low-mid</span><span class="t-zh">低中</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tax</span><span class="t-zh">税务</span></span><span class="mkt-val"><span class="t-en">Usually none for individual KOLs</span><span class="t-zh">个人KOL通常无税务问题</span></span></div>
+      <div class="mkt-row"><span class="mkt-label"><span class="t-en">Tips</span><span class="t-zh">BD建议</span></span><span class="mkt-val"><span class="t-en">TikTok Shop rapidly growing. Content must be in Vietnamese to perform. Very price-sensitive audience.</span><span class="t-zh">TikTok Shop快速增长。内容必须用越南语才有效。受众价格敏感度极高。</span></span></div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="t-en">Tax Quick Reference</span><span class="t-zh">税务快速参考</span></div>
+  <table>
+    <thead><tr><th><span class="t-en">Market</span><span class="t-zh">市场</span></th><th><span class="t-en">Tax Situation</span><span class="t-zh">税务情况</span></th><th><span class="t-en">BD Action</span><span class="t-zh">BD操作</span></th></tr></thead>
+    <tbody>
+      <tr><td>🇸🇬 Singapore</td><td><span class="t-en">GST 9% if KOL has GST-registered business</span><span class="t-zh">若KOL为已登记GST的企业，适用GST 9%</span></td><td><span class="t-en">Ask if they're GST-registered. Request all-inclusive rate.</span><span class="t-zh">询问是否已登记GST，要求含税全价。</span></td></tr>
+      <tr><td>🇮🇩 Indonesia</td><td><span class="t-en">Withholding tax 2.5–13% may apply for some KOLs</span><span class="t-zh">部分KOL适用2.5–13%预提税</span></td><td><span class="t-en">Ask upfront: "Is your fee all-inclusive?" Negotiate all-in. Escalate to Finance if unresolved.</span><span class="t-zh">提前询问："费用含税吗？"谈判含税全价，无法解决时上报财务。</span></td></tr>
+      <tr><td>🇮🇳 India</td><td><span class="t-en">Some KOLs raise GST on top of fee</span><span class="t-zh">部分KOL在费用之外额外征收GST</span></td><td><span class="t-en">Same approach — try to negotiate all-inclusive first.</span><span class="t-zh">同上——先尝试协商含税全价。</span></td></tr>
+      <tr><td>🇹🇭🇲🇾🇵🇭🇻🇳</td><td><span class="t-en">Usually no tax for individual KOLs</span><span class="t-zh">个人KOL通常无税务问题</span></td><td><span class="t-en">Standard: clarify all-inclusive wording in contract anyway.</span><span class="t-zh">标准做法：合同中仍注明含税全价条款。</span></td></tr>
+    </tbody>
+  </table>
+  <div class="tip-box" style="margin-top:12px;"><span class="t-en"><strong>How to ask:</strong> "Just to confirm — the fee you quoted, is that all-inclusive of any taxes or additional charges? We prefer to work on a net, all-in basis." → If they say yes: great, proceed. → If they add tax: try to negotiate the base rate down. → If unresolved: flag to Finance and your manager before signing.</span><span class="t-zh"><strong>怎么问：</strong>“确认一下，你报的费用含所有税费和附加收费吗？我们倒向于用含税全价来结算。” → 说是：好，继续推进。→ 要加税：尝试把基础报价谈下来。→ 谈不拢：签约前上报财务和主管。</span></div>
+</div>
+
+<!-- ===== FAKE DATA DETECTION ===== -->
+<div id="page-fakedata" class="page">
+  <div class="page-title"><span class="t-en">Fake Data Detection</span><span class="t-zh">假数据识别</span></div>
+  <div class="page-sub"><span class="t-en">Bought followers and fake engagement are common in SEA markets. Always verify before recommending a KOL to a client.</span><span class="t-zh">刷粉和虚假互动在SEA市场很常见。向客户推荐KOL前务必核查。</span></div>
+
+  <div class="danger-box"><span class="t-en"><strong>Why it matters:</strong> Recommending a fake-follower KOL to a client = brand gets zero real reach, you lose credibility, client won't trust you again. Always check.</span><span class="t-zh"><strong>为什么重要：</strong>向客户推荐刷粉的 KOL = 品牌零真实曝光，你失去信誉，客户不会再信任你。必须核查。</span></div>
+
+  <div class="section-title"><span class="t-en">The 5 Warning Signs</span><span class="t-zh">5 个预警信号</span></div>
+  <div class="g2">
+    <div class="signal-card">
+      <h4>1. <span class="t-en">Engagement Rate Too Low</span><span class="t-zh">互动率过低</span></h4>
+      <div class="signal-item"><span class="t-en">Typical healthy ER: 1–5% for most tiers</span><span class="t-zh">各层级正常健康互动率：1–5%</span></div>
+      <div class="signal-item"><span class="t-en">Under 0.5% on IG/TikTok = red flag for follower inflation</span><span class="t-zh">IG/TikTok 低于0.5% = 刷粉预警</span></div>
+      <div class="signal-item"><span class="t-en">Formula: (Likes + Comments) ÷ Followers × 100</span><span class="t-zh">公式：（点赞数 + 评论数）÷ 粉丝数 × 100</span></div>
+      <div class="signal-item"><span class="t-en">Check last 9–12 posts average, not just one outlier</span><span class="t-zh">查看最近9–12条帖子的平均值，不要只看某一条</span></div>
+    </div>
+    <div class="signal-card">
+      <h4>2. <span class="t-en">Unnatural Follower Growth</span><span class="t-zh">异常粉丝增长</span></h4>
+      <div class="signal-item"><span class="t-en">Sudden spike in followers (e.g. +50K in one week) with no viral content = bought followers</span><span class="t-zh">粉丝突然暴增（如一周内+5万）且无爆款内容 = 刷粉</span></div>
+      <div class="signal-item"><span class="t-en">Use KOLPlanet's analytics to check follower growth trends over time</span><span class="t-zh">使用 KOLPlanet 数据分析功能查看粉丝增长趋势</span></div>
+      <div class="signal-item"><span class="t-en">Healthy organic growth is gradual — spikes happen but should link to a viral post</span><span class="t-zh">健康的自然增长是渐进式的——峰值可以有，但应与某条爆款内容挂钩</span></div>
+      <div class="signal-item"><span class="t-en">Check if the spike matches a specific post performance</span><span class="t-zh">核查增长峰值是否与某条帖子的表现对应</span></div>
+    </div>
+    <div class="signal-card">
+      <h4>3. <span class="t-en">Low-Quality or Generic Comments</span><span class="t-zh">低质量或泛泛评论</span></h4>
+      <div class="signal-item"><span class="t-en">Look at comment content — are they real sentences or just "Great! 👍", "Love it! 🔥"?</span><span class="t-zh">查看评论内容——是真实句子，还是只有"Great! 👍"、"Love it! 🔥"？</span></div>
+      <div class="signal-item"><span class="t-en">Comments from accounts with no profile picture, no posts = bot accounts</span><span class="t-zh">评论来自无头像、无帖子的账号 = 机器人账号</span></div>
+      <div class="signal-item"><span class="t-en">Comments in languages that don't match the KOL's audience (e.g., Arabic comments on a Thai KOL)</span><span class="t-zh">评论语言与KOL受众不符（如泰国KOL却有大量阿拉伯语评论）</span></div>
+      <div class="signal-item"><span class="t-en">Check if the KOL replies to comments — real KOLs usually do</span><span class="t-zh">查看KOL是否回复评论——真实KOL通常会回复</span></div>
+    </div>
+    <div class="signal-card">
+      <h4>4. <span class="t-en">Suspicious Follower Demographics</span><span class="t-zh">可疑的粉丝地域分布</span></h4>
+      <div class="signal-item"><span class="t-en">Ask for audience insight screenshot — check top countries</span><span class="t-zh">索取受众洞察截图——查看粉丝主要来源国</span></div>
+      <div class="signal-item"><span class="t-en">A Thai KOL with 40% followers from Brazil/India = bought followers</span><span class="t-zh">泰国KOL却有40%粉丝来自巴西/印度 = 刷粉</span></div>
+      <div class="signal-item"><span class="t-en">Age distribution should make sense for their content type</span><span class="t-zh">年龄分布应与其内容类型相符</span></div>
+      <div class="signal-item"><span class="t-en">High % of followers from countries with cheap follower farms (Brazil, India, Russia) can be a signal — but only when inconsistent with the KOL's content</span><span class="t-zh">来自廉价刷粉农场国家（巴西、印度、俄罗斯）的粉丝占比高，可能是信号——但仅当与KOL内容不符时才需警惕</span></div>
+    </div>
+    <div class="signal-card">
+      <h4>5. <span class="t-en">Views vs. Followers Mismatch</span><span class="t-zh">播放量与粉丝数严重不符</span></h4>
+      <div class="signal-item"><span class="t-en">TikTok: If a 500K follower account consistently gets 500–1K views = something's wrong</span><span class="t-zh">TikTok：50万粉丝账号持续只有500–1K播放量 = 有问题</span></div>
+      <div class="signal-item"><span class="t-en">YouTube: View count should loosely correlate with subscriber count for similar content</span><span class="t-zh">YouTube：同类内容的观看量应与订阅数大致成比例</span></div>
+      <div class="signal-item"><span class="t-en">IG Reels: A Reel should typically reach beyond followers via algorithm — extremely low Reel views vs. followers = suppressed account or fake followers</span><span class="t-zh">IG Reels：算法通常会将Reel推送给非粉丝——Reel 播放量远低于粉丝数 = 账号受限或刷粉</span></div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:8px;"><span class="t-en">Quick Decision Guide</span><span class="t-zh">快速判断指南</span></div>
+  <table>
+    <thead><tr><th><span class="t-en">What You See</span><span class="t-zh">观察到的情况</span></th><th><span class="t-en">Signal</span><span class="t-zh">信号</span></th><th><span class="t-en">Action</span><span class="t-zh">建议操作</span></th></tr></thead>
+    <tbody>
+      <tr><td><span class="t-en">ER under 0.5%</span><span class="t-zh">互动率低于0.5%</span></td><td><span class="t-en">🔴 Red flag</span><span class="t-zh">🔴 预警</span></td><td><span class="t-en">Request audience insights. Cross-check with 2 tools.</span><span class="t-zh">索取受众洞察，用2个工具交叉核查。</span></td></tr>
+      <tr><td><span class="t-en">Sudden follower spike with no viral post</span><span class="t-zh">无爆款内容却出现粉丝暴增</span></td><td><span class="t-en">🔴 Red flag</span><span class="t-zh">🔴 预警</span></td><td><span class="t-en">Ask KOL to explain the spike. If no good answer, skip.</span><span class="t-zh">要求KOL解释增长原因，无法说明则跳过。</span></td></tr>
+      <tr><td><span class="t-en">All comments are emojis / generic phrases</span><span class="t-zh">评论全是emoji或泛泛套话</span></td><td><span class="t-en">🟡 Suspicious</span><span class="t-zh">🟡 可疑</span></td><td><span class="t-en">Check if KOL responds. Look at commenter profiles.</span><span class="t-zh">查看KOL是否回复，检查评论账号主页。</span></td></tr>
+      <tr><td><span class="t-en">Audience location doesn't match KOL's content market</span><span class="t-zh">受众地域与KOL内容市场不符</span></td><td><span class="t-en">🟡 Suspicious</span><span class="t-zh">🟡 可疑</span></td><td><span class="t-en">Ask for updated Insights screenshot. Compare with content language.</span><span class="t-zh">索取最新洞察截图，与内容语言对比。</span></td></tr>
+      <tr><td><span class="t-en">ER 1–5%, genuine comments, consistent growth</span><span class="t-zh">互动率1–5%，评论真实，增长稳定</span></td><td><span class="t-en">🟢 Looks clean</span><span class="t-zh">🟢 通过</span></td><td><span class="t-en">Proceed — note it in your recommendation report.</span><span class="t-zh">继续推进——在推荐报告中注明核查结果。</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== CASE STUDIES ===== -->
+<div id="page-cases" class="page">
+  <div class="page-title"><span class="t-en">Case Studies</span><span class="t-zh">实战案例</span></div>
+  <div class="page-sub"><span class="t-en">Illustrative scenarios based on common industry patterns — not real client cases. Each example is designed to reflect realistic situations you'll encounter, with key lessons to apply to your own campaigns.</span><span class="t-zh">以下为基于行业常见情况的假设场景，非真实客户案例。每个例子均还原BD工作中的典型处境，核心教训可直接应用。</span></div>
+  <div class="warn-box"><span class="t-en">⚠️ <strong>Note:</strong> All cases below are <strong>hypothetical scenarios</strong> created for training purposes. Names, brands, and figures are illustrative only.</span><span class="t-zh">⚠️ <strong>声明：</strong>以下所有案例均为假设情境，仅供培训用途，案例中的名称、品牌及数字均为示例。</span></div>
+
+  <div class="case-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <span class="badge badge-green">✅ <span class="t-en">WIN</span><span class="t-zh">成功案例</span></span>
+      <span style="font-size:12px;color:#888;"><span class="t-en">Beauty · Indonesia · TikTok</span><span class="t-zh">美妆 · 印尼 · TikTok</span></span>
+    </div>
+    <h3 style="font-size:15px;margin-bottom:8px;"><span class="t-en">Micro-KOL Bundle Drives 3x Expected Reach</span><span class="t-zh">Micro-KOL 组合投放，覆盖超出预期3倍</span></h3>
+    <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:12px;"><span class="t-en">A beauty brand had a $5,000 budget. Instead of using one macro-KOL, the BD team identified 10 micro-KOLs (50K–100K) in Indonesia across different cities. Each posted an authentic TikTok review. Total reach exceeded 3x the estimate — and the comment quality was far higher than previous macro campaigns.</span><span class="t-zh">某美妆品牌预算5,000美元。BD团队没有选择一位Macro-KOL，而是在印尼不同城市筛选了10位 Micro-KOL（5–10万粉），每人发布了一条真实的TikTok测评。最终总覆盖超出预期3倍，评论质量也远高于以往的 Macro 活动。</span></p>
+    <details>
+      <summary style="font-size:13px;color:#4f46e5;font-weight:600;"><span class="t-en">▸ Key Lesson</span><span class="t-zh">▸ 核心教训</span></summary>
+      <div class="det-body">
+        <div class="success-box"><span class="t-en"><strong>Spread + authenticity beats single big name.</strong> In price-sensitive markets like Indonesia, audiences trust micro-KOLs who "look like them" more than celebrities. Same budget, better results. Always consider micro-KOL bundles when awareness is the goal.</span><span class="t-zh"><strong>分散投放 + 真实性 > 单一大名人。</strong>在印尼这样价格敏感的市场，受众对"看起来和自己一样"的 Micro-KOL 信任度高于明星。相同预算，更好效果。以品牌曝光为目标时，优先考虑 Micro-KOL 组合投放。</span></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="case-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <span class="badge badge-green">✅ <span class="t-en">WIN</span><span class="t-zh">成功案例</span></span>
+      <span style="font-size:12px;color:#888;"><span class="t-en">Finance App · India · YouTube</span><span class="t-zh">金融App · 印度 · YouTube</span></span>
+    </div>
+    <h3 style="font-size:15px;margin-bottom:8px;"><span class="t-en">Integration Deal Outperforms Dedicated at Half the Cost</span><span class="t-zh">Integration 广告以一半成本超越 Dedicated 效果</span></h3>
+    <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:12px;"><span class="t-en">A fintech app was considering a $8,000 dedicated YouTube video with a finance KOL. The BD team proposed a $3,500 Integration (Tap-in) deal in the same KOL's weekly market update video instead. The Integration outperformed the Dedicated on app downloads because the KOL's regular audience was primed for financial content — the placement felt native, not promotional.</span><span class="t-zh">某金融科技App原计划花8,000美元与金融KOL合作一条 Dedicated YouTube 视频。BD团队改提议以3,500美元在同一KOL的每周市场行情视频中做 Integration。Integration 在App下载量上的表现超越了 Dedicated，原因是该KOL的固定受众对金融内容已有心理准备——植入感觉原生，而非广告。</span></p>
+    <details>
+      <summary style="font-size:13px;color:#4f46e5;font-weight:600;"><span class="t-en">▸ Key Lesson</span><span class="t-zh">▸ 核心教训</span></summary>
+      <div class="det-body">
+        <div class="success-box"><span class="t-en"><strong>Content-audience fit beats format prestige.</strong> A shorter, well-placed Integration in the right video converts better than a full Dedicated video that audiences mentally skip. Always pitch Integration first for performance-focused campaigns.</span><span class="t-zh"><strong>内容与受众的契合度 > 形式的档次。</strong>在合适视频中精准嵌入的 Integration，转化效果优于受众会跳过的完整 Dedicated 视频。以效果为导向的活动，优先推荐 Integration 形式。</span></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="case-card fail">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <span class="badge badge-red">❌ <span class="t-en">FAIL</span><span class="t-zh">失败案例</span></span>
+      <span style="font-size:12px;color:#888;"><span class="t-en">Fashion Brand · Thailand · Instagram</span><span class="t-zh">时尚品牌 · 泰国 · Instagram</span></span>
+    </div>
+    <h3 style="font-size:15px;margin-bottom:8px;"><span class="t-en">Macro-KOL with Fake Followers — Campaign Wasted</span><span class="t-zh">Macro-KOL 疑似刷粉——活动白打水漂</span></h3>
+    <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:12px;"><span class="t-en">A fashion brand paid $4,000 to a Thai IG KOL with 400K followers. The KOL's content looked great. Post went live — 800 likes, 12 comments. ER was 0.2%. Post-campaign audit revealed 60% of the KOL's followers were from non-Thai accounts with no content. The BD team had not run a fake data check before confirming.</span><span class="t-zh">某时尚品牌向一位拥有40万粉丝的泰国 IG KOL支付了4,000美元。KOL 内容颜值很高。帖子上线后——800个点赞，12条评论，互动率0.2%。活动结束后核查发现，60%的粉丝来自无内容的非泰国账号。BD团队在确认前未做假数据核查。</span></p>
+    <details>
+      <summary style="font-size:13px;color:#4f46e5;font-weight:600;"><span class="t-en">▸ Key Lesson</span><span class="t-zh">▸ 核心教训</span></summary>
+      <div class="det-body">
+        <div class="danger-box"><span class="t-en"><strong>Follower count means nothing without verification.</strong> Never recommend a KOL without running at least a basic fake data check. A basic fake data check on KOLPlanet would have caught this. $4,000 loss was entirely avoidable. Fake data check is not optional — it's step 3 of the SOP for a reason.</span><span class="t-zh"><strong>粉丝数在核查前毫无意义。</strong>推荐KOL之前，至少要做一次基础假数据核查。KOLPlanet 的基础核查本可发现这个问题。4000美元的损失完全可以避免。假数据核查不是可选项——它是SOP第3步的原因正在于此。</span></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="case-card fail">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <span class="badge badge-red">❌ <span class="t-en">FAIL</span><span class="t-zh">失败案例</span></span>
+      <span style="font-size:12px;color:#888;"><span class="t-en">FMCG · Philippines · TikTok</span><span class="t-zh">快消品 · 菲律宾 · TikTok</span></span>
+    </div>
+    <h3 style="font-size:15px;margin-bottom:8px;"><span class="t-en">Missed Posting Deadline + No Backup Plan</span><span class="t-zh">错过发布截止日期 + 毫无备案</span></h3>
+    <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:12px;"><span class="t-en">A food brand's campaign was tied to a product launch date. The KOL confirmed verbally but nothing was in the contract. On launch day, the KOL posted 3 days late — after the launch window. The BD team had no backup KOL lined up. Campaign missed the launch momentum entirely.</span><span class="t-zh">某食品品牌活动与产品发布日期绑定。KOL 口头确认但合同中无任何约定。发布当天，KOL 晚了3天发帖——错过了发布窗口期。BD团队没有备选KOL。活动完全错失了发布势能。</span></p>
+    <details>
+      <summary style="font-size:13px;color:#4f46e5;font-weight:600;"><span class="t-en">▸ Key Lesson</span><span class="t-zh">▸ 核心教训</span></summary>
+      <div class="det-body">
+        <div class="danger-box"><span class="t-en"><strong>Verbal = nothing. Contract = everything.</strong> Always have the exact posting date written in the contract with a penalty clause. For time-sensitive campaigns, always shortlist 1–2 backup KOLs just in case. "Confirmed verbally" is not confirmed.</span><span class="t-zh"><strong>口头承诺 = 无效。合同 = 一切。</strong>务必将确切发布日期写入合同并附带违约条款。时效敏感型活动，始终备选1–2位替代KOL以防万一。"口头确认"不等于真正确认。</span></div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ===== KOLPLANET APP ===== -->
+<div id="page-kolplanet" class="page">
+  <div class="page-title">KOLPlanet App</div>
+  <div class="page-sub"><span class="t-en">Our in-house platform for managing KOL collaborations. Know when to invite KOLs, what they see, and how it helps you track payments.</span><span class="t-zh">我们自有的 KOL 合作管理平台。了解何时邀请 KOL 上平台、他们能看到什么内容，以及如何帮你追踪付款状态。</span></div>
+
+  <div style="background:#f0fdf4;border-radius:12px;padding:15px 18px;border-left:4px solid #16a34a;margin-bottom:10px;font-size:13px;line-height:1.75;">
+    <span class="t-en">📍 <strong>Current Status — Early Rollout:</strong> KOLPlanet App is actively being rolled out. We are still refining the onboarding experience, so for now only invite KOLs who meet the criteria below.<br><br>
+    🚀 <strong>What's coming:</strong> Once the platform is stable, we will drive wide-scale adoption across all SEA &amp; India markets. KOLPlanet will become the core tool for managing every KOL relationship — and BD will play a key role in making that happen. Stay tuned for updated guidelines and a dedicated push.</span>
+    <span class="t-zh">📍 <strong>当前状态 — 早期推广阶段：</strong>KOLPlanet App 正在积极落地推进中，平台体验仍在持续优化。目前请仅邀请满足以下条件的 KOL。<br><br>
+    🚀 <strong>未来规划：</strong>平台稳定后，我们将在东南亚及印度市场全面推广——KOLPlanet 将成为管理所有 KOL 合作的核心工具，BD 将在推广中担任关键角色。请关注后续更新指引与专项推广计划。</span>
+  </div>
+  <div class="warn-box"><span class="t-en"><strong>⚠️ For now:</strong> Do NOT mass-invite all KOLs. Only invite KOLs who meet the criteria below.</span><span class="t-zh"><strong>⚠️ 当前要求：</strong>请勿批量邀请所有 KOL，仅邀请满足以下条件的 KOL。</span></div>
+
+  <div class="section-title"><span class="t-en">When to Invite a KOL</span><span class="t-zh">何时邀请 KOL 上平台</span></div>
+  <div class="g2" style="margin-bottom:20px;">
+    <div class="success-box">
+      <span class="t-en"><strong>✅ Invite when:</strong></span><span class="t-zh"><strong>✅ 需要邀请时：</strong></span><br><br>
+      <span class="t-en">• Contract is signed and confirmed<br>
+      • You contacted the KOL directly (not through their agency or management)<br>
+      • KOL is comfortable with self-managing their campaign info</span><span class="t-zh">• 合同已签署确认<br>
+      • 你直接联系了KOL（非通过经纪公司或管理方）<br>
+      • KOL 可自行管理活动信息</span>
+    </div>
+    <div class="danger-box">
+      <span class="t-en"><strong>❌ Skip (do not invite) when:</strong></span><span class="t-zh"><strong>❌ 跳过（不邀请）时：</strong></span><br><br>
+      <span class="t-en">• KOL is represented by an agency or management company<br>
+      • Contract is not yet confirmed<br>
+      • KOL prefers to communicate only via their manager</span><span class="t-zh">• KOL 由经纪公司或管理公司代理<br>
+      • 合同尚未确认<br>
+      • KOL 倾向于只通过其经纪人沟通</span>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="t-en">How KOLs Join (Their Steps)</span><span class="t-zh">KOL 注册步骤（KOL 侧操作）</span></div>
+  <div class="kol-step"><div class="kol-num">1</div><div class="kol-body"><h5><span class="t-en">Search "KOLPlanet" in App Store / Google Play</span><span class="t-zh">在 App Store / Google Play 搜索『KOLPlanet』</span></h5><p><span class="t-en">Available on both iOS and Android. The app icon is the KOLPlanet logo.</span><span class="t-zh">iOS 和 Android 均可下载。应用图标为 KOLPlanet Logo。</span></p></div></div>
+  <div class="kol-step"><div class="kol-num">2</div><div class="kol-body"><h5><span class="t-en">Sign Up with Email</span><span class="t-zh">用邮箱注册账号</span></h5><p><span class="t-en">Create an account using their email. Password must include uppercase, lowercase, number, and special character.</span><span class="t-zh">使用邮箱创建账号。密码须包含大写字母、小写字母、数字和特殊字符。</span></p></div></div>
+  <div class="kol-step"><div class="kol-num">3</div><div class="kol-body"><h5><span class="t-en">Set Up Their Rate Card</span><span class="t-zh">设置报价表（Rate Card）</span></h5><p><span class="t-en">KOLs can set their standard rates per format (Reels, Story, Carousel, Live). This is their declared rate — it helps brands understand their pricing upfront.</span><span class="t-zh">KOL 可按内容形式（Reels、Story、Carousel、Live）设置标准报价，方便品牌提前了解定价基准。</span></p><p style="margin-top:5px;color:#888;"><span class="t-en">💡 BD note: If a KOL says "check my KOLPlanet rate card," that's their baseline. Still negotiate — those are aspirational, not fixed rates.</span><span class="t-zh">💡 BD 注意：若 KOL 说「看我的 KOLPlanet 报价表」，那只是参考基准，仍须谈判——报价表是意向价，不是固定价格。</span></p></div></div>
+  <div class="kol-step"><div class="kol-num">4</div><div class="kol-body"><h5><span class="t-en">Receive & View Campaign Brief</span><span class="t-zh">接收并查看项目简报</span></h5><p><span class="t-en">Once we send them a campaign, they can see the full brief in-app: deliverables, brand description, campaign goals, content guidelines, and timeline.</span><span class="t-zh">我们发送项目后，KOL 可在 App 内查看完整简报：交付物、品牌介绍、项目目标、内容规范和时间线。</span></p></div></div>
+  <div class="kol-step"><div class="kol-num">5</div><div class="kol-body"><h5><span class="t-en">Track Earnings & Payment Status</span><span class="t-zh">追踪收入与付款状态</span></h5><p><span class="t-en">KOLs can see their Earning, Validated, and Paid status for each campaign in the Earnings section. This reduces "when do I get paid?" messages to BD.</span><span class="t-zh">KOL 可在收入板块查看每个项目的「待入账 / 待核实 / 已支付」状态，减少向BD询问「什么时候付款」的消息。</span></p><p style="margin-top:5px;color:#888;"><span class="t-en">💡 After paying a KOL, remind them to check their KOLPlanet Earnings for status updates.</span><span class="t-zh">💡 付款处理完成后，提醒 KOL 在 App 收入板块查看最新付款状态。</span></p></div></div>
+
+  <div class="section-title" style="margin-top:20px;"><span class="t-en">What This Means for Your Workflow</span><span class="t-zh">对你的日常工作意味着什么</span></div>
+  <table>
+    <thead><tr><th><span class="t-en">KOLPlanet Feature</span><span class="t-zh">KOLPlanet 功能</span></th><th><span class="t-en">Benefit for BD</span><span class="t-zh">对BD的价值</span></th></tr></thead>
+    <tbody>
+      <tr><td><span class="t-en">Rate Card (set by KOL)</span><span class="t-zh">报价表（KOL 自设）</span></td><td><span class="t-en">Gives you a starting reference before rate negotiation. Don't skip negotiating just because you see their card.</span><span class="t-zh">谈判前的参考基准。看到报价表不代表不需要谈判。</span></td></tr>
+      <tr><td><span class="t-en">Campaign Brief visible to KOL</span><span class="t-zh">项目简报（KOL 可见）</span></td><td><span class="t-en">KOL always has access to the brief — fewer "what do I need to do?" questions. Reduces back-and-forth.</span><span class="t-zh">KOL 随时可查看简报，减少「我需要做什么？」类重复问题，降低沟通成本。</span></td></tr>
+      <tr><td><span class="t-en">Earnings / Payment tracking</span><span class="t-zh">收入 / 付款追踪</span></td><td><span class="t-en">KOL self-tracks payment status. Fewer payment-chasing messages to you. After payment is processed, remind KOL to check app.</span><span class="t-zh">KOL 自行追踪付款状态，减少催款消息。付款处理完成后，提醒 KOL 在 App 内查看。</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== FINAL QUIZ ===== -->
+<div id="page-quiz" class="page">
+  <div class="page-title"><span class="t-en">Final Quiz</span><span class="t-zh">知识测验</span></div>
+  <div class="page-sub"><span class="t-en"><span class="t-en">10 questions covering all modules. You need 7/10 to pass. Good luck!</span><span class="t-zh">10 道题，涵盖所有模块。7 分及以上为通过。加油！</span></span><span class="t-zh">10道题，涵盖所有模块。7分及以上为通过，加油！</span></div>
+
+  <div id="quizForm">
+    <div class="quiz-q">
+      <div class="q-text">Q1. A brand wants maximum reach on Instagram with content that can go viral beyond their target audience. Which format should you prioritize?</div>
+      <div class="q-opts" id="q1">
+        <label><input type="radio" name="q1" value="a"> Story — because it has a direct link sticker</label>
+        <label><input type="radio" name="q1" value="b"> Carousel — because it has the highest save rate</label>
+        <label><input type="radio" name="q1" value="c"> Reels — because it's algorithm-driven and reaches non-followers</label>
+        <label><input type="radio" name="q1" value="d"> Live — because it creates urgency</label>
+      </div>
+      <div class="q-review" id="r1"></div>
+    </div>
+    <div class="quiz-q">
+      <div class="q-text">Q2. You're pitching a YouTube campaign for a fintech app. The client wants good ROI and a natural feel. What format do you recommend first?</div>
+      <div class="q-opts" id="q2">
+        <label><input type="radio" name="q2" value="a"> YouTube Shorts — most affordable</label>
+        <label><input type="radio" name="q2" value="b"> Integration (Tap-in) — native, good ROI, 30-50% cheaper than Dedicated</label>
+        <label><input type="radio" name="q2" value="c"> Dedicated Video — maximum brand exposure</label>
+        <label><input type="radio" name="q2" value="d"> YouTube Live — real-time audience</label>
+      </div>
+      <div class="q-review" id="r2"></div>
+    </div>
+    <div class="quiz-q">
+      <div class="q-text">Q3. In TikTok, what is the 小黄车 (Yellow Cart)?</div>
+      <div class="q-opts" id="q3">
+        <label><input type="radio" name="q3" value="a"> A TikTok ad format for food delivery brands</label>
+        <label><input type="radio" name="q3" value="b"> An in-app shopping feature that lets viewers buy products without leaving TikTok</label>
+        <label><input type="radio" name="q3" value="c"> TikTok's internal analytics dashboard</label>
+        <label><input type="radio" name="q3" value="d"> A campaign type only available in China</label>
+      </div>
+      <div class="q-review" id="r3"></div>
+    </div>
+    <div class="quiz-q">
+      <div class="q-text">Q4. A KOL with 300K followers on Instagram has an average ER of 0.3%. What should you do?</div>
+      <div class="q-opts" id="q4">
+        <label><input type="radio" name="q4" value="a"> Proceed — large follower count outweighs low ER</label>
+        <label><input type="radio" name="q4" value="b"> Proceed only if their content looks good visually</label>
+        <label><input type="radio" name="q4" value="c"> Flag as suspicious — run a fake data check on KOLPlanet before recommending</label>
+        <label><input type="radio" name="q4" value="d"> Offer them a lower rate and proceed</label>
+      </div>
+      <div class="q-review" id="r4"></div>
+    </div>
+    <div class="quiz-q">
+      <div class="q-text">Q5. A KOL verbally confirms they'll post on the campaign launch date. What's your next step?</div>
+      <div class="q-opts" id="q5">
+        <label><input type="radio" name="q5" value="a"> Trust them — they're a professional</label>
+        <label><input type="radio" name="q5" value="b"> Send a reminder the day before</label>
+        <label><input type="radio" name="q5" value="c"> Ensure the exact posting date is written in the contract before proceeding</label>
+        <label><input type="radio" name="q5" value="d"> Ask them to post a few days early just in case</label>
+      </div>
+      <div class="q-review" id="r5"></div>
+    </div>
+    <div class="quiz-q">
+      <div class="q-text">Q6. When should you invite a KOL to the KOLPlanet app?</div>
+      <div class="q-opts" id="q6">
+        <label><input type="radio" name="q6" value="a"> As soon as you identify them as a good fit</label>
+        <label><input type="radio" name="q6" value="b"> After first contact, to show them the platform</label>
+        <label><input type="radio" name="q6" value="c"> Only after the contract is signed AND the KOL is directly managed (not agency-managed)</label>
+        <label><input type="radio" name="q6" value="d"> Never — the app is only for our internal team</label>
+      </div>
+      <div class="q-review" id="r6"></div>
+    </div>
+    <div class="quiz-q">
+      <div class="q-text">Q7. A KOL quotes $2,000 for a Reel. Your budget is $1,400. What's your first move?</div>
+      <div class="q-opts" id="q7">
+        <label><input type="radio" name="q7" value="a"> Accept — it's close enough</label>
+        <label><input type="radio" name="q7" value="b"> Counter with a range like "$1,200–1,500" and reference similar KOL rates you've worked with</label>
+        <label><input type="radio" name="q7" value="c"> Walk away immediately — over budget</label>
+        <label><input type="radio" name="q7" value="d"> Tell them your exact maximum budget of $1,400</label>
+      </div>
+      <div class="q-review" id="r7"></div>
+    </div>
+    <div class="quiz-q">
+      <div class="q-text">Q8. For which SEA market is TikTok Shop / Live Commerce most developed and important?</div>
+      <div class="q-opts" id="q8">
+        <label><input type="radio" name="q8" value="a"> Singapore and Malaysia</label>
+        <label><input type="radio" name="q8" value="b"> Thailand, Indonesia, and Vietnam</label>
+        <label><input type="radio" name="q8" value="c"> Philippines and India</label>
+        <label><input type="radio" name="q8" value="d"> India only</label>
+      </div>
+      <div class="q-review" id="r8"></div>
+    </div>
+    <div class="quiz-q">
+      <div class="q-text">Q9. When reviewing the 8-point brief checklist, what does "KPIs" refer to?</div>
+      <div class="q-opts" id="q9">
+        <label><input type="radio" name="q9" value="a"> Key Personality Indicators — the KOL's personality traits</label>
+        <label><input type="radio" name="q9" value="b"> Key Payment Instructions — how to pay the KOL</label>
+        <label><input type="radio" name="q9" value="c"> Key Performance Indicators — the success metrics the client cares about (views, reach, clicks, etc.)</label>
+        <label><input type="radio" name="q9" value="d"> Key Platform Integrations — which apps to connect</label>
+      </div>
+      <div class="q-review" id="r9"></div>
+    </div>
+    <div class="quiz-q">
+      <div class="q-text">Q10. An Indonesian KOL adds a 10% withholding tax on top of their quoted fee. What's the correct BD approach?</div>
+      <div class="q-opts" id="q10">
+        <label><input type="radio" name="q10" value="a"> Just pay the extra tax — it's legally required</label>
+        <label><input type="radio" name="q10" value="b"> Refuse and find another KOL immediately</label>
+        <label><input type="radio" name="q10" value="c"> First try to negotiate an all-inclusive rate; if unresolved, escalate to Finance before signing</label>
+        <label><input type="radio" name="q10" value="d"> Ask the client to absorb the tax</label>
+      </div>
+      <div class="q-review" id="r10"></div>
+    </div>
+    <div style="text-align:center;margin-top:20px;">
+      <button class="btn btn-primary" onclick="submitQuiz()"><span class="t-en">Submit & See My Score</span><span class="t-zh">提交并查看得分</span></button>
+    </div>
+  </div>
+
+  <div class="quiz-result" id="quizResult">
+    <div class="score-circle" id="scoreCircle"></div>
+    <h2 id="scoreMsg" style="font-size:18px;margin-bottom:8px;"></h2>
+    <p id="scoreDetail" style="font-size:13px;color:#666;margin-bottom:20px;"></p>
+    <button class="btn btn-outline" onclick="retakeQuiz()"><span class="t-en">Retake Quiz</span><span class="t-zh">重新测验</span></button>
+  </div>
+</div>
+<script>
+var curLang='en';
+var sopDone=new Set();
+var sopTotal=17;
+var scAnswered={};
+var quizAnswers={};
+var quizSubmitted=false;
+
+var answers={q1:'c',q2:'b',q3:'b',q4:'c',q5:'c',q6:'c',q7:'b',q8:'b',q9:'c',q10:'c'};
+var explanations={
+  q1:['Reels is IG\'s algorithm-driven format — it distributes content to non-followers via the Explore page and Reels feed, making it the best for reach and virality.','Reels是IG算法驱动的内容形式，可通过探索页面触达非粉丝，是覆盖和病毒传播的最佳选择。'],
+  q2:['Integration (Tap-in) is 30–50% cheaper than Dedicated and feels native in the creator\'s content — ideal for fintech where audience trust matters.','Integration（嵌入广告）比Dedicated便宜30–50%，融入创作者内容更显自然，适合需要受众信任的金融科技品牌。'],
+  q3:['小黄车 is TikTok\'s in-app shopping cart that lets viewers purchase products directly from a video or Live stream without leaving the app.','小黄车是TikTok的应用内购物车，让观众直接在视频或直播中下单，无需离开TikTok。'],
+  q4:['An ER of 0.3% for a 300K account is far below healthy ranges (1–5%). This is a major red flag for fake/bought followers — always verify with tools before recommending.','300K账号的互动率0.3%远低于正常范围（1–5%），这是刷粉的重要预警信号，推荐前务必用工具核查。'],
+  q5:['Verbal confirmations mean nothing if things go wrong. Always put the exact posting date in the signed contract — this protects both you and the campaign.','口头确认不等于正式承诺。务必将确切发布日期写入签约合同，这是保护你和项目的唯一方式。'],
+  q6:['KOLPlanet is for confirmed, directly-managed KOLs only. Inviting too early or inviting agency-managed KOLs creates confusion and undermines the rollout strategy.','KOLPlanet仅限已确认合作且直接沟通的KOL。过早邀请或邀请经纪公司管理的KOL会造成混乱，影响平台推广策略。'],
+  q7:['Counter with a range below your budget and reference market rates. Never reveal your exact ceiling — it immediately becomes their floor.','用低于预算的区间反报价，并引用市场行情。不要透露你的最高预算——那会立刻变成他们的底线。'],
+  q8:['Thailand, Indonesia, and Vietnam have the most developed TikTok Shop ecosystems in SEA. Live commerce is a major sales channel in these markets.','泰国、印尼和越南是东南亚TikTok Shop最成熟的市场，直播带货是这些市场的重要销售渠道。'],
+  q9:['KPIs = Key Performance Indicators. These are the measurable metrics the client cares about — could be views, reach, clicks, downloads, conversions, etc.','KPIs = 关键绩效指标，是客户关心的可量化指标，包括观看量、覆盖、点击、下载、转化等。'],
+  q10:['Try to negotiate an all-inclusive rate first — most Indonesian KOLs will agree. If the tax issue persists, escalate to Finance before committing. Never just absorb unknown costs.','先尝试协商含税全价——大多数印尼KOL会同意。如问题持续，在签约前上报财务。切勿自行吸收不明成本。']
+};
+
+var scConfig={
+  sc1:{correct:'b',
+    cor:'Correct! Always give context before jumping to budget. Share the brand and campaign overview first — if the brief is strong, the KOL will engage better. Revealing budget too early sets a ceiling before you even negotiate.',
+    wrg:'Not quite. B is better. Sharing campaign context first builds interest and lets you read how excited they are before numbers come up. If you ask for their rate card before giving any context, you\'ll often get a high quote with no rapport built.'},
+  sc2:{correct:'b',
+    cor:'Correct! Vague timelines kill campaigns. Always pin down the exact date, explain the business reason, and get written confirmation. A KOL who can\'t commit to a specific date is a risk.',
+    wrg:'Not quite. B is the right move. "When I have time" is not a commitment. Campaigns with launch-date dependencies need firm, written timeline confirmations — not verbal approximations.'},
+  sc3:{correct:'a',
+    cor:'Correct! Your first job is to document and escalate. Don\'t react publicly, don\'t have the KOL delete comments without guidance. Negative comment situations need client and manager visibility — fast.',
+    wrg:'Not quite. A is correct. Never instruct a KOL to delete comments without manager/client approval — it can make things worse. And replying yourself as a third party defending the brand rarely ends well. Screenshot, escalate, then act.'}
+};
+
+function setLang(l){
+  curLang=l;
+  document.body.className=document.body.className.replace(/lang-\w*/g,'').trim()+(l==='zh'?' lang-zh':'');
+  document.getElementById('btn-en').className='lang-btn'+(l==='en'?' active':'');
+  document.getElementById('btn-zh').className='lang-btn'+(l==='zh'?' active':'');
+}
+
+function showPage(id, keepSearch){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('active'));
+  var pg=document.getElementById('page-'+id);
+  if(pg)pg.classList.add('active');
+  var ln=document.querySelector('.nav a[data-page="'+id+'"]');
+  if(ln)ln.classList.add('active');
+  if(!keepSearch)clearSearch();
+  window.scrollTo(0,0);
+}
+
+function showPTab(id){
+  document.querySelectorAll('.ptab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+  var tc=document.getElementById('ptab-'+id);
+  if(tc)tc.classList.add('active');
+  var tabBtn=document.querySelector('.ptab[onclick*="\''+id+'\'"]');
+  if(tabBtn)tabBtn.classList.add('active');
+}
+
+function togSop(n){
+  var item=document.getElementById('sop'+n);
+  var btn=item.querySelector('.chk-btn');
+  if(sopDone.has(n)){sopDone.delete(n);item.classList.remove('done');btn.className='chk-btn';btn.textContent='○';}
+  else{sopDone.add(n);item.classList.add('done');btn.className='chk-btn done';btn.textContent='✓';}
+  var pct=Math.round(sopDone.size/sopTotal*100);
+  document.getElementById('sopBar').style.width=pct+'%';
+  var isZh=document.body.classList.contains('lang-zh');
+  var done100=pct===100?(isZh?' — 全部完成！🎉':' — All done! 🎉'):'';
+  document.getElementById('sopLabel').textContent=(isZh?('进度：'+sopDone.size+' / '+sopTotal):('Progress: '+sopDone.size+' / '+sopTotal))+done100;
+}
+
+function togExtra(n){
+  var el=document.getElementById('extra'+n);
+  var tog=el.previousElementSibling;
+  if(el.classList.contains('open')){el.classList.remove('open');tog.textContent='▸ '+tog.textContent.slice(2);}
+  else{el.classList.add('open');tog.textContent='▾ '+tog.textContent.slice(2);}
+}
+
+function doSc(scId,chosen,btn){
+  if(scAnswered[scId])return;
+  scAnswered[scId]=true;
+  var cfg=scConfig[scId];
+  var opts=document.querySelectorAll('#'+scId+'-opts .sc-opt');
+  opts.forEach(function(o){o.disabled=true;o.style.cursor='default';});
+  btn.style.background=chosen===cfg.correct?'#dcfce7':'#fef2f2';
+  btn.style.borderColor=chosen===cfg.correct?'#16a34a':'#dc2626';
+  var fb=document.getElementById(scId+'-fb');
+  fb.style.display='block';
+  fb.className='sc-fb '+(chosen===cfg.correct?'correct':'wrong');
+  fb.textContent=(chosen===cfg.correct?'✅ ':'❌ ')+(chosen===cfg.correct?cfg.cor:cfg.wrg);
+}
+
+function selQ(qId,val){
+  if(quizSubmitted)return;
+  quizAnswers[qId]=val;
+}
+
+function submitQuiz(){
+  var qs=['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10'];
+  var missing=qs.filter(function(q){return !quizAnswers[q]&&!document.querySelector('input[name="'+q+'"]:checked');});
+  qs.forEach(function(q){var c=document.querySelector('input[name="'+q+'"]:checked');if(c)quizAnswers[q]=c.value;});
+  var unanswered=qs.filter(function(q){return !quizAnswers[q];});
+  if(unanswered.length>0){alert('Please answer all '+unanswered.length+' remaining question(s) before submitting.');return;}
+  quizSubmitted=true;
+  var score=0;
+  qs.forEach(function(q){
+    var rv=document.getElementById('r'+q.slice(1));
+    var correct=answers[q];
+    var chosen=quizAnswers[q];
+    var isCorrect=chosen===correct;
+    if(isCorrect)score++;
+    rv.style.display='block';
+    rv.className='q-review '+(isCorrect?'ok':'err');
+    var expText=explanations[q][curLang==='zh'?1:0];
+    rv.textContent=(isCorrect?'✅ Correct — ':'❌ The correct answer is ('+correct.toUpperCase()+') — ')+expText;
+    document.querySelectorAll('#q'+q.slice(1)+' label').forEach(function(lb){
+      var inp=lb.querySelector('input');
+      if(inp&&inp.value===correct)lb.style.background='#dcfce7';
+      else if(inp&&inp.value===chosen&&!isCorrect)lb.style.background='#fef2f2';
+    });
+  });
+  var passed=score>=7;
+  document.getElementById('scoreCircle').textContent=score+'/10';
+  document.getElementById('scoreCircle').style.background=passed?'linear-gradient(135deg,#16a34a,#48bb78)':'linear-gradient(135deg,#dc2626,#f87171)';
+  document.getElementById('scoreMsg').textContent=passed?'Passed! 🎉':'Not quite — try again';
+  document.getElementById('scoreDetail').textContent=passed?'Great work! You scored '+score+'/10. You\'re ready to run campaigns.':'You scored '+score+'/10. Review the modules you missed and try again.';
+  document.getElementById('quizResult').style.display='block';
+  document.getElementById('quizResult').scrollIntoView({behavior:'smooth'});
+}
+
+function retakeQuiz(){
+  quizAnswers={};quizSubmitted=false;
+  document.querySelectorAll('.q-review').forEach(function(r){r.style.display='none';});
+  document.querySelectorAll('input[type=radio]').forEach(function(r){r.checked=false;});
+  document.querySelectorAll('#q1 label,#q2 label,#q3 label,#q4 label,#q5 label,#q6 label,#q7 label,#q8 label,#q9 label,#q10 label').forEach(function(l){l.style.background='';});
+  document.getElementById('quizResult').style.display='none';
+  window.scrollTo(0,0);
+}
+
+function copyMsg(btn){
+  var bubble=btn.parentElement;
+  var text=bubble.textContent.replace('Copy','').trim();
+  navigator.clipboard.writeText(text).then(function(){
+    btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},2000);
+  });
+}
+
+// ===== SEARCH =====
+var origHTML={};
+// ---- SEARCH (fuzzy-friendly: splits query into words, matches all) ----
+var searchActive=false;
+var searchMarks=[];var searchMarkIdx=-1;
+
+function goToMark(idx){
+  if(!searchMarks.length)return;
+  searchMarks.forEach(function(m){m.classList.remove('current');});
+  searchMarkIdx=(idx%searchMarks.length+searchMarks.length)%searchMarks.length;
+  var mark=searchMarks[searchMarkIdx];
+  mark.classList.add('current');
+  var page=mark.closest('.page');
+  if(page){showPage(page.id.replace('page-',''),true);}
+  setTimeout(function(){mark.scrollIntoView({behavior:'smooth',block:'center'});},60);
+  document.getElementById('searchNavLabel').textContent=(searchMarkIdx+1)+' / '+searchMarks.length;
+}
+function prevMatch(){goToMark(searchMarkIdx-1);}
+function nextMatch(){goToMark(searchMarkIdx+1);}
+function updateSearchNav(){
+  searchMarks=Array.from(document.querySelectorAll('mark.hl'));
+  var nav=document.getElementById('searchNav');
+  if(searchMarks.length>0){
+    nav.style.display='flex';
+    goToMark(0);
+  } else {
+    nav.style.display='none';
+  }
+}
+
+function doSearch(q){
+  q=q.trim();
+  var clearBtn=document.getElementById('searchClear');
+  var countEl=document.getElementById('searchCount');
+  var banner=document.getElementById('searchBanner');
+  if(!q){clearSearch();return;}
+  clearBtn.style.display='block';
+  restoreHighlights();
+  // Split into words so "fake data" matches both words independently
+  var words=q.toLowerCase().split(/\s+/).filter(Boolean);
+  var pageNames={welcome:'Welcome',platform:'Platform Guide',workflow:'BD Workflow',outreach:'Outreach',nego:'Price Negotiation',markets:'Markets',fakedata:'Fake Data',cases:'Case Studies',kolplanet:'KOLPlanet',quiz:'Quiz'};
+  var totalMatches=0;
+  var matchPages=[];
+  document.querySelectorAll('.page').forEach(function(pg){
+    var id=pg.id.replace('page-','');
+    var txt=pg.innerText.toLowerCase();
+    // fuzzy: all words must appear somewhere in the page
+    var allMatch=words.every(function(w){return txt.includes(w);});
+    if(allMatch){
+      var count=highlightInEl(pg,words);
+      totalMatches+=count;
+      matchPages.push(id);
+    }
+  });
+  searchActive=true;
+  countEl.style.display='block';
+  if(totalMatches>0){
+    countEl.textContent=totalMatches+' match'+(totalMatches>1?'es':'');
+    banner.style.display='block';
+    var labels=matchPages.map(function(p){return pageNames[p]||p;}).join(' · ');
+    banner.textContent='🔍 '+totalMatches+' match'+(totalMatches>1?'es':'')+' found in: '+labels;
+    setTimeout(function(){updateSearchNav();},80);
+  } else {
+    countEl.textContent='No results for "'+q+'"';
+    banner.style.display='none';
+  }
+}
+
+function highlightInEl(el,words){
+  var count=0;
+  var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null,false);
+  var nodes=[];var node;
+  while(node=walker.nextNode()){
+    if(node.parentNode&&node.parentNode.nodeName!=='SCRIPT'&&node.parentNode.nodeName!=='STYLE'&&node.textContent.trim())nodes.push(node);
+  }
+  nodes.forEach(function(n){
+    var orig=n.textContent;
+    var highlighted=orig;
+    var matched=false;
+    words.forEach(function(w){
+      var re=new RegExp('('+w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+      var prev=highlighted;
+      highlighted=highlighted.replace(re,'<mark class="hl">$1</mark>');
+      if(highlighted!==prev)matched=true;
+    });
+    if(matched){
+      count+=(highlighted.match(/<mark/g)||[]).length;
+      var wrap=document.createElement('span');
+      wrap.className='hl-wrap';
+      wrap.innerHTML=highlighted;
+      n.parentNode.replaceChild(wrap,n);
+    }
+  });
+  return count;
+}
+
+function restoreHighlights(){
+  document.querySelectorAll('.hl-wrap').forEach(function(s){
+    var frag=document.createDocumentFragment();
+    while(s.firstChild)frag.appendChild(s.firstChild);
+    if(s.parentNode)s.parentNode.replaceChild(frag,s);
+  });
+  document.querySelectorAll('mark.hl').forEach(function(m){
+    if(m.parentNode)m.replaceWith(document.createTextNode(m.textContent));
+  });
+  document.normalize&&document.normalize();
+  searchActive=false;
+}
+
+function clearSearch(){
+  restoreHighlights();
+  document.getElementById('searchInput').value='';
+  document.getElementById('searchClear').style.display='none';
+  document.getElementById('searchCount').style.display='none';
+  document.getElementById('searchBanner').style.display='none';
+  document.getElementById('searchNav').style.display='none';
+  searchMarks=[];searchMarkIdx=-1;
+}
+</script>
+</main>
+</body></html>
