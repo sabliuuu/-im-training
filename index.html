@@ -1,8 +1,8 @@
 <!DOCTYPE html><html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Influencer Marketing Training Hub</title>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>MOCA IM Training</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Inter',sans-serif;background:#f1f2f6;color:#18181b;display:flex;min-height:100vh;font-size:14px;}
+body{font-family:'Microsoft YaHei','PingFang SC','Noto Sans SC',Arial,sans-serif;background:#f4f7f0;color:#1F2329;display:flex;min-height:100vh;font-size:14px;}
 /* LANG */
 .t-zh{display:none;}
 body.lang-zh .t-en{display:none;}
@@ -10,10 +10,10 @@ body.lang-zh .t-zh{display:block;}
 body.lang-zh span.t-zh{display:inline;}
 body.lang-zh span.t-en{display:none;}
 /* SIDEBAR */
-.sidebar{width:230px;min-height:100vh;background:linear-gradient(180deg,#1e1b4b 0%,#13122a 100%);position:fixed;top:0;left:0;padding:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto;}
-.sidebar-logo{padding:20px 20px 15px;border-bottom:1px solid rgba(255,255,255,0.1);}
-.sidebar-logo h2{color:#fff;font-size:15.5px;font-weight:800;letter-spacing:-0.4px;}
-.sidebar-logo p{color:rgba(255,255,255,0.45);font-size:11px;margin-top:3px;}
+.sidebar{width:230px;min-height:100vh;background:#1B3A1F;position:fixed;top:0;left:0;padding:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto;}
+.sidebar-logo{padding:24px 20px 18px;border-bottom:1px solid rgba(255,255,255,0.1);}
+.sidebar-logo .brand{font-size:22px;font-weight:800;color:#a8d878;letter-spacing:2px;}
+.sidebar-logo .subtitle{font-size:11px;color:#6a9c6a;margin-top:4px;line-height:1.4;}
 .search-bar{padding:10px 14px 0;}
 .search-wrap{position:relative;}
 .search-wrap input{width:100%;padding:7px 28px 7px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.09);color:#fff;font-size:12px;outline:none;}
@@ -24,62 +24,62 @@ body.lang-zh span.t-en{display:none;}
 .snav-btn{background:rgba(255,255,255,0.13);border:none;color:rgba(255,255,255,0.85);border-radius:5px;width:22px;height:22px;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;padding:0;transition:background 0.15s;flex-shrink:0;}
 .snav-btn:hover{background:rgba(255,255,255,0.28);}
 #searchNavLabel{color:rgba(255,255,255,0.7);font-size:11px;min-width:38px;text-align:center;}
-mark.hl.current{background:#f97316;color:#fff;border-radius:2px;outline:2px solid rgba(249,115,22,0.4);}
+mark.hl.current{background:#619239;color:#fff;border-radius:2px;outline:2px solid rgba(97,146,57,0.4);}
 .nav{flex:1;padding:8px 0;}
-.nav a{display:flex;align-items:center;gap:9px;padding:10px 20px;color:rgba(255,255,255,0.58);text-decoration:none;font-size:12.5px;cursor:pointer;transition:all 0.18s;border-left:3px solid transparent;}
-.nav a:hover{background:rgba(255,255,255,0.07);color:#fff;}
-.nav a.active{background:rgba(79,70,229,0.22);color:#fff;border-left-color:#818cf8;}
+.nav a{display:flex;align-items:center;gap:9px;padding:10px 20px;color:#b0d090;text-decoration:none;font-size:12.5px;cursor:pointer;transition:all 0.18s;border-left:3px solid transparent;}
+.nav a:hover{background:rgba(97,146,57,0.18);color:#d4eab8;}
+.nav a.active{background:rgba(97,146,57,0.25);color:#fff;border-left-color:#7dc247;}
 .nav .ic{width:18px;text-align:center;font-size:14px;}
 .lang-bar{display:flex;gap:6px;padding:12px 14px;border-top:1px solid rgba(255,255,255,0.08);}
 .lang-btn{flex:1;padding:6px;border:1px solid rgba(255,255,255,0.18);background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6);border-radius:7px;cursor:pointer;font-size:12px;font-weight:500;transition:all 0.18s;}
-.lang-btn.active{background:#4f46e5;border-color:#4f46e5;color:#fff;font-weight:700;}
+.lang-btn.active{background:#619239;border-color:#619239;color:#fff;font-weight:700;}
 /* MAIN */
 .main{margin-left:230px;flex:1;padding:28px 32px;max-width:calc(100vw - 230px);}
 .page{display:none;animation:fadeIn 0.2s ease;}
 .page.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-.page-title{font-size:26px;font-weight:800;color:#18181b;margin-bottom:8px;letter-spacing:-0.5px;padding-bottom:12px;border-bottom:1px solid #e4e4e7;}
+.page-title{font-size:26px;font-weight:800;color:#1B3A1F;margin-bottom:8px;letter-spacing:-0.5px;padding-bottom:12px;border-bottom:1px solid #d8edc0;}
 .page-sub{color:#71717a;font-size:13.5px;margin-bottom:28px;line-height:1.7;margin-top:10px;}
 /* SEARCH HIGHLIGHT */
-mark.hl{background:#ffe066;color:#1a1a2e;border-radius:2px;padding:0 1px;}
-.search-banner{background:#1e1b4b;color:#fff;border-radius:10px;padding:10px 16px;margin-bottom:18px;font-size:13px;display:none;box-shadow:0 2px 8px rgba(30,27,75,0.2);}
+mark.hl{background:#ffe066;color:#1B3A1F;border-radius:2px;padding:0 1px;}
+.search-banner{background:#1B3A1F;color:#fff;border-radius:10px;padding:10px 16px;margin-bottom:18px;font-size:13px;display:none;box-shadow:0 2px 8px rgba(27,58,31,0.2);}
 /* CARDS */
-.card{background:#fff;border-radius:10px;padding:22px;box-shadow:0 1px 3px rgba(0,0,0,0.06);border:1px solid #e4e4e7;margin-bottom:16px;}
+.card{background:#fff;border-radius:12px;padding:22px;box-shadow:0 2px 8px rgba(0,0,0,0.07);border:1px solid #d8edc0;margin-bottom:16px;}
 .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
 @media(max-width:960px){.g4{grid-template-columns:repeat(2,1fr);}.g3{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr;}}
 /* WELCOME CARDS */
-.w-card{background:#fff;border-radius:10px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,0.06);cursor:pointer;transition:all 0.18s;border:1px solid #e4e4e7;}
-.w-card:hover{border-color:#4f46e5;transform:translateY(-2px);box-shadow:0 4px 16px rgba(79,70,229,0.1);}
-.w-card .wi{margin-bottom:12px;color:#4f46e5;display:flex;align-items:center;}
-.w-card h3{font-size:13.5px;font-weight:700;margin-bottom:5px;color:#18181b;}
+.w-card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,0.07);cursor:pointer;transition:all 0.18s;border:1px solid #d8edc0;}
+.w-card:hover{border-color:#619239;transform:translateY(-2px);box-shadow:0 4px 16px rgba(97,146,57,0.18);}
+.w-card .wi{margin-bottom:12px;color:#619239;display:flex;align-items:center;}
+.w-card h3{font-size:13.5px;font-weight:700;margin-bottom:5px;color:#1B3A1F;}
 .w-card p{font-size:12px;color:#71717a;line-height:1.55;}
 /* PLATFORM TABS */
 .ptab-bar{display:flex;gap:6px;margin-bottom:20px;border-bottom:2px solid #eee;padding-bottom:0;}
 .ptab{padding:9px 20px;border-radius:8px 8px 0 0;cursor:pointer;font-weight:600;font-size:13px;color:#666;background:#f4f5f7;border:2px solid transparent;border-bottom:none;margin-bottom:-2px;transition:all 0.18s;}
-.ptab.active{color:#4f46e5;background:#fff;border-color:#e4e4e7;border-bottom-color:#fff;font-weight:700;}
+.ptab.active{color:#619239;background:#fff;border-color:#d8edc0;border-bottom-color:#fff;font-weight:700;}
 .ptab-content{display:none;}
 .ptab-content.active{display:block;}
 /* FORMAT CARDS */
-.fmt-card{background:#fff;border-radius:10px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,0.06);border:1px solid #e4e4e7;border-left:3px solid #4f46e5;}
-.fmt-card h4{font-size:14px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;color:#18181b;}
+.fmt-card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,0.07);border:1px solid #d8edc0;border-left:3px solid #619239;}
+.fmt-card h4{font-size:14px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;color:#1B3A1F;}
 .fmt-tags{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0 10px;}
 .tag{padding:3px 9px;border-radius:4px;font-size:11px;font-weight:500;}
-.tag-blue{background:#f1f2f6;color:#52525b;}
-.tag-green{background:#f1f2f6;color:#52525b;}
-.tag-orange{background:#fef3c7;color:#92400e;}
-.tag-purple{background:#f1f2f6;color:#52525b;}
-.tag-red{background:#f1f2f6;color:#52525b;}
+.tag-blue{background:#e3f2fd;color:#1565c0;}
+.tag-green{background:#e8f3dc;color:#2E7D32;}
+.tag-orange{background:#fff3e0;color:#e65100;}
+.tag-purple{background:#f3e5f5;color:#6a1b9a;}
+.tag-red{background:#ffebee;color:#c62828;}
 .fmt-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
 .fmt-row label{font-size:10px;color:#888;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:3px;}
 .fmt-row p{font-size:12.5px;color:#333;line-height:1.5;}
 /* INFO BOXES — border-only, no fill */
-.tip-box{background:#fff;border-radius:8px;padding:13px 16px;border-left:3px solid #4f46e5;border:1px solid #e4e4e7;border-left:3px solid #4f46e5;font-size:13px;margin:12px 0;line-height:1.7;color:#374151;}
-.warn-box{background:#fff;border-radius:8px;padding:13px 16px;border:1px solid #e4e4e7;border-left:3px solid #d97706;font-size:13px;margin:12px 0;line-height:1.7;color:#374151;}
-.danger-box{background:#fff;border-radius:8px;padding:13px 16px;border:1px solid #e4e4e7;border-left:3px solid #dc2626;font-size:13px;margin:12px 0;line-height:1.7;color:#374151;}
-.success-box{background:#fff;border-radius:8px;padding:13px 16px;border:1px solid #e4e4e7;border-left:3px solid #16a34a;font-size:13px;margin:12px 0;line-height:1.7;color:#374151;}
+.tip-box{background:#f0f8e8;border-radius:0 8px 8px 0;padding:13px 16px;border-left:4px solid #619239;font-size:13px;margin:12px 0;line-height:1.7;color:#2d4d1a;}
+.warn-box{background:#fffbe6;border-radius:0 8px 8px 0;padding:13px 16px;border-left:4px solid #f0a500;font-size:13px;margin:12px 0;line-height:1.7;color:#5a4000;}
+.danger-box{background:#fff0f0;border-radius:0 8px 8px 0;padding:13px 16px;border-left:4px solid #e53935;font-size:13px;margin:12px 0;line-height:1.7;color:#5a0a0a;}
+.success-box{background:#f0f8e8;border-radius:0 8px 8px 0;padding:13px 16px;border-left:4px solid #16a34a;font-size:13px;margin:12px 0;line-height:1.7;color:#2d4d1a;}
 /* ACCORDION */
 details{background:#fff;border-radius:12px;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 3px 10px rgba(0,0,0,0.05);overflow:hidden;}
 details summary{padding:13px 16px;cursor:pointer;font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:10px;list-style:none;user-select:none;}
@@ -100,28 +100,28 @@ details .det-body{padding:4px 16px 16px;}
 .sop-desc{font-size:12px;color:#666;line-height:1.5;}
 .sop-extra{font-size:12px;color:#555;margin-top:6px;background:#f8f9fa;border-radius:6px;padding:8px 10px;display:none;}
 .sop-extra.open{display:block;}
-.sop-toggle{font-size:11px;color:#4f46e5;cursor:pointer;margin-top:4px;display:inline-block;}
-.prog-wrap{background:#e4e4e7;border-radius:20px;height:6px;margin-bottom:5px;}
-.prog-bar{background:linear-gradient(90deg,#4f46e5,#06b6d4);height:100%;border-radius:20px;transition:width 0.5s ease;width:0%;box-shadow:0 0 8px rgba(79,70,229,0.4);}
+.sop-toggle{font-size:11px;color:#619239;cursor:pointer;margin-top:4px;display:inline-block;}
+.prog-wrap{background:#d8edc0;border-radius:20px;height:6px;margin-bottom:5px;}
+.prog-bar{background:linear-gradient(90deg,#619239,#2E7D32);height:100%;border-radius:20px;transition:width 0.5s ease;width:0%;box-shadow:0 0 8px rgba(97,146,57,0.4);}
 .prog-label{font-size:12px;color:#71717a;margin-bottom:7px;font-weight:500;}
 /* MESSAGES */
-.msg-bubble{background:#eef2ff;border-radius:12px;padding:15px 17px;margin:8px 0;border-left:3px solid #4f46e5;font-size:13px;line-height:1.8;white-space:pre-wrap;position:relative;box-shadow:0 1px 2px rgba(0,0,0,0.04);}
-.copy-btn{background:#4f46e5;color:#fff;border:none;padding:4px 12px;border-radius:20px;font-size:11px;cursor:pointer;float:right;margin-top:-3px;font-weight:600;letter-spacing:0.2px;}
-.copy-btn:hover{background:#4338ca;}
+.msg-bubble{background:#f0f8e8;border-radius:12px;padding:15px 17px;margin:8px 0;border-left:3px solid #619239;font-size:13px;line-height:1.8;white-space:pre-wrap;position:relative;box-shadow:0 1px 2px rgba(0,0,0,0.04);}
+.copy-btn{background:#619239;color:#fff;border:none;padding:4px 12px;border-radius:20px;font-size:11px;cursor:pointer;float:right;margin-top:-3px;font-weight:600;letter-spacing:0.2px;}
+.copy-btn:hover{background:#4a7a2e;}
 /* SCENARIOS */
 .scenario-box{background:#fff;border-radius:13px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.06);margin-bottom:14px;}
 .scenario-q{background:#f8f9fa;border-radius:8px;padding:13px;margin-bottom:12px;font-size:13.5px;line-height:1.6;}
 .sc-opts{display:flex;flex-direction:column;gap:7px;}
 .sc-opt{padding:10px 13px;border-radius:8px;border:1.5px solid #e0e0e0;background:#fafafa;cursor:pointer;font-size:13px;text-align:left;transition:all 0.18s;}
-.sc-opt:hover{border-color:#4f46e5;background:#f3f0ff;}
+.sc-opt:hover{border-color:#619239;background:#f4faf0;}
 .sc-opt:disabled{cursor:default;opacity:0.7;}
 .sc-fb{margin-top:10px;padding:12px 14px;border-radius:8px;font-size:13px;display:none;line-height:1.5;}
 .sc-fb.correct{background:#dcfce7;border-left:3px solid #16a34a;}
 .sc-fb.wrong{background:#fef2f2;border-left:3px solid #dc2626;}
 /* NEGOTIATION */
-.nego-step{background:#fff;border-radius:13px;padding:18px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.06);margin-bottom:12px;border-top:3px solid #4f46e5;}
-.nego-step h4{font-size:14px;font-weight:700;margin-bottom:8px;color:#1a1a2e;}
-.nego-script{background:#1a1a2e;border-radius:8px;padding:13px 15px;margin:8px 0;font-size:13px;line-height:1.7;color:#e2e8f0;border-left:3px solid #a78bfa;font-style:italic;}
+.nego-step{background:#fff;border-radius:13px;padding:18px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.06);margin-bottom:12px;border-top:3px solid #619239;}
+.nego-step h4{font-size:14px;font-weight:700;margin-bottom:8px;color:#1B3A1F;}
+.nego-script{background:#1B3A1F;border-radius:8px;padding:13px 15px;margin:8px 0;font-size:13px;line-height:1.7;color:#d4eab8;border-left:3px solid #7dc247;font-style:italic;}
 .nego-do{background:#f0fdf4;border-radius:8px;padding:10px 13px;font-size:12.5px;margin:5px 0;color:#166534;}
 .nego-dont{background:#fef2f2;border-radius:8px;padding:10px 13px;font-size:12.5px;margin:5px 0;color:#991b1b;}
 /* MARKET CARDS */
@@ -141,36 +141,36 @@ details .det-body{padding:4px 16px 16px;}
 .quiz-q{background:#fff;border-radius:13px;padding:18px;margin-bottom:12px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.06);}
 .q-text{font-weight:600;font-size:14px;margin-bottom:10px;line-height:1.5;}
 .q-opts label{display:flex;align-items:flex-start;gap:9px;padding:9px 12px;border-radius:8px;margin-bottom:5px;cursor:pointer;font-size:13px;border:1.5px solid #e5e7eb;transition:all 0.15s;}
-.q-opts label:hover{border-color:#4f46e5;background:#f3f0ff;}
+.q-opts label:hover{border-color:#619239;background:#f4faf0;}
 .q-opts input[type=radio]{margin-top:2px;flex-shrink:0;}
 .quiz-result{background:#fff;border-radius:16px;padding:30px;text-align:center;box-shadow:0 2px 4px rgba(0,0,0,0.04),0 8px 28px rgba(0,0,0,0.08);display:none;}
-.score-circle{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#06b6d4);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:26px;font-weight:800;color:#fff;box-shadow:0 4px 20px rgba(79,70,229,0.35);}
+.score-circle{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#619239,#2E7D32);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:26px;font-weight:800;color:#fff;box-shadow:0 4px 20px rgba(97,146,57,0.35);}
 .q-review{margin-top:6px;padding:8px 12px;border-radius:6px;font-size:12px;display:none;}
 .q-review.ok{background:#dcfce7;color:#166534;}
 .q-review.err{background:#fef2f2;color:#991b1b;}
 /* KOLPlanet */
 .kol-step{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;background:#fff;border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 3px 10px rgba(0,0,0,0.05);margin-bottom:9px;}
-.kol-num{width:30px;height:30px;border-radius:50%;background:#4f46e5;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;}
+.kol-num{width:30px;height:30px;border-radius:50%;background:#619239;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0;}
 .kol-body h5{font-weight:600;font-size:13.5px;margin-bottom:3px;}
 .kol-body p{font-size:12px;color:#555;line-height:1.5;}
 /* TABLE */
 table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.05);font-size:12.5px;}
-th{background:#1e1b4b;color:#fff;padding:10px 13px;text-align:left;font-size:11.5px;font-weight:600;letter-spacing:0.2px;}
+th{background:#619239;color:#fff;padding:10px 13px;text-align:left;font-size:11.5px;font-weight:600;letter-spacing:0.2px;}
 td{padding:9px 13px;border-bottom:1px solid #f0f0f0;}
 tr:last-child td{border-bottom:none;}
 tr:nth-child(even) td{background:#fafafa;}
 /* MISC */
-.section-title{font-size:13.5px;font-weight:700;color:#18181b;margin:28px 0 12px;letter-spacing:-0.1px;padding-left:11px;border-left:3px solid #4f46e5;}
+.section-title{font-size:13.5px;font-weight:700;color:#1B3A1F;margin:28px 0 12px;letter-spacing:-0.1px;padding-left:11px;border-left:3px solid #619239;}
 .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;}
-.badge-green{background:#f1f2f6;color:#374151;}
+.badge-green{background:#e8f3dc;color:#2E7D32;}
 .badge-orange{background:#fef3c7;color:#92400e;}
-.badge-red{background:#f1f2f6;color:#374151;}
-.badge-blue{background:#f1f2f6;color:#374151;}
+.badge-red{background:#ffebee;color:#c62828;}
+.badge-blue{background:#e3f2fd;color:#1565c0;}
 .btn{padding:10px 22px;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:14px;transition:all 0.2s;}
-.btn-primary{background:#4f46e5;color:#fff;box-shadow:0 1px 2px rgba(79,70,229,0.2),0 4px 12px rgba(79,70,229,0.2);}
-.btn-primary:hover{background:#4338ca;box-shadow:0 2px 4px rgba(79,70,229,0.25),0 6px 16px rgba(79,70,229,0.25);}
-.btn-outline{background:transparent;border:2px solid #4f46e5;color:#4f46e5;transition:all 0.18s;}
-.case-card{background:#fff;border-radius:13px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.06);margin-bottom:14px;border-top:3px solid #4f46e5;}
+.btn-primary{background:#619239;color:#fff;box-shadow:0 1px 2px rgba(97,146,57,0.2),0 4px 12px rgba(97,146,57,0.2);}
+.btn-primary:hover{background:#4a7a2e;box-shadow:0 2px 4px rgba(97,146,57,0.25),0 6px 16px rgba(97,146,57,0.25);}
+.btn-outline{background:transparent;border:2px solid #619239;color:#619239;transition:all 0.18s;}
+.case-card{background:#fff;border-radius:13px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,0.04),0 4px 14px rgba(0,0,0,0.06);margin-bottom:14px;border-top:3px solid #619239;}
 .case-card.fail{border-top-color:#dc2626;}
 /* CAMPAIGN WORKFLOW ENHANCEMENTS */
 .sop-item.cm-lead{background:#f8fafc;border-left:4px solid #94a3b8;}
@@ -178,44 +178,44 @@ tr:nth-child(even) td{background:#fafafa;}
 .sop-item.cm-lead .sop-num{color:#94a3b8;}
 .sop-item.cm-lead.done .sop-title{text-decoration:line-through;color:#94a3b8;}
 .pic-badge{font-size:10.5px;font-weight:700;padding:2px 9px;border-radius:4px;margin-left:6px;vertical-align:middle;letter-spacing:0.3px;}
-.pic-bd{background:#4f46e5;color:#fff;}
+.pic-bd{background:#619239;color:#fff;}
 .pic-cm{background:#334155;color:#fff;}
-.kp-note{font-size:11.5px;color:#52525b;background:#f8f9fa;border-radius:6px;padding:5px 10px;margin-top:7px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;border-left:2px solid #4f46e5;}
-.kp-note strong{white-space:nowrap;color:#4f46e5;}
+.kp-note{font-size:11.5px;color:#3a5a3a;background:#f4faf0;border-radius:6px;padding:5px 10px;margin-top:7px;display:flex;align-items:flex-start;gap:6px;line-height:1.5;border-left:2px solid #619239;}
+.kp-note strong{white-space:nowrap;color:#619239;}
 /* PHASE-BASED CHECKLIST */
 .phase-section{margin-bottom:22px;}
-.phase-hdr{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding:11px 16px;background:linear-gradient(135deg,#1e1b4b 0%,#3730a3 100%);border-radius:11px;color:#fff;box-shadow:0 2px 8px rgba(55,48,163,0.25);}
+.phase-hdr{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding:11px 16px;background:linear-gradient(135deg,#1B3A1F 0%,#619239 100%);border-radius:11px;color:#fff;box-shadow:0 2px 8px rgba(97,146,57,0.25);}
 .phase-hdr .ph-num{font-size:10px;font-weight:700;background:rgba(255,255,255,0.18);border-radius:20px;padding:2px 9px;letter-spacing:0.5px;white-space:nowrap;}
 .phase-hdr .ph-title{font-weight:700;font-size:13.5px;flex:1;}
 .phase-hdr .ph-count{font-size:11px;color:rgba(255,255,255,0.55);white-space:nowrap;}
-.chk-card{background:#fff;border-radius:8px;padding:14px 16px;margin-bottom:7px;box-shadow:none;border:1px solid #e4e4e7;border-left:3px solid #4f46e5;display:flex;align-items:flex-start;gap:11px;transition:all 0.18s;}
-.chk-card:hover{border-color:#4f46e5;box-shadow:0 2px 10px rgba(79,70,229,0.08);}
+.chk-card{background:#fff;border-radius:8px;padding:14px 16px;margin-bottom:7px;box-shadow:none;border:1px solid #d8edc0;border-left:3px solid #619239;display:flex;align-items:flex-start;gap:11px;transition:all 0.18s;}
+.chk-card:hover{border-color:#619239;box-shadow:0 2px 10px rgba(97,146,57,0.08);}
 .chk-card.cm-card{background:#fafafa;border-left:3px solid #334155;border-color:#d1d5db;}
 .chk-card.cm-card:hover{border-color:#334155;box-shadow:0 2px 10px rgba(51,65,85,0.08);}
-.chk-card.done{background:#f8f9fa;opacity:0.7;}
+.chk-card.done{background:#f4faf0;opacity:0.7;}
 .chk-card.done .sop-title{text-decoration:line-through;color:#9ca3af;}
-.chk-card.cm-card.done{background:#f8f9fa;}
+.chk-card.cm-card.done{background:#f4faf0;}
 .chk-role{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 12px;border-radius:4px;margin-bottom:6px;letter-spacing:0.3px;}
-.chk-role.bd{background:#4f46e5;color:#fff;}
+.chk-role.bd{background:#619239;color:#fff;}
 .chk-role.cm{background:#334155;color:#fff;}
-.chk-legend{display:flex;gap:12px;margin-bottom:20px;align-items:center;flex-wrap:wrap;padding:10px 14px;background:#f8f9fa;border-radius:8px;border:1px solid #e4e4e7;}
-.chk-legend-item{display:flex;align-items:center;gap:7px;font-size:12px;color:#374151;font-weight:500;}
+.chk-legend{display:flex;gap:12px;margin-bottom:20px;align-items:center;flex-wrap:wrap;padding:10px 14px;background:#f4faf0;border-radius:8px;border:1px solid #d8edc0;}
+.chk-legend-item{display:flex;align-items:center;gap:7px;font-size:12px;color:#2d4d1a;font-weight:500;}
 .chk-legend-dot{width:10px;height:10px;border-radius:2px;}
-.chk-legend-dot.bd{background:#4f46e5;border:none;}
+.chk-legend-dot.bd{background:#619239;border:none;}
 .chk-legend-dot.cm{background:#334155;border:none;}
 /* OUTREACH */
 .tpl-label{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:4px;margin-bottom:8px;letter-spacing:0.3px;}
-.tpl-dm{background:#f1f2f6;color:#374151;}
-.tpl-email{background:#f1f2f6;color:#374151;}
-.rate-box{background:#fff;border-radius:8px;padding:13px 16px;border:1px solid #e4e4e7;border-left:3px solid #d97706;font-size:13px;margin:14px 0;line-height:1.7;color:#374151;}
+.tpl-dm{background:#f0f4f8;color:#405060;}
+.tpl-email{background:#f0f4f8;color:#405060;}
+.rate-box{background:#fffbe6;border-radius:0 8px 8px 0;padding:13px 16px;border-left:4px solid #f0a500;font-size:13px;margin:14px 0;line-height:1.7;color:#5a4000;}
 </style>
 </head>
 <body>
 <!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="sidebar-logo">
-    <h2>IM Training Hub</h2>
-    <p><span class="t-en">Influencer Marketing · SEA &amp; India</span><span class="t-zh">网红营销培训 · SEA &amp; 印度</span></p>
+    <div class="brand">MOCA</div>
+    <div class="subtitle"><span class="t-en">MOCA IM Training<br>Influencer Marketing · SEA &amp; India</span><span class="t-zh">MOCA 网红营销培训<br>SEA &amp; 印度市场</span></div>
   </div>
   <div class="search-bar">
     <div class="search-wrap">
@@ -265,7 +265,7 @@ tr:nth-child(even) td{background:#fafafa;}
     <div class="w-card" onclick="showPage('cases')"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div><h3><span class="t-en">Case Studies</span><span class="t-zh">实战案例</span></h3><p><span class="t-en">Real wins &amp; failures with key lessons</span><span class="t-zh">真实成功与失败案例</span></p></div>
     <div class="w-card" onclick="showPage('kolplanet')"><div class="wi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><h3>KOLPlanet App</h3><p><span class="t-en">How and when to onboard KOLs to the platform</span><span class="t-zh">何时如何引导KOL上平台</span></p></div>
   </div>
-  <div class="card" style="margin-top:20px;background:linear-gradient(135deg,#1a1a2e,#2d2d4e);color:#fff;">
+  <div class="card" style="margin-top:20px;background:linear-gradient(135deg,#1B3A1F,#2d5a2d);color:#fff;">
     <h3 style="font-size:15px;margin-bottom:8px;"><span class="t-en">How to use this hub</span><span class="t-zh">使用说明</span></h3>
     <p style="font-size:13px;opacity:0.88;line-height:1.65;"><span class="t-en"><strong>Search bar</strong> (top left) — type any keyword to find it across all modules instantly.<br><strong>Accordion sections</strong> — click to expand details, click again to collapse.<br><strong>Campaign Workflow</strong> — tick off steps as you work through a real campaign.<br><strong>Final Quiz</strong> — take it when you've read through everything.</span><span class="t-zh"><strong>搜索栏</strong>（左上角）— 输入关键词，即时跨模块查找。<br><strong>折叠区块</strong> — 点击展开详情，再点收起。<br><strong>项目工作流程</strong> — 执行真实项目时逐步打勾。<br><strong>知识测验</strong> — 通读完后来挑战一下。</span></p>
   </div>
@@ -914,7 +914,7 @@ Please let me know once it's done, or if there's anything I can help clarify. Th
   <p style="font-size:13px;color:#666;margin-bottom:14px;"><span class="t-en">Pick the best response in each situation.</span><span class="t-zh">在每个情境中选出最佳回应。</span></p>
 
   <div class="scenario-box">
-    <div style="font-size:12px;font-weight:700;color:#4f46e5;margin-bottom:8px;">SCENARIO 1</div>
+    <div style="font-size:12px;font-weight:700;color:#619239;margin-bottom:8px;">SCENARIO 1</div>
     <div class="scenario-q"><span class="t-en">A KOL you just cold-outreached replies: "Sure, I'm interested! What's the budget?" — but you haven't shared the brief yet. What do you do?</span><span class="t-zh">你刚刚冷触达的一位 KOL 回复："当然，我感兴趣！预算是多少？"——但你还没有分享简报。你会怎么做？</span></div>
     <div class="sc-opts" id="sc1-opts">
       <button class="sc-opt" onclick="doSc('sc1','a',this)">A — Tell them the exact budget figure right away so they can decide</button>
@@ -925,7 +925,7 @@ Please let me know once it's done, or if there's anything I can help clarify. Th
   </div>
 
   <div class="scenario-box">
-    <div style="font-size:12px;font-weight:700;color:#4f46e5;margin-bottom:8px;">SCENARIO 2</div>
+    <div style="font-size:12px;font-weight:700;color:#619239;margin-bottom:8px;">SCENARIO 2</div>
     <div class="scenario-q"><span class="t-en">A KOL agrees to the campaign but says: "I'll post it when I have time — probably this week." The client needs it live on a specific date. What do you do?</span><span class="t-zh">一位 KOL 同意参与项目，但说："我有空的时候会发——大概这周吧。"客户需要在特定日期上线。你会怎么做？</span></div>
     <div class="sc-opts" id="sc2-opts">
       <button class="sc-opt" onclick="doSc('sc2','a',this)">A — Say "OK, that works!" to keep things smooth</button>
@@ -936,7 +936,7 @@ Please let me know once it's done, or if there's anything I can help clarify. Th
   </div>
 
   <div class="scenario-box">
-    <div style="font-size:12px;font-weight:700;color:#4f46e5;margin-bottom:8px;">SCENARIO 3</div>
+    <div style="font-size:12px;font-weight:700;color:#619239;margin-bottom:8px;">SCENARIO 3</div>
     <div class="scenario-q"><span class="t-en">After posting, a KOL's Reel gets negative comments from followers saying the brand is "scammy." The comments are getting attention. What's your first move?</span><span class="t-zh">发布后，一位 KOL 的 Reel 收到粉丝的负面评论，称该品牌是"骗局"。评论正在引发关注。你的第一步是什么？</span></div>
     <div class="sc-opts" id="sc3-opts">
       <button class="sc-opt" onclick="doSc('sc3','a',this)">A — Screenshot the situation, notify your manager and client immediately, do not ask the KOL to act without guidance</button>
@@ -1243,7 +1243,7 @@ Please let me know once it's done, or if there's anything I can help clarify. Th
     <h3 style="font-size:15px;margin-bottom:8px;"><span class="t-en">Micro-KOL Bundle Drives 3x Expected Reach</span><span class="t-zh">Micro-KOL 组合投放，覆盖超出预期3倍</span></h3>
     <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:12px;"><span class="t-en">A beauty brand had a $5,000 budget. Instead of using one macro-KOL, the BD team identified 10 micro-KOLs (50K–100K) in Indonesia across different cities. Each posted an authentic TikTok review. Total reach exceeded 3x the estimate — and the comment quality was far higher than previous macro campaigns.</span><span class="t-zh">某美妆品牌预算5,000美元。BD团队没有选择一位Macro-KOL，而是在印尼不同城市筛选了10位 Micro-KOL（5–10万粉），每人发布了一条真实的TikTok测评。最终总覆盖超出预期3倍，评论质量也远高于以往的 Macro 活动。</span></p>
     <details>
-      <summary style="font-size:13px;color:#4f46e5;font-weight:600;"><span class="t-en">▸ Key Lesson</span><span class="t-zh">▸ 核心教训</span></summary>
+      <summary style="font-size:13px;color:#619239;font-weight:600;"><span class="t-en">▸ Key Lesson</span><span class="t-zh">▸ 核心教训</span></summary>
       <div class="det-body">
         <div class="success-box"><span class="t-en"><strong>Spread + authenticity beats single big name.</strong> In price-sensitive markets like Indonesia, audiences trust micro-KOLs who "look like them" more than celebrities. Same budget, better results. Always consider micro-KOL bundles when awareness is the goal.</span><span class="t-zh"><strong>分散投放 + 真实性 > 单一大名人。</strong>在印尼这样价格敏感的市场，受众对"看起来和自己一样"的 Micro-KOL 信任度高于明星。相同预算，更好效果。以品牌曝光为目标时，优先考虑 Micro-KOL 组合投放。</span></div>
       </div>
@@ -1258,7 +1258,7 @@ Please let me know once it's done, or if there's anything I can help clarify. Th
     <h3 style="font-size:15px;margin-bottom:8px;"><span class="t-en">Integration Deal Outperforms Dedicated at Half the Cost</span><span class="t-zh">Integration 广告以一半成本超越 Dedicated 效果</span></h3>
     <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:12px;"><span class="t-en">A fintech app was considering a $8,000 dedicated YouTube video with a finance KOL. The BD team proposed a $3,500 Integration (Tap-in) deal in the same KOL's weekly market update video instead. The Integration outperformed the Dedicated on app downloads because the KOL's regular audience was primed for financial content — the placement felt native, not promotional.</span><span class="t-zh">某金融科技App原计划花8,000美元与金融KOL合作一条 Dedicated YouTube 视频。BD团队改提议以3,500美元在同一KOL的每周市场行情视频中做 Integration。Integration 在App下载量上的表现超越了 Dedicated，原因是该KOL的固定受众对金融内容已有心理准备——植入感觉原生，而非广告。</span></p>
     <details>
-      <summary style="font-size:13px;color:#4f46e5;font-weight:600;"><span class="t-en">▸ Key Lesson</span><span class="t-zh">▸ 核心教训</span></summary>
+      <summary style="font-size:13px;color:#619239;font-weight:600;"><span class="t-en">▸ Key Lesson</span><span class="t-zh">▸ 核心教训</span></summary>
       <div class="det-body">
         <div class="success-box"><span class="t-en"><strong>Content-audience fit beats format prestige.</strong> A shorter, well-placed Integration in the right video converts better than a full Dedicated video that audiences mentally skip. Always pitch Integration first for performance-focused campaigns.</span><span class="t-zh"><strong>内容与受众的契合度 > 形式的档次。</strong>在合适视频中精准嵌入的 Integration，转化效果优于受众会跳过的完整 Dedicated 视频。以效果为导向的活动，优先推荐 Integration 形式。</span></div>
       </div>
@@ -1273,7 +1273,7 @@ Please let me know once it's done, or if there's anything I can help clarify. Th
     <h3 style="font-size:15px;margin-bottom:8px;"><span class="t-en">Macro-KOL with Fake Followers — Campaign Wasted</span><span class="t-zh">Macro-KOL 疑似刷粉——活动白打水漂</span></h3>
     <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:12px;"><span class="t-en">A fashion brand paid $4,000 to a Thai IG KOL with 400K followers. The KOL's content looked great. Post went live — 800 likes, 12 comments. ER was 0.2%. Post-campaign audit revealed 60% of the KOL's followers were from non-Thai accounts with no content. The BD team had not run a fake data check before confirming.</span><span class="t-zh">某时尚品牌向一位拥有40万粉丝的泰国 IG KOL支付了4,000美元。KOL 内容颜值很高。帖子上线后——800个点赞，12条评论，互动率0.2%。活动结束后核查发现，60%的粉丝来自无内容的非泰国账号。BD团队在确认前未做假数据核查。</span></p>
     <details>
-      <summary style="font-size:13px;color:#4f46e5;font-weight:600;"><span class="t-en">▸ Key Lesson</span><span class="t-zh">▸ 核心教训</span></summary>
+      <summary style="font-size:13px;color:#619239;font-weight:600;"><span class="t-en">▸ Key Lesson</span><span class="t-zh">▸ 核心教训</span></summary>
       <div class="det-body">
         <div class="danger-box"><span class="t-en"><strong>Follower count means nothing without verification.</strong> Never recommend a KOL without running at least a basic fake data check. A basic fake data check on KOLPlanet would have caught this. $4,000 loss was entirely avoidable. Fake data check is not optional — it's step 3 of the SOP for a reason.</span><span class="t-zh"><strong>粉丝数在核查前毫无意义。</strong>推荐KOL之前，至少要做一次基础假数据核查。KOLPlanet 的基础核查本可发现这个问题。4000美元的损失完全可以避免。假数据核查不是可选项——它是SOP第3步的原因正在于此。</span></div>
       </div>
@@ -1288,7 +1288,7 @@ Please let me know once it's done, or if there's anything I can help clarify. Th
     <h3 style="font-size:15px;margin-bottom:8px;"><span class="t-en">Missed Posting Deadline + No Backup Plan</span><span class="t-zh">错过发布截止日期 + 毫无备案</span></h3>
     <p style="font-size:13px;color:#555;line-height:1.6;margin-bottom:12px;"><span class="t-en">A food brand's campaign was tied to a product launch date. The KOL confirmed verbally but nothing was in the contract. On launch day, the KOL posted 3 days late — after the launch window. The BD team had no backup KOL lined up. Campaign missed the launch momentum entirely.</span><span class="t-zh">某食品品牌活动与产品发布日期绑定。KOL 口头确认但合同中无任何约定。发布当天，KOL 晚了3天发帖——错过了发布窗口期。BD团队没有备选KOL。活动完全错失了发布势能。</span></p>
     <details>
-      <summary style="font-size:13px;color:#4f46e5;font-weight:600;"><span class="t-en">▸ Key Lesson</span><span class="t-zh">▸ 核心教训</span></summary>
+      <summary style="font-size:13px;color:#619239;font-weight:600;"><span class="t-en">▸ Key Lesson</span><span class="t-zh">▸ 核心教训</span></summary>
       <div class="det-body">
         <div class="danger-box"><span class="t-en"><strong>Verbal = nothing. Contract = everything.</strong> Always have the exact posting date written in the contract with a penalty clause. For time-sensitive campaigns, always shortlist 1–2 backup KOLs just in case. "Confirmed verbally" is not confirmed.</span><span class="t-zh"><strong>口头承诺 = 无效。合同 = 一切。</strong>务必将确切发布日期写入合同并附带违约条款。时效敏感型活动，始终备选1–2位替代KOL以防万一。"口头确认"不等于真正确认。</span></div>
       </div>
